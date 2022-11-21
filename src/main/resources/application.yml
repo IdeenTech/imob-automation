@@ -3,3 +3,4 @@ config:
     host: https://imobiliario-stg.cerc.inf.br
     host-auth: https://cad-stg.cerc.inf.br/oauth/token
     basic-token: Basic OTg0MDE0NzIwMDAxNTA6ZmUzNTExZDMtMjliNS00MTE2LWExMDQtMzI2ZTUyZmE5MDA3
+
