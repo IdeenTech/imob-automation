@@ -63,7 +63,7 @@ public class MethodRest {
     }
 
     private static void createFormParam(EndpointConfig endpointConfig, RequestSpecification requestSpecification) {
-        if (!endpointConfig.getParams().isEmpty()) {
+        if (!endpointConfig.getFormParams().isEmpty()) {
             for (Map.Entry<String, Object> header : endpointConfig.getFormParams().entrySet()) {
                 requestSpecification.formParam(header.getKey(), header.getValue());
             }
