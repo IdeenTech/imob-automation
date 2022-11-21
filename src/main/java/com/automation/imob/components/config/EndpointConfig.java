@@ -10,6 +10,7 @@ public class EndpointConfig {
     private String url;
     private HashMap<String, Object> headers;
     private HashMap<String, Object> params;
+    private HashMap<String, Object> formParams;
     private String body;
 
     public void addHeaders(String key, Object value) {
@@ -30,6 +31,10 @@ public class EndpointConfig {
 
     public void addParams(String key, Object value) {
         this.getParams().put(key, value);
+    }
+
+    public void addFormParams(String key, Object value) {
+        this.getFormParams().put(key, value);
     }
 
     public String setJsonFileBody(String pathFileName) throws IOException {
@@ -57,6 +62,14 @@ public class EndpointConfig {
         }
         return params;
     }
+
+    public HashMap<String, Object> getFormParams() {
+        if (formParams == null) {
+            formParams = new HashMap<String, Object>();
+        }
+        return formParams;
+    }
+
 
     public String getBody() {
         return body;

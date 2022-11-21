@@ -20,6 +20,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     public static void authentication(){
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersAuthToken("Basic OTg0MDE0NzIwMDAxNTA6ZmUzNTExZDMtMjliNS00MTE2LWExMDQtMzI2ZTUyZmE5MDA3");
+        endpointConfig.addFormParams("grant_type", "client_credentials");
 
         endpointConfig.setUrl("https://cad-stg.cerc.inf.br/oauth/token");
         Response response = MethodRest.callPost(endpointConfig);

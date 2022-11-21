@@ -44,6 +44,7 @@ public class MethodRest {
         createHeaders(endpointConfig, requestSpecification);
         createParams(endpointConfig, requestSpecification);
         createBody(endpointConfig, requestSpecification);
+        createFormParam(endpointConfig, requestSpecification);
         return requestSpecification;
     }
 
@@ -57,6 +58,14 @@ public class MethodRest {
         if (!endpointConfig.getParams().isEmpty()) {
             for (Map.Entry<String, Object> header : endpointConfig.getParams().entrySet()) {
                 requestSpecification.param(header.getKey(), header.getValue());
+            }
+        }
+    }
+
+    private static void createFormParam(EndpointConfig endpointConfig, RequestSpecification requestSpecification) {
+        if (!endpointConfig.getParams().isEmpty()) {
+            for (Map.Entry<String, Object> header : endpointConfig.getFormParams().entrySet()) {
+                requestSpecification.formParam(header.getKey(), header.getValue());
             }
         }
     }
