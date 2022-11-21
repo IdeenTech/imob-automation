@@ -16,6 +16,18 @@ public class EndpointConfig {
         this.getHeaders().put(key, value);
     }
 
+    public void addHeadersAuthToken(String basicToken) {
+        addHeaders("Authorization", basicToken);
+        addHeaders("Content-Type", "multipart/form-data");
+        addHeaders("Accept", "*/*");
+    }
+
+    public void addHeadersJson(String accessToken) {
+        addHeaders("Authorization", accessToken);
+        addHeaders("Content-Type", "application/json");
+        addHeaders("Accept", "*/*");
+    }
+
     public void addParams(String key, Object value) {
         this.getParams().put(key, value);
     }

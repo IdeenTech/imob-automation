@@ -1,68 +1,60 @@
 package com.automation.imob.bankaddres;
+
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;
 import com.automation.imob.components.config.EndpointConfig;
+import com.automation.imob.components.result.CheckResponse;
+import com.automation.imob.config.ImobFileJson;
+import com.automation.imob.config.ImobPath;
 import io.restassured.response.Response;
-import io.restassured.response.ResponseBody;
-import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 
 public class RegisterBankAddressTest extends ImobApplicationTests {
-    private String ACCESS_TOKEN;
+
+    private static String accessToken;
 
     @BeforeAll
-    public void authentication(){
+    public static void authentication(){
         EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeaders("Authorization", getConfigParams().getBasicToken());
-        endpointConfig.addHeaders("Content-Type", "multipart/form-data; boundary=<calculated when request is sent>");
-        endpointConfig.addHeaders("Content-Length","<calculated when request is sent>");
-        endpointConfig.addHeaders("Host", "<calculated when request is sent>");
-        endpointConfig.addHeaders("Accept", "*/*");
-        endpointConfig.addHeaders("Accept-Encoding", "gzip,deflate,br");
-        endpointConfig.addHeaders("Connection", "keep-alive");
+        endpointConfig.addHeadersAuthToken("Basic OTg0MDE0NzIwMDAxNTA6ZmUzNTExZDMtMjliNS00MTE2LWExMDQtMzI2ZTUyZmE5MDA3");
 
-        endpointConfig.setUrl(getConfigParams().getHostAuth());
-
+        endpointConfig.setUrl("https://cad-stg.cerc.inf.br/oauth/token");
         Response response = MethodRest.callPost(endpointConfig);
         response.then().statusCode(200);
 
-        ResponseBody body = response.getBody();
-        ACCESS_TOKEN = body.jsonPath().get("access_token");
-        System.out.println(ACCESS_TOKEN);
-    }
-    @BeforeEach
-    public void common(){
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeaders("Authorization", ACCESS_TOKEN);
-        endpointConfig.addHeaders("Content-Type", "application/json");
-        endpointConfig.addHeaders("Connection", "keep-alive");
-        endpointConfig.addHeaders("Accept-Encoding", "gzip,deflate,br");
-        endpointConfig.addHeaders("Accept", "*/*");
-        endpointConfig.addHeaders("Host", "<calculated when request is sent>");
-        endpointConfig.addHeaders("Content-Length", "<calculated when request is sent>");
-        endpointConfig.addHeaders("Content-Type", "text/plain");
-        endpointConfig.setUrl(getConfigParams().getHost().concat("/domiciliobancario"));
+        accessToken = response.getBody().jsonPath().get("access_token");
     }
     @Test
     public void save() throws IOException {
+        // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.setBody(endpointConfig.setJsonFileBody("json/bankaddres/save.json"));
+        endpointConfig.addHeadersJson(accessToken);
+        endpointConfig.setUrl(getConfigParams().getHost().concat(ImobPath.PATH_BANK_ADDRESS));
+        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_SAVE));
 
+        // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
-        response.then().statusCode(201);
+
+        // Check Response
+        CheckResponse.checkHttpCode(201, response);
     }
 
     @Test
     public void rn004_111001() throws IOException {
+        // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.setBody(endpointConfig.setJsonFileBody("json/bankaddres/rn004-111001.json"));
+        endpointConfig.addHeadersJson(accessToken);
+        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111001));
+
+        // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
 
-        Assert.assertTrue(response.getBody().asString().equals("111001"));
-        Assert.assertTrue(response.getBody().asString().equals("TIPO DE OPERACAO OBRIGATORIO"));
+        // Check Response
+        CheckResponse.checkValueInJson("111001", "codigo", response);
+        CheckResponse.checkValueInJson("TIPO DE OPERACAO OBRIGATORIO", "descricao", response);
 
     }
 
