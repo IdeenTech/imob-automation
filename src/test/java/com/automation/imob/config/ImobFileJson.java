@@ -25,6 +25,8 @@ public abstract  class ImobFileJson {
 
     public static final String PATH_JSON_REQUEST_OPTIN_RN004_105006 =  PATH_BASE.concat("/requestptin/rn004-105006.json");
 
+    public static final String PATH_JSON_REQUEST_OPTIN_RN004_105008 =  PATH_BASE.concat("/requestptin/rn004-105008.json");
+
     public static final String PATH_JSON_REQUEST_OPTIN_RN005 =  PATH_BASE.concat("/requestptin/rn005.json");
 
     public static final String PATH_JSON_REQUEST_OPTIN_RN006_105005 =  PATH_BASE.concat("/requestptin/rn006-105005.json");
