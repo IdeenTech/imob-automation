@@ -10,4 +10,8 @@ public abstract class ImobPath {
     //building
     public static final String PATH_BUILDING = "/empreendimento";
 
+    //request Opt-in
+
+    public static final String PATH_REQUEST_OPTIN = "/";
+
 }

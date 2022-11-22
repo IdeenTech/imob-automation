@@ -27,6 +27,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         // Check Response
         CheckResponse.checkHttpCode(201, response);
+        CheckResponse.checkTextInJson("Created", response);
     }
 
     @Test
