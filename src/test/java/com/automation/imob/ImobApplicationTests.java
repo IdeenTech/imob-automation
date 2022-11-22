@@ -7,6 +7,7 @@ import io.restassured.response.Response;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.junit.BeforeClass;
+import org.junit.jupiter.api.BeforeAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -14,11 +15,23 @@ import org.springframework.boot.test.context.SpringBootTest;
 @Getter
 public class ImobApplicationTests {
 
-    @Autowired
-    private ConfigParams configParams;
+    private static String accessToken;
 
+    @BeforeAll
+    public static void authentication() {
+        EndpointConfig endpointConfig = new EndpointConfig();
+        endpointConfig.addHeadersAuthToken(ConfigParams.BASIC_TOKEN);
+        endpointConfig.addFormParams("grant_type", "client_credentials");
 
+        endpointConfig.setUrl(ConfigParams.HOST_AUTH);
+        Response response = MethodRest.callPost(endpointConfig);
+        response.then().statusCode(200);
 
+        accessToken = response.getBody().jsonPath().get("access_token");
+    }
 
+    public static String getAccessToken() {
+        return accessToken;
+    }
 
 }

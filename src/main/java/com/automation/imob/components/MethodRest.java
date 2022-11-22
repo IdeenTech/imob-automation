@@ -2,11 +2,14 @@ package com.automation.imob.components;
 
 import com.automation.imob.components.config.EndpointConfig;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
+
+import static io.restassured.config.EncoderConfig.encoderConfig;
 
 @Slf4j
 public class MethodRest {
@@ -40,11 +43,13 @@ public class MethodRest {
     }
 
     private static RequestSpecification createRequest(EndpointConfig endpointConfig) {
-        RequestSpecification requestSpecification = RestAssured.given();
+        RequestSpecification requestSpecification = RestAssured.given()
+                .config(RestAssured.config().encoderConfig(encoderConfig().encodeContentTypeAs("multipart/form-data", ContentType.
+                        TEXT)));
         createHeaders(endpointConfig, requestSpecification);
         createParams(endpointConfig, requestSpecification);
         createBody(endpointConfig, requestSpecification);
-        createFormParam(endpointConfig, requestSpecification);
+        createMultipartFormParam(endpointConfig, requestSpecification);
         return requestSpecification;
     }
 
@@ -56,16 +61,16 @@ public class MethodRest {
 
     private static void createParams(EndpointConfig endpointConfig, RequestSpecification requestSpecification) {
         if (!endpointConfig.getParams().isEmpty()) {
-            for (Map.Entry<String, Object> header : endpointConfig.getParams().entrySet()) {
-                requestSpecification.param(header.getKey(), header.getValue());
+            for (Map.Entry<String, Object> param : endpointConfig.getParams().entrySet()) {
+                requestSpecification.param(param.getKey(), param.getValue());
             }
         }
     }
 
-    private static void createFormParam(EndpointConfig endpointConfig, RequestSpecification requestSpecification) {
+    private static void createMultipartFormParam(EndpointConfig endpointConfig, RequestSpecification requestSpecification) {
         if (!endpointConfig.getFormParams().isEmpty()) {
-            for (Map.Entry<String, Object> header : endpointConfig.getFormParams().entrySet()) {
-                requestSpecification.formParam(header.getKey(), header.getValue());
+            for (Map.Entry<String, Object> formParam : endpointConfig.getFormParams().entrySet()) {
+                requestSpecification.multiPart(formParam.getKey(), formParam.getValue());
             }
         }
     }

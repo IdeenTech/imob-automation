@@ -1,20 +1,9 @@
 package com.automation.imob.config;
 
-
-import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
-@Data
 public class ConfigParams {
 
-    @Value("${config.params.host}")
-    private String host;
+    public static final String HOST = "https://imobiliario-stg.cerc.inf.br";
+    public static final String HOST_AUTH = "https://cad-stg.cerc.inf.br/oauth/token";
+    public static final String BASIC_TOKEN = "Basic OTg0MDE0NzIwMDAxNTA6ZmUzNTExZDMtMjliNS00MTE2LWExMDQtMzI2ZTUyZmE5MDA3";
 
-    @Value("${config.params.host-auth}")
-    private String hostAuth;
-
-    @Value("${config.params.basic-token}")
-    private String basicToken;
 }

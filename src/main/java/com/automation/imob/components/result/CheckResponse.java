@@ -2,18 +2,18 @@ package com.automation.imob.components.result;
 
 import io.restassured.response.Response;
 import lombok.extern.slf4j.Slf4j;
-import org.hamcrest.Matchers;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
 public class CheckResponse {
 
     public static void checkHttpCode(Integer httpCode, Response response) {
-        response.then().statusCode(httpCode);
         log.info("HttpCodeResponse: {}, HttpCodeExpected: {}", response.getStatusCode(), httpCode);
+        response.then().statusCode(httpCode);
     }
 
-    public static void checkValueInJson(String value, String field, Response response) {
-        response.then().body(field, Matchers.equalTo(value));
-        log.info("ValueExpected: {}, FieldExpected: {}, ResponseBody: {}", value, field, response.getBody());
+    public static void checkTextInJson(String text, Response response) {
+        log.info("TextExpected: {}, ResponseBody: {}", text,  response.getBody().asString());
+        assertTrue(response.getBody().asString().contains(text));
     }
 }
