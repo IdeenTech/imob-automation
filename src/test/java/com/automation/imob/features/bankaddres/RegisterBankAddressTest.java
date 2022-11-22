@@ -11,16 +11,20 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class RegisterBankAddressTest extends ImobApplicationTests {
 
     @Test
     public void save() throws IOException {
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExterna", getDataFaker().getExternalReference());
+
         // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_BANK_ADDRESS));
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_SAVE));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_SAVE, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);

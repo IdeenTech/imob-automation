@@ -56,6 +56,7 @@ public class MethodRest {
     private static void createBody(EndpointConfig endpointConfig, RequestSpecification requestSpecification) {
         if (endpointConfig.getBody() != null) {
             requestSpecification.body(endpointConfig.getBody());
+            log.info("=== Request Body: {} ===", endpointConfig.getBody());
         }
     }
 
