@@ -46,6 +46,7 @@ public class AuthorizeOptin extends ImobApplicationTests {
         CheckResponse.checkTextInJson("CNPJ DO EMPREENDIMENTO OBRIGATORIO", response);
 
     }
+    @Test
     public void rn004_105004() throws IOException {
         // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
@@ -61,6 +62,7 @@ public class AuthorizeOptin extends ImobApplicationTests {
         CheckResponse.checkTextInJson("DATA DE INICIO OBRIGATORIA", response);
 
     }
+    @Test
     public void rn004_105006() throws IOException {
         // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
@@ -76,6 +78,7 @@ public class AuthorizeOptin extends ImobApplicationTests {
         CheckResponse.checkTextInJson("DATA FIM OBRIGATORIA", response);
 
     }
+    @Test
     public void rn004_105010() throws IOException {
         // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
@@ -91,6 +94,7 @@ public class AuthorizeOptin extends ImobApplicationTests {
         CheckResponse.checkTextInJson("FINANCIADOR OBRIGATORIO", response);
 
     }
+    @Test
     public void rn004_105016() throws IOException {
         // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
@@ -106,6 +110,7 @@ public class AuthorizeOptin extends ImobApplicationTests {
         CheckResponse.checkTextInJson("APROVAR OPT IN OBRIGATORIO", response);
 
     }
+    @Test
     public void rn005() throws IOException {
         // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
@@ -121,6 +126,7 @@ public class AuthorizeOptin extends ImobApplicationTests {
         CheckResponse.checkTextInJson("FINANCIADOR INVALIDO", response);
 
     }
+    @Test
     public void rn006() throws IOException {
         // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
@@ -134,6 +140,182 @@ public class AuthorizeOptin extends ImobApplicationTests {
         // Check Response
         CheckResponse.checkTextInJson("105003",  response);
         CheckResponse.checkTextInJson("CNPJ DO EMPREENDIMENTO INVALIDO", response);
+
+    }
+    @Test
+    public void rn007_105005() throws IOException {
+        // Create Request
+        EndpointConfig endpointConfig = new EndpointConfig();
+        endpointConfig.addHeadersJson(getAccessToken());
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_AUTHORIZE_OPTIN));
+        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN007_105005));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("105005",  response);
+        CheckResponse.checkTextInJson("DATA DE INICIO INVALIDA", response);
+
+    }
+    @Test
+    public void rn007_105007() throws IOException {
+        // Create Request
+        EndpointConfig endpointConfig = new EndpointConfig();
+        endpointConfig.addHeadersJson(getAccessToken());
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_AUTHORIZE_OPTIN));
+        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN007_105007));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("105007",  response);
+        CheckResponse.checkTextInJson("DATA FIM INVALIDA", response);
+
+    }
+    @Test
+    public void rn008() throws IOException {
+        // Create Request
+        EndpointConfig endpointConfig = new EndpointConfig();
+        endpointConfig.addHeadersJson(getAccessToken());
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_AUTHORIZE_OPTIN));
+        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN008));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("105017",  response);
+        CheckResponse.checkTextInJson("APROVAR OPT IN INVALIDO", response);
+
+    }
+    @Test
+    public void rn009() throws IOException {
+        // Create Request
+        EndpointConfig endpointConfig = new EndpointConfig();
+        endpointConfig.addHeadersJson(getAccessToken());
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_AUTHORIZE_OPTIN));
+        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN009));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("105012",  response);
+        CheckResponse.checkTextInJson("TIPO DE LIBERACAO INVALIDO", response);
+
+    }
+    @Test
+    public void rn010() throws IOException {
+        // Create Request
+        EndpointConfig endpointConfig = new EndpointConfig();
+        endpointConfig.addHeadersJson(getAccessToken());
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_AUTHORIZE_OPTIN));
+        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN010));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("105001",  response);
+        CheckResponse.checkTextInJson("FINANCIADOR INVALIDO", response);
+
+    }
+    @Test
+    public void rn011() throws IOException {
+        // Create Request
+        EndpointConfig endpointConfig = new EndpointConfig();
+        endpointConfig.addHeadersJson(getAccessToken());
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_AUTHORIZE_OPTIN));
+        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN011));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("105003",  response);
+        CheckResponse.checkTextInJson("CNPJ DO EMPREENDIMENTO INVALIDO", response);
+
+    }
+    @Test
+    public void rn012() throws IOException {
+        // Create Request
+        EndpointConfig endpointConfig = new EndpointConfig();
+        endpointConfig.addHeadersJson(getAccessToken());
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_AUTHORIZE_OPTIN));
+        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN012));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("105011",  response);
+        CheckResponse.checkTextInJson("TIPO DE LIBERACAO OBRIGATORIO", response);
+
+    }
+    @Test
+    public void rn013() throws IOException {
+        // Create Request
+        EndpointConfig endpointConfig = new EndpointConfig();
+        endpointConfig.addHeadersJson(getAccessToken());
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_AUTHORIZE_OPTIN));
+        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN013));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("105013",  response);
+        CheckResponse.checkTextInJson("QUADRAS/TORRES OBRIGATORIO", response);
+
+    }
+    @Test
+    public void rn014() throws IOException {
+        // Create Request
+        EndpointConfig endpointConfig = new EndpointConfig();
+        endpointConfig.addHeadersJson(getAccessToken());
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_AUTHORIZE_OPTIN));
+        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN014));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("105014",  response);
+        CheckResponse.checkTextInJson("QUADRAS/TORRES INVALIDO", response);
+
+    }
+    @Test
+    public void rn016() throws IOException {
+        // Create Request
+        EndpointConfig endpointConfig = new EndpointConfig();
+        endpointConfig.addHeadersJson(getAccessToken());
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_AUTHORIZE_OPTIN));
+        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN016));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("105015",  response);
+        CheckResponse.checkTextInJson("PROTOCOLO INVALIDO", response);
+
+    }
+    @Test
+    public void rn020() throws IOException {
+        // Create Request
+        EndpointConfig endpointConfig = new EndpointConfig();
+        endpointConfig.addHeadersJson(getAccessToken());
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_AUTHORIZE_OPTIN));
+        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN020));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("1105018",  response);
+        CheckResponse.checkTextInJson("EMPREENDIMENTO INATIVO", response);
 
     }
 }
