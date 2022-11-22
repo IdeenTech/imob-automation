@@ -1,4 +1,4 @@
-package com.automation.imob.authorizeoptin;
+package com.automation.imob.features.authorizeoptin;
 
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;

@@ -1,4 +1,4 @@
-package com.automation.imob.grantoptin;
+package com.automation.imob.features.authorizeoptin.grantoptin;
 
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;
@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-public class GrantOptin extends ImobApplicationTests {
+public class GrantOptinTest extends ImobApplicationTests {
     @Test
     public void grantoptin() throws IOException {
         // Create Request
