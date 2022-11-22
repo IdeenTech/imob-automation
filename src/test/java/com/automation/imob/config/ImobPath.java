@@ -19,4 +19,7 @@ public abstract class ImobPath {
     //grant Opt-in
     public static final String PATH_GRANT_OPTIN = "/";
 
+    //register Covenants
+    public static final String PATH_REGISTER_COVENANTS = "/";
+
 }
