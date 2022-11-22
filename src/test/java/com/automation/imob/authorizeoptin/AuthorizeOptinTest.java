@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-public class AuthorizeOptin extends ImobApplicationTests {
+public class AuthorizeOptinTest extends ImobApplicationTests {
 
     @Test
     public void authorize() throws IOException {
