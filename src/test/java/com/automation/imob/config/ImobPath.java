@@ -16,4 +16,7 @@ public abstract class ImobPath {
     //authorize Opt-in
     public static final String PATH_AUTHORIZE_OPTIN = "/";
 
+    //grant Opt-in
+    public static final String PATH_GRANT_OPTIN = "/";
+
 }
