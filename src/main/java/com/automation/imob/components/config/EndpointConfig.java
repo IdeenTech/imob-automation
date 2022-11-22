@@ -1,9 +1,11 @@
 package com.automation.imob.components.config;
 
 import com.automation.imob.components.util.JsonUtil;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 public class EndpointConfig {
 
@@ -39,6 +41,14 @@ public class EndpointConfig {
 
     public String setJsonFileBody(String pathFileName) throws IOException {
         return JsonUtil.readFileJson(pathFileName);
+    }
+
+    public String alterValuesInJsonBody(String pathFileName, Map<String, Object> mapValues) throws IOException {
+        JSONObject json = JsonUtil.getJsonValues(pathFileName);
+        for(Map.Entry<String, Object> item: mapValues.entrySet()){
+            json.put(item.getKey(), item.getValue());
+        }
+        return json.toString();
     }
 
     public String getUrl() {

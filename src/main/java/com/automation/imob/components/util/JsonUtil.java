@@ -14,6 +14,10 @@ public class JsonUtil {
         return new JSONObject(FileUtils.readFileToString(getJsonFile(pathFileJson), StandardCharsets.UTF_8.toString())).toString();
     }
 
+    public static JSONObject getJsonValues(String pathFileJson) throws IOException {
+        return new JSONObject(FileUtils.readFileToString(getJsonFile(pathFileJson), StandardCharsets.UTF_8.toString()));
+    }
+
     private static File getJsonFile(String pathFileJson) {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         return new File(Objects.requireNonNull(classLoader.getResource(pathFileJson)).getFile());
