@@ -43,6 +43,10 @@ public class EndpointConfig {
         return JsonUtil.readFileJson(pathFileName);
     }
 
+    public String setJsonFileBodyArray(String pathFileName) throws IOException {
+        return JsonUtil.readFileJsonArray(pathFileName);
+    }
+
     public String alterValuesInJsonBody(String pathFileName, Map<String, Object> mapValues) throws IOException {
         JSONObject json = JsonUtil.getJsonValues(pathFileName);
         for(Map.Entry<String, Object> item: mapValues.entrySet()){

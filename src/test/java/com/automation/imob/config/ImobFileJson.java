@@ -13,12 +13,6 @@ public abstract  class ImobFileJson {
     //request Opt-in
     public static final String PATH_JSON_REQUEST_OPTIN =  PATH_BASE.concat("/requestoptin/request.json");
 
-    public static final String PATH_JSON_REQUEST_OPTIN_RN001 =  PATH_BASE.concat("/requestoptin/rn001.json");
-
-    public static final String PATH_JSON_REQUEST_OPTIN_RN002 =  PATH_BASE.concat("/requestoptin/rn002.json");
-
-    public static final String PATH_JSON_REQUEST_OPTIN_RN003 =  PATH_BASE.concat("/requestoptin/rn003.json");
-
     public static final String PATH_JSON_REQUEST_OPTIN_RN004_105002 =  PATH_BASE.concat("/requestoptin/rn004-105002.json");
 
     public static final String PATH_JSON_REQUEST_OPTIN_RN004_105004 =  PATH_BASE.concat("/requestoptin/rn004-105004.json");
@@ -160,6 +154,44 @@ public abstract  class ImobFileJson {
     public static final String PATH_JSON_REGISTER_COVENANTS_RN015 =  PATH_BASE.concat("/registercovenants/rn015.json");
 
     public static final String PATH_JSON_REGISTER_COVENANTS_RN016 =  PATH_BASE.concat("/registercovenants/rn016.json");
+
+    //inactivate covenants
+
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_INACTIVATE =  PATH_BASE.concat("/inactivatecovenats/inactivate.json");
+
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN004 =  PATH_BASE.concat("/inactvatecovenats/rn004.json");
+
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN005 =  PATH_BASE.concat("/inactvatecovenats/rn005.json");
+
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN006 =  PATH_BASE.concat("/inactvatecovenats/rn006.json");
+
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN009 =  PATH_BASE.concat("/inactvatecovenats/rn009.json");
+
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN010 =  PATH_BASE.concat("/inactvatecovenats/rn010.json");
+
+    //closing schedule
+
+    public static final String PATH_JSON_CLOSING_SCHEDULE =  PATH_BASE.concat("/closingschedule/closingschedule.json");
+
+    public static final String PATH_JSON_CLOSING_SCHEDULE_RN004_101001 =  PATH_BASE.concat("/closingschedule/rn004-101001.json");
+
+    public static final String PATH_JSON_CLOSING_SCHEDULE_RN004_101003 =  PATH_BASE.concat("/closingschedule/rn004-101003.json");
+
+    public static final String PATH_JSON_CLOSING_SCHEDULE_RN004_101063 =  PATH_BASE.concat("/closingschedule/rn004-101063.json");
+
+    public static final String PATH_JSON_CLOSING_SCHEDULE_RN005 =  PATH_BASE.concat("/closingschedule/rn005.json");
+
+    public static final String PATH_JSON_CLOSING_SCHEDULE_RN006 =  PATH_BASE.concat("/closingschedule/rn006.json");
+
+    public static final String PATH_JSON_CLOSING_SCHEDULE_RN007 =  PATH_BASE.concat("/closingschedule/rn007.json");
+
+    public static final String PATH_JSON_CLOSING_SCHEDULE_RN008 =  PATH_BASE.concat("/closingschedule/rn008.json");
+
+    public static final String PATH_JSON_CLOSING_SCHEDULE_RN009 =  PATH_BASE.concat("/closingschedule/rn009.json");
+
+    public static final String PATH_JSON_CLOSING_SCHEDULE_RN011 =  PATH_BASE.concat("/closingschedule/rn011.json");
+
+    public static final String PATH_JSON_CLOSING_SCHEDULE_RN012 =  PATH_BASE.concat("/closingschedule/rn012.json");
 
 
 

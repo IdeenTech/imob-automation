@@ -1,4 +1,4 @@
-package com.automation.imob.requestoptin;
+package com.automation.imob.features.requestoptin;
 
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;
@@ -12,10 +12,10 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-public class RequestOptin extends ImobApplicationTests {
+public class RequestOptinTest extends ImobApplicationTests {
 
     @Test
-    public void requestoptin() throws IOException {
+    public void requestOptin() throws IOException {
         // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
