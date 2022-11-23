@@ -1,4 +1,4 @@
-package com.automation.imob.features.authorizeoptin.grantoptin;
+package com.automation.imob.features.grantoptin;
 
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;

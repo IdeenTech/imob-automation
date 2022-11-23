@@ -22,4 +22,7 @@ public abstract class ImobPath {
     //register Covenants
     public static final String PATH_REGISTER_COVENANTS = "/";
 
+    //inactivate Covenants
+    public static final String PATH_INACTIVATE_COVENANTS = "/";
+
 }

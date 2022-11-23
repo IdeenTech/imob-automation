@@ -161,6 +161,19 @@ public abstract  class ImobFileJson {
 
     public static final String PATH_JSON_REGISTER_COVENANTS_RN016 =  PATH_BASE.concat("/registercovenants/rn016.json");
 
+    //inactivate covenants
+
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_INACTIVATE =  PATH_BASE.concat("/inactivatecovenats/inactivate.json");
+
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN004 =  PATH_BASE.concat("/inactvatecovenats/rn004.json");
+
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN005 =  PATH_BASE.concat("/inactvatecovenats/rn005.json");
+
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN006 =  PATH_BASE.concat("/inactvatecovenats/rn006.json");
+
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN009 =  PATH_BASE.concat("/inactvatecovenats/rn009.json");
+
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN010 =  PATH_BASE.concat("/inactvatecovenats/rn010.json");
 
 
 }

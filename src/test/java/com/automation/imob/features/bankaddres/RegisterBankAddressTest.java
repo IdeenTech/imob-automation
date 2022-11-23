@@ -1,4 +1,4 @@
-package com.automation.imob.features.authorizeoptin.bankaddres;
+package com.automation.imob.features.bankaddres;
 
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;
