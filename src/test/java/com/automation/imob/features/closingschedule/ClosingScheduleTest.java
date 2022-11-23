@@ -15,12 +15,12 @@ import java.io.IOException;
 public class ClosingScheduleTest extends ImobApplicationTests {
 
     @Test
-    public void closingschedule() throws IOException {
+    public void closingSchedule() throws IOException {
         // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_CLOSING_SCHEDULE));
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE));
+        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -37,7 +37,7 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_CLOSING_SCHEDULE));
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN004_101001));
+        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN004_101001));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -71,7 +71,7 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_CLOSING_SCHEDULE));
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN004_101063));
+        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN004_101063));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -87,13 +87,13 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_CLOSING_SCHEDULE));
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN005));
+        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN005));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
 
         // Check Response
-        CheckResponse.checkTextInJson("113001",  response);
+        CheckResponse.checkTextInJson("101002",  response);
         CheckResponse.checkTextInJson("TIPO DE OPERACAO INVALIDO", response);
 
     }
@@ -103,7 +103,7 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_CLOSING_SCHEDULE));
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN006));
+        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN006));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -119,7 +119,7 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_CLOSING_SCHEDULE));
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN007));
+        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN007));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -135,7 +135,7 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_CLOSING_SCHEDULE));
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN008));
+        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN008));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -152,7 +152,7 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_CLOSING_SCHEDULE));
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN009));
+        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN009));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -168,7 +168,7 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_CLOSING_SCHEDULE));
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN011));
+        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN011));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -178,7 +178,7 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("EMPREENDIMENTO INATIVO", response);
 
     }
-    @Test
+    //@Test regra ainda nao implementada TODO
     public void rn012() throws IOException {
         // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
