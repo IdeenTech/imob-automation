@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class GrantOptinTest extends ImobApplicationTests {
     @Test
-    public void grantoptin() throws IOException {
+    public void grantOptin() throws IOException {
         // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());

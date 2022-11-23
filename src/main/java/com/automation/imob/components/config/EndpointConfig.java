@@ -42,6 +42,7 @@ public class EndpointConfig {
     public String setJsonFileBody(String pathFileName) throws IOException {
         return JsonUtil.readFileJson(pathFileName);
     }
+
     public String setJsonFileBodyArray(String pathFileName) throws IOException {
         return JsonUtil.readFileJsonArray(pathFileName);
     }

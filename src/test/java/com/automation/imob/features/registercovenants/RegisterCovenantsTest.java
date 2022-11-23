@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class RegisterCovenantsTest extends ImobApplicationTests {
     @Test
-    public void registercovenants() throws IOException {
+    public void registerCovenants() throws IOException {
         // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());

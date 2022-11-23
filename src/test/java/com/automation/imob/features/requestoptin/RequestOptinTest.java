@@ -15,7 +15,7 @@ import java.io.IOException;
 public class RequestOptinTest extends ImobApplicationTests {
 
     @Test
-    public void requestoptin() throws IOException {
+    public void requestOptin() throws IOException {
         // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
