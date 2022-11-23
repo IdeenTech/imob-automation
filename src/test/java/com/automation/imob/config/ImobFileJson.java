@@ -13,12 +13,6 @@ public abstract  class ImobFileJson {
     //request Opt-in
     public static final String PATH_JSON_REQUEST_OPTIN =  PATH_BASE.concat("/requestoptin/request.json");
 
-    public static final String PATH_JSON_REQUEST_OPTIN_RN001 =  PATH_BASE.concat("/requestoptin/rn001.json");
-
-    public static final String PATH_JSON_REQUEST_OPTIN_RN002 =  PATH_BASE.concat("/requestoptin/rn002.json");
-
-    public static final String PATH_JSON_REQUEST_OPTIN_RN003 =  PATH_BASE.concat("/requestoptin/rn003.json");
-
     public static final String PATH_JSON_REQUEST_OPTIN_RN004_105002 =  PATH_BASE.concat("/requestoptin/rn004-105002.json");
 
     public static final String PATH_JSON_REQUEST_OPTIN_RN004_105004 =  PATH_BASE.concat("/requestoptin/rn004-105004.json");

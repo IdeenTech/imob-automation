@@ -49,12 +49,12 @@ public class ClosingScheduleTest extends ImobApplicationTests {
     }
 
     @Test
-    public void rn004_103003() throws IOException {
+    public void rn004_101003() throws IOException {
         // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_CLOSING_SCHEDULE));
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN004_101003));
+        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN004_101003));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
