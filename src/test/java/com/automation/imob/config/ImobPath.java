@@ -26,6 +26,6 @@ public abstract class ImobPath {
     public static final String PATH_INACTIVATE_COVENANTS = "/";
 
     //closing schedule
-    public static final String PATH_CLOSING_SCHEDULE = "/";
+    public static final String PATH_CLOSING_SCHEDULE = "/empreendimento";
 
 }

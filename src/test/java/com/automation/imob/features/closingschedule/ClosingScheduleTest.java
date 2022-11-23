@@ -54,7 +54,7 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_CLOSING_SCHEDULE));
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN004_101001));
+        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN004_101003));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
