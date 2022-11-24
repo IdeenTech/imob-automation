@@ -8,6 +8,13 @@ public abstract  class ImobFileJson {
     public static final String PATH_JSON_BANK_ADDRESS_SAVE =  PATH_BASE.concat("/bankaddress/save.json");
     public static final String PATH_JSON_BANK_ADDRESS_RN004_111001 = PATH_BASE.concat("/bankaddress/rn004-111001.json");
 
+    //building
+
+    public static final String PATH_JSON_BUILDING_SAVE = PATH_BASE.concat("/building/savebuilding.json");
+
+    public static final String PATH_JSON_BUILDING_INACTIVATE = PATH_BASE.concat("/building/inactivatebuilding.json");
+
+
 
 
     //request Opt-in

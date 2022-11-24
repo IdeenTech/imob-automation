@@ -55,6 +55,7 @@ public class EndpointConfig {
         return json.toString();
     }
 
+
     public String getUrl() {
         return url;
     }

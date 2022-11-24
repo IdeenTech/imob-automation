@@ -1,6 +1,7 @@
 package com.automation.imob.components.util;
 
 import com.github.javafaker.Faker;
+import lombok.ToString;
 
 import java.util.Locale;
 
@@ -31,5 +32,13 @@ public class DataFaker {
     public String getWorldWithNumberCharacters(Integer numberCharacters) {
         return this.faker.lorem().characters(numberCharacters);
     }
+
+    public Integer getNumberCharacters(Integer numberCharacters) {
+        return Math.toIntExact(this.faker.number().randomNumber(numberCharacters, true));
+    }
+
+
+
+
 
 }

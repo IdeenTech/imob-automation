@@ -11,6 +11,7 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class ClosingScheduleTest extends ImobApplicationTests {
 
@@ -26,8 +27,8 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         Response response = MethodRest.callPost(endpointConfig);
 
         // Check Response
-        CheckResponse.checkHttpCode(201, response);
-        CheckResponse.checkTextInJson("Created", response);
+        CheckResponse.checkHttpCode(200, response);
+        CheckResponse.checkTextInJson("OK", response);
     }
 
 
@@ -162,20 +163,89 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("MES REFERENCIA OBRIGATORIO", response);
 
     }
-    @Test
+    //@Test regra ainda nao implementada TODO
     public void rn011() throws IOException {
+        //create bank address
+        HashMap<String, Object> mapValues = new HashMap<>();
+        String referenciaExtenaDomicilio = getDataFaker().getExternalReference();
+        mapValues.put("referenciaExterna", referenciaExtenaDomicilio);
+
         // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_CLOSING_SCHEDULE));
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN011));
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_BANK_ADDRESS));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_SAVE, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
 
         // Check Response
-        CheckResponse.checkTextInJson("101054",  response);
-        CheckResponse.checkTextInJson("EMPREENDIMENTO INATIVO", response);
+        CheckResponse.checkHttpCode(201, response);
+        CheckResponse.checkTextInJson("Created", response);
+
+        //****************************************************************************************
+
+        //create building
+        Integer cns =  getDataFaker().getNumberCharacters(6);
+        Integer numeroMatricula =  getDataFaker().getNumberCharacters(6);
+        String referenciaExternaProjeto = getDataFaker().getExternalReference();
+        mapValues.put("cns",cns);
+        mapValues.put("numeroMatricula",numeroMatricula);
+        mapValues.put("referenciaExternaProjeto", referenciaExternaProjeto);
+        mapValues.put("domicilioBancario", referenciaExtenaDomicilio);
+
+        // Create Request
+        endpointConfig.addHeadersJson(getAccessToken());
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_BUILDING));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BUILDING_SAVE,mapValues));
+
+        //endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN009));
+
+        // Call endpoint
+        Response responseBuilding = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkHttpCode(201, responseBuilding);
+        CheckResponse.checkTextInJson("Created", responseBuilding);
+
+        //****************************************************************************************
+
+        //Inactivate Building
+        mapValues.put("cns",cns);
+        mapValues.put("numeroMatricula",numeroMatricula);
+        mapValues.put("referenciaExternaProjeto", referenciaExternaProjeto);
+        mapValues.put("domicilioBancario", referenciaExtenaDomicilio);
+
+        // Create Request
+        endpointConfig.addHeadersJson(getAccessToken());
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_BUILDING));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BUILDING_INACTIVATE,mapValues));
+
+        // Call endpoint
+        Response responseiInactivateBuilding = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkHttpCode(200, responseiInactivateBuilding);
+        CheckResponse.checkTextInJson("ok", responseiInactivateBuilding);
+
+        //****************************************************************************************
+
+        mapValues.put("cns",cns);
+        mapValues.put("numeroMatricula",numeroMatricula);
+        mapValues.put("referenciaExternaProjeto", referenciaExternaProjeto);
+        mapValues.put("domicilioBancario", referenciaExtenaDomicilio);
+
+        // Create Request
+        endpointConfig.addHeadersJson(getAccessToken());
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_BUILDING));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN011,mapValues));
+
+        // Call endpoint
+        Response responseinactvate = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("101054",  responseinactvate);
+        CheckResponse.checkTextInJson("EMPREENDIMENTO INATIVO", responseinactvate);
 
     }
     //@Test regra ainda nao implementada TODO
