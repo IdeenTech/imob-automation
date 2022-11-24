@@ -164,17 +164,17 @@ public abstract  class ImobFileJson {
 
     //inactivate covenants
 
-    public static final String PATH_JSON_INACTIVATE_COVENANTS_INACTIVATE =  PATH_BASE.concat("/inactivatecovenats/inactivate.json");
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_INACTIVATE =  PATH_BASE.concat("/inactivatecovenants/inactivate.json");
 
-    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN004 =  PATH_BASE.concat("/inactvatecovenats/rn004.json");
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN004 =  PATH_BASE.concat("/inactivatecovenants/rn004.json");
 
-    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN005 =  PATH_BASE.concat("/inactvatecovenats/rn005.json");
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN005 =  PATH_BASE.concat("/inactivatecovenants/rn005.json");
 
-    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN006 =  PATH_BASE.concat("/inactvatecovenats/rn006.json");
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN006 =  PATH_BASE.concat("/inactivatecovenants/rn006.json");
 
-    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN009 =  PATH_BASE.concat("/inactvatecovenats/rn009.json");
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN009 =  PATH_BASE.concat("/inactivatecovenants/rn009.json");
 
-    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN010 =  PATH_BASE.concat("/inactvatecovenats/rn010.json");
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN010 =  PATH_BASE.concat("/inactivatecovenants/rn010.json");
 
     //closing schedule
 

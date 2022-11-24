@@ -20,10 +20,10 @@ public abstract class ImobPath {
     public static final String PATH_GRANT_OPTIN = "/";
 
     //register Covenants
-    public static final String PATH_REGISTER_COVENANTS = "/";
+    public static final String PATH_REGISTER_COVENANTS = "/covenants";
 
     //inactivate Covenants
-    public static final String PATH_INACTIVATE_COVENANTS = "/";
+    public static final String PATH_INACTIVATE_COVENANTS = "/covenants";
 
     //closing schedule
     public static final String PATH_CLOSING_SCHEDULE = "/empreendimento";

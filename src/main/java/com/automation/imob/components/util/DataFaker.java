@@ -37,6 +37,10 @@ public class DataFaker {
         return Math.toIntExact(this.faker.number().randomNumber(numberCharacters, true));
     }
 
+    public String getIdCovenant(){
+        return "identificadorCovenant".concat(getWorldWithNumberCharacters(10));
+    }
+
 
 
 

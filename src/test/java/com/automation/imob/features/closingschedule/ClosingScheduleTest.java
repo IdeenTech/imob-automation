@@ -163,7 +163,7 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("MES REFERENCIA OBRIGATORIO", response);
 
     }
-    //@Test regra ainda nao implementada TODO
+    //@Test TODO
     public void rn011() throws IOException {
         //create bank address
         HashMap<String, Object> mapValues = new HashMap<>();
@@ -186,18 +186,19 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         //****************************************************************************************
 
         //create building
+        HashMap<String, Object> mapValuesBuilding = new HashMap<>();
         Integer cns =  getDataFaker().getNumberCharacters(6);
         Integer numeroMatricula =  getDataFaker().getNumberCharacters(6);
         String referenciaExternaProjeto = getDataFaker().getExternalReference();
-        mapValues.put("cns",cns);
-        mapValues.put("numeroMatricula",numeroMatricula);
-        mapValues.put("referenciaExternaProjeto", referenciaExternaProjeto);
-        mapValues.put("domicilioBancario", referenciaExtenaDomicilio);
+        mapValuesBuilding.put("cns",cns);
+        mapValuesBuilding.put("numeroMatricula",numeroMatricula);
+        mapValuesBuilding.put("referenciaExternaProjeto", referenciaExternaProjeto);
+        mapValuesBuilding.put("domicilioBancario", referenciaExtenaDomicilio);
 
         // Create Request
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_BUILDING));
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BUILDING_SAVE,mapValues));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_BUILDING_SAVE,mapValuesBuilding));
 
         //endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN009));
 
@@ -222,11 +223,11 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BUILDING_INACTIVATE,mapValues));
 
         // Call endpoint
-        Response responseiInactivateBuilding = MethodRest.callPost(endpointConfig);
+        Response responseInactivateBuilding = MethodRest.callPost(endpointConfig);
 
         // Check Response
-        CheckResponse.checkHttpCode(200, responseiInactivateBuilding);
-        CheckResponse.checkTextInJson("ok", responseiInactivateBuilding);
+        CheckResponse.checkHttpCode(200, responseInactivateBuilding);
+        CheckResponse.checkTextInJson("ok", responseInactivateBuilding);
 
         //****************************************************************************************
 
