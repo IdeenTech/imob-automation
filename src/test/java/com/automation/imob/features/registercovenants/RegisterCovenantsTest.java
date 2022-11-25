@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class RegisterCovenantsTest extends ImobApplicationTests {
-    //@Test TODO
+    @Test
     public void registerCovenants() throws IOException {
         HashMap<String, Object> mapValues = new HashMap<>();
         String idConvents = getDataFaker().getIdCovenant();
@@ -241,7 +241,7 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
         Response response = MethodRest.callPost(endpointConfig);
 
         // Check Response
-        CheckResponse.checkTextInJson("102015",  response);
+        CheckResponse.checkTextInJson("112015",  response);
         CheckResponse.checkTextInJson("REGISTRO DE VENDA ABAIXO DA TABELA DE PRECOS INVALIDO", response);
     }
     @Test

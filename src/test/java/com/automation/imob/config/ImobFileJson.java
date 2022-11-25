@@ -89,44 +89,39 @@ public abstract  class ImobFileJson {
 
     public static final String PATH_JSON_GRANT_OPTIN_RN004_105002 =  PATH_BASE.concat("/grantoptin/rn004-105002.json");
 
-
     public static final String PATH_JSON_GRANT_OPTIN_RN004_105004 =  PATH_BASE.concat("/grantoptin/rn004-105004.json");
-
 
     public static final String PATH_JSON_GRANT_OPTIN_RN004_105006 =  PATH_BASE.concat("/grantoptin/rn004-105006.json");
 
-
     public static final String PATH_JSON_GRANT_OPTIN_RN004_105010 =  PATH_BASE.concat("/grantoptin/rn004-105010.json");
-
 
     public static final String PATH_JSON_GRANT_OPTIN_RN004_105011 =  PATH_BASE.concat("/grantoptin/rn004-105011.json");
 
+    public static final String PATH_JSON_GRANT_OPTIN_RN004_105019 =  PATH_BASE.concat("/grantoptin/rn004-105019.json");
 
-    public static final String PATH_JSON_GRANT_OPTIN_RN005 =  PATH_BASE.concat("/grantoptin/rn005.json.json");
-
+    public static final String PATH_JSON_GRANT_OPTIN_RN005 =  PATH_BASE.concat("/grantoptin/rn005.json");
 
     public static final String PATH_JSON_GRANT_OPTIN_RN006 =  PATH_BASE.concat("/grantoptin/rn006.json");
 
-
     public static final String PATH_JSON_GRANT_OPTIN_RN007_105005 =  PATH_BASE.concat("/grantoptin/rn007-105005.json");
-
 
     public static final String PATH_JSON_GRANT_OPTIN_RN007_105007 =  PATH_BASE.concat("/grantoptin/rn007-105007.json");
 
-
     public static final String PATH_JSON_GRANT_OPTIN_RN008 =  PATH_BASE.concat("/grantoptin/rn008.json");
-
 
     public static final String PATH_JSON_GRANT_OPTIN_RN009 =  PATH_BASE.concat("/grantoptin/rn009.json");
 
-
     public static final String PATH_JSON_GRANT_OPTIN_RN010 =  PATH_BASE.concat("/grantoptin/rn010.json");
-
 
     public static final String PATH_JSON_GRANT_OPTIN_RN011 =  PATH_BASE.concat("/grantoptin/rn011.json");
 
-
     public static final String PATH_JSON_GRANT_OPTIN_RN012 =  PATH_BASE.concat("/grantoptin/rn012.json");
+
+
+    public static final String PATH_JSON_GRANT_OPTIN_RN015 =  PATH_BASE.concat("/grantoptin/rn015.json");
+
+
+    public static final String PATH_JSON_GRANT_OPTIN_RN016 =  PATH_BASE.concat("/grantoptin/rn016.json");
 
     //Register Covenants
     public static final String PATH_JSON_REGISTER_COVENANTS =  PATH_BASE.concat("/registercovenants/registercovenants.json");
