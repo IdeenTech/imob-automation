@@ -163,7 +163,7 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("MES REFERENCIA OBRIGATORIO", response);
 
     }
-    //@Test TODO
+    @Test
     public void rn011() throws IOException {
         //create bank address
         HashMap<String, Object> mapValues = new HashMap<>();
@@ -200,7 +200,6 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_BUILDING));
         endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_BUILDING_SAVE,mapValuesBuilding));
 
-        //endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN009));
 
         // Call endpoint
         Response responseBuilding = MethodRest.callPost(endpointConfig);
@@ -211,35 +210,38 @@ public class ClosingScheduleTest extends ImobApplicationTests {
 
         //****************************************************************************************
 
+        HashMap<String, Object> mapValuesInactivateBuilding = new HashMap<>();
+
         //Inactivate Building
-        mapValues.put("cns",cns);
-        mapValues.put("numeroMatricula",numeroMatricula);
-        mapValues.put("referenciaExternaProjeto", referenciaExternaProjeto);
-        mapValues.put("domicilioBancario", referenciaExtenaDomicilio);
+        mapValuesInactivateBuilding.put("cns",cns);
+        mapValuesInactivateBuilding.put("numeroMatricula",numeroMatricula);
+        mapValuesInactivateBuilding.put("referenciaExternaProjeto", referenciaExternaProjeto);
+        mapValuesInactivateBuilding.put("domicilioBancario", referenciaExtenaDomicilio);
 
         // Create Request
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_BUILDING));
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BUILDING_INACTIVATE,mapValues));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody((ImobFileJson.PATH_JSON_BUILDING_INACTIVATE),mapValuesInactivateBuilding));
 
         // Call endpoint
         Response responseInactivateBuilding = MethodRest.callPost(endpointConfig);
 
         // Check Response
         CheckResponse.checkHttpCode(200, responseInactivateBuilding);
-        CheckResponse.checkTextInJson("ok", responseInactivateBuilding);
+        CheckResponse.checkTextInJson("OK", responseInactivateBuilding);
 
         //****************************************************************************************
+        HashMap<String, Object> mapValuesClosingSchedule = new HashMap<>();
 
-        mapValues.put("cns",cns);
-        mapValues.put("numeroMatricula",numeroMatricula);
-        mapValues.put("referenciaExternaProjeto", referenciaExternaProjeto);
-        mapValues.put("domicilioBancario", referenciaExtenaDomicilio);
+        mapValuesClosingSchedule.put("cns",cns);
+        mapValuesClosingSchedule.put("numeroMatricula",numeroMatricula);
+        mapValuesClosingSchedule.put("referenciaExternaProjeto", referenciaExternaProjeto);
+        mapValuesClosingSchedule.put("domicilioBancario", referenciaExtenaDomicilio);
 
         // Create Request
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_BUILDING));
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN011,mapValues));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN011,mapValuesClosingSchedule));
 
         // Call endpoint
         Response responseinactvate = MethodRest.callPost(endpointConfig);
