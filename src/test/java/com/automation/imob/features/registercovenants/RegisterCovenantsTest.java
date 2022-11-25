@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class RegisterCovenantsTest extends ImobApplicationTests {
-    @Test
+    //@Test TODO
     public void registerCovenants() throws IOException {
         HashMap<String, Object> mapValues = new HashMap<>();
         String idConvents = getDataFaker().getIdCovenant();
@@ -23,7 +23,7 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_REGISTER_COVENANTS, mapValues));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_REGISTER_COVENANTS, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);

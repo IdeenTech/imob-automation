@@ -28,7 +28,7 @@ public abstract  class ImobFileJson {
 
     public static final String PATH_JSON_REQUEST_OPTIN_RN004_105008 =  PATH_BASE.concat("/requestoptin/rn004-105008.json");
 
-    public static final String PATH_JSON_REQUEST_OPTIN_RN005 =  PATH_BASE.concat("/requestoptin/rn005.json.json.json");
+    public static final String PATH_JSON_REQUEST_OPTIN_RN005 =  PATH_BASE.concat("/requestoptin/rn005.json");
 
     public static final String PATH_JSON_REQUEST_OPTIN_RN006_105005 =  PATH_BASE.concat("/requestoptin/rn006-105005.json");
 
@@ -37,6 +37,11 @@ public abstract  class ImobFileJson {
     public static final String PATH_JSON_REQUEST_OPTIN_RN007 =  PATH_BASE.concat("/requestoptin/rn007.json");
 
     public static final String PATH_JSON_REQUEST_OPTIN_RN008 =  PATH_BASE.concat("/requestoptin/rn008.json");
+
+    public static final String PATH_JSON_REQUEST_OPTIN_RN012 =  PATH_BASE.concat("/requestoptin/rn012.json");
+
+
+    public static final String PATH_JSON_REQUEST_OPTIN_RN013 =  PATH_BASE.concat("/requestoptin/rn013.json");
 
 
     //authorize Opt-in
@@ -52,7 +57,7 @@ public abstract  class ImobFileJson {
 
     public static final String PATH_JSON_AUTHORIZE_OPTIN_RN004_105016 =  PATH_BASE.concat("/authorizeoptin/rn004-105016.json");
 
-    public static final String PATH_JSON_AUTHORIZE_OPTIN_RN005 =  PATH_BASE.concat("/authorizeoptin/rn005.json.json");
+    public static final String PATH_JSON_AUTHORIZE_OPTIN_RN005 =  PATH_BASE.concat("/authorizeoptin/rn005.json");
 
     public static final String PATH_JSON_AUTHORIZE_OPTIN_RN006 =  PATH_BASE.concat("/authorizeoptin/rn006.json");
 
