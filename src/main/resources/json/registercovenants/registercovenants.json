@@ -1,0 +1,15 @@
+[
+  {
+    "tipoOperacao": "C",
+    "identificadorCovenant":"teste50",
+    "variacaoPerentualSaldoNegociado":"100.00",
+    "variacaoFinanceiraSaldoNegociado":"1000.00",
+    "descontoNominal":"10.00",
+    "acrescimoNominal":	"20.00",
+    "desejaAprovarDistrato":"1",
+    "registroVendaAbaixoPreco":"0",
+    "desejaAprovarCessao":"1",
+    "conciliacaoNaoAutomatica":"5000.00",
+    "alteracaoDataPrevistaHabitese":"0"
+  }
+]

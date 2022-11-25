@@ -8,6 +8,13 @@ public abstract  class ImobFileJson {
     public static final String PATH_JSON_BANK_ADDRESS_SAVE =  PATH_BASE.concat("/bankaddress/save.json");
     public static final String PATH_JSON_BANK_ADDRESS_RN004_111001 = PATH_BASE.concat("/bankaddress/rn004-111001.json");
 
+    //building
+
+    public static final String PATH_JSON_BUILDING_SAVE = PATH_BASE.concat("/building/savebuilding.json");
+
+    public static final String PATH_JSON_BUILDING_INACTIVATE = PATH_BASE.concat("/building/inactivatebuilding.json");
+
+
 
 
     //request Opt-in
@@ -21,7 +28,7 @@ public abstract  class ImobFileJson {
 
     public static final String PATH_JSON_REQUEST_OPTIN_RN004_105008 =  PATH_BASE.concat("/requestoptin/rn004-105008.json");
 
-    public static final String PATH_JSON_REQUEST_OPTIN_RN005 =  PATH_BASE.concat("/requestoptin/rn005.json.json.json");
+    public static final String PATH_JSON_REQUEST_OPTIN_RN005 =  PATH_BASE.concat("/requestoptin/rn005.json");
 
     public static final String PATH_JSON_REQUEST_OPTIN_RN006_105005 =  PATH_BASE.concat("/requestoptin/rn006-105005.json");
 
@@ -30,6 +37,11 @@ public abstract  class ImobFileJson {
     public static final String PATH_JSON_REQUEST_OPTIN_RN007 =  PATH_BASE.concat("/requestoptin/rn007.json");
 
     public static final String PATH_JSON_REQUEST_OPTIN_RN008 =  PATH_BASE.concat("/requestoptin/rn008.json");
+
+    public static final String PATH_JSON_REQUEST_OPTIN_RN012 =  PATH_BASE.concat("/requestoptin/rn012.json");
+
+
+    public static final String PATH_JSON_REQUEST_OPTIN_RN013 =  PATH_BASE.concat("/requestoptin/rn013.json");
 
 
     //authorize Opt-in
@@ -45,7 +57,7 @@ public abstract  class ImobFileJson {
 
     public static final String PATH_JSON_AUTHORIZE_OPTIN_RN004_105016 =  PATH_BASE.concat("/authorizeoptin/rn004-105016.json");
 
-    public static final String PATH_JSON_AUTHORIZE_OPTIN_RN005 =  PATH_BASE.concat("/authorizeoptin/rn005.json.json");
+    public static final String PATH_JSON_AUTHORIZE_OPTIN_RN005 =  PATH_BASE.concat("/authorizeoptin/rn005.json");
 
     public static final String PATH_JSON_AUTHORIZE_OPTIN_RN006 =  PATH_BASE.concat("/authorizeoptin/rn006.json");
 
@@ -77,44 +89,39 @@ public abstract  class ImobFileJson {
 
     public static final String PATH_JSON_GRANT_OPTIN_RN004_105002 =  PATH_BASE.concat("/grantoptin/rn004-105002.json");
 
-
     public static final String PATH_JSON_GRANT_OPTIN_RN004_105004 =  PATH_BASE.concat("/grantoptin/rn004-105004.json");
-
 
     public static final String PATH_JSON_GRANT_OPTIN_RN004_105006 =  PATH_BASE.concat("/grantoptin/rn004-105006.json");
 
-
     public static final String PATH_JSON_GRANT_OPTIN_RN004_105010 =  PATH_BASE.concat("/grantoptin/rn004-105010.json");
-
 
     public static final String PATH_JSON_GRANT_OPTIN_RN004_105011 =  PATH_BASE.concat("/grantoptin/rn004-105011.json");
 
+    public static final String PATH_JSON_GRANT_OPTIN_RN004_105019 =  PATH_BASE.concat("/grantoptin/rn004-105019.json");
 
-    public static final String PATH_JSON_GRANT_OPTIN_RN005 =  PATH_BASE.concat("/grantoptin/rn005.json.json");
-
+    public static final String PATH_JSON_GRANT_OPTIN_RN005 =  PATH_BASE.concat("/grantoptin/rn005.json");
 
     public static final String PATH_JSON_GRANT_OPTIN_RN006 =  PATH_BASE.concat("/grantoptin/rn006.json");
 
-
     public static final String PATH_JSON_GRANT_OPTIN_RN007_105005 =  PATH_BASE.concat("/grantoptin/rn007-105005.json");
-
 
     public static final String PATH_JSON_GRANT_OPTIN_RN007_105007 =  PATH_BASE.concat("/grantoptin/rn007-105007.json");
 
-
     public static final String PATH_JSON_GRANT_OPTIN_RN008 =  PATH_BASE.concat("/grantoptin/rn008.json");
-
 
     public static final String PATH_JSON_GRANT_OPTIN_RN009 =  PATH_BASE.concat("/grantoptin/rn009.json");
 
-
     public static final String PATH_JSON_GRANT_OPTIN_RN010 =  PATH_BASE.concat("/grantoptin/rn010.json");
-
 
     public static final String PATH_JSON_GRANT_OPTIN_RN011 =  PATH_BASE.concat("/grantoptin/rn011.json");
 
-
     public static final String PATH_JSON_GRANT_OPTIN_RN012 =  PATH_BASE.concat("/grantoptin/rn012.json");
+
+
+    public static final String PATH_JSON_GRANT_OPTIN_RN015 =  PATH_BASE.concat("/grantoptin/rn015.json");
+
+
+    public static final String PATH_JSON_GRANT_OPTIN_RN016 =  PATH_BASE.concat("/grantoptin/rn016.json");
 
     //Register Covenants
     public static final String PATH_JSON_REGISTER_COVENANTS =  PATH_BASE.concat("/registercovenants/registercovenants.json");
@@ -157,17 +164,17 @@ public abstract  class ImobFileJson {
 
     //inactivate covenants
 
-    public static final String PATH_JSON_INACTIVATE_COVENANTS_INACTIVATE =  PATH_BASE.concat("/inactivatecovenats/inactivate.json");
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_INACTIVATE =  PATH_BASE.concat("/inactivatecovenants/inactivate.json");
 
-    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN004 =  PATH_BASE.concat("/inactvatecovenats/rn004.json");
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN004 =  PATH_BASE.concat("/inactivatecovenants/rn004.json");
 
-    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN005 =  PATH_BASE.concat("/inactvatecovenats/rn005.json");
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN005 =  PATH_BASE.concat("/inactivatecovenants/rn005.json");
 
-    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN006 =  PATH_BASE.concat("/inactvatecovenats/rn006.json");
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN006 =  PATH_BASE.concat("/inactivatecovenants/rn006.json");
 
-    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN009 =  PATH_BASE.concat("/inactvatecovenats/rn009.json");
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN009 =  PATH_BASE.concat("/inactivatecovenants/rn009.json");
 
-    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN010 =  PATH_BASE.concat("/inactvatecovenats/rn010.json");
+    public static final String PATH_JSON_INACTIVATE_COVENANTS_RN010 =  PATH_BASE.concat("/inactivatecovenants/rn010.json");
 
     //closing schedule
 

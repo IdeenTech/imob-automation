@@ -1,6 +1,7 @@
 package com.automation.imob.components.config;
 
 import com.automation.imob.components.util.JsonUtil;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -54,6 +55,20 @@ public class EndpointConfig {
         }
         return json.toString();
     }
+
+    public String alterValuesInJsonArrayBody(String pathFileName, Map<String, Object> mapValues) throws IOException {
+        JSONArray array = JsonUtil.getJsonValuesArray(pathFileName);
+        for (int i = 0; i < array.length(); i++){
+            JSONObject jsonObject = array.getJSONObject(i);
+            for (Map.Entry<String, Object> item: mapValues.entrySet()) {
+                jsonObject.put(item.getKey(), item.getValue());
+            }
+
+        }
+        return array.toString();
+    }
+
+
 
     public String getUrl() {
         return url;
