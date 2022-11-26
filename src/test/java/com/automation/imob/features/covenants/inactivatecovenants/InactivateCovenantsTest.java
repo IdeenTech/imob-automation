@@ -1,4 +1,4 @@
-package com.automation.imob.features.inactivatecovenants;
+package com.automation.imob.features.covenants.inactivatecovenants;
 
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;

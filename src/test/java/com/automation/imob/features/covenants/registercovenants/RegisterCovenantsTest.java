@@ -1,4 +1,4 @@
-package com.automation.imob.features.registercovenants;
+package com.automation.imob.features.covenants.registercovenants;
 
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;
