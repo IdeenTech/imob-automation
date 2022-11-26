@@ -25,7 +25,7 @@ public class InactivateCovenantsTest extends ImobApplicationTests {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_REGISTER_COVENANTS, mapValues));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_REGISTER_COVENANTS, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -37,20 +37,20 @@ public class InactivateCovenantsTest extends ImobApplicationTests {
         //*******************************************************************
 
         //Inactivate Covenants
-        HashMap<String, Object> mapValuesIncativateCovenants = new HashMap<>();
-        mapValuesIncativateCovenants.put("identificadorCovenant", idConvents);
+        HashMap<String, Object> mapValuesInactivateCovenats = new HashMap<>();
+        mapValuesInactivateCovenats.put("identificadorCovenant", idConvents);
         // Create Request
         EndpointConfig endpointConfigInactivate = new EndpointConfig();
         endpointConfigInactivate.addHeadersJson(getAccessToken());
         endpointConfigInactivate.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_INACTIVATE_COVENANTS));
-        endpointConfigInactivate.setBody(endpointConfigInactivate.alterValuesInJsonBody(ImobFileJson.PATH_JSON_REGISTER_COVENANTS, mapValuesIncativateCovenants));
+        endpointConfigInactivate.setBody(endpointConfigInactivate.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_INACTIVATE_COVENANTS_INACTIVATE, mapValuesInactivateCovenats));
 
         // Call endpoint
-        Response responseInactivate = MethodRest.callPost(endpointConfig);
+        Response responseInactivate = MethodRest.callPost(endpointConfigInactivate);
 
         // Check Response
-        CheckResponse.checkHttpCode(201, responseInactivate);
-        CheckResponse.checkTextInJson("Created", responseInactivate);
+        CheckResponse.checkHttpCode(200, responseInactivate);
+        CheckResponse.checkTextInJson("OK", responseInactivate);
     }
 
 
@@ -120,18 +120,59 @@ public class InactivateCovenantsTest extends ImobApplicationTests {
     }
     @Test
     public void rn010() throws IOException {
+
+        //Register Covenants
+        HashMap<String, Object> mapValues = new HashMap<>();
+        String idConvents = getDataFaker().getIdCovenant();
+        mapValues.put("identificadorCovenant",idConvents);
         // Create Request
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_INACTIVATE_COVENANTS));
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_INACTIVATE_COVENANTS_RN010));
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_REGISTER_COVENANTS, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
 
         // Check Response
-        CheckResponse.checkTextInJson("112022",  response);
-        CheckResponse.checkTextInJson("COVENANT JA ESTA INATIVO", response);
+        CheckResponse.checkHttpCode(201, response);
+        CheckResponse.checkTextInJson("Created", response);
+
+        //*******************************************************************
+
+        //Inactivate Covenants
+        HashMap<String, Object> mapValuesInactivateCovenats = new HashMap<>();
+        mapValuesInactivateCovenats.put("identificadorCovenant", idConvents);
+        // Create Request
+        EndpointConfig endpointConfigInactivate = new EndpointConfig();
+        endpointConfigInactivate.addHeadersJson(getAccessToken());
+        endpointConfigInactivate.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_INACTIVATE_COVENANTS));
+        endpointConfigInactivate.setBody(endpointConfigInactivate.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_INACTIVATE_COVENANTS_INACTIVATE, mapValuesInactivateCovenats));
+
+        // Call endpoint
+        Response responseInactivate = MethodRest.callPost(endpointConfigInactivate);
+
+        // Check Response
+        CheckResponse.checkHttpCode(200, responseInactivate);
+        CheckResponse.checkTextInJson("OK", responseInactivate);
+
+        //*******************************************************************
+
+        //Inactivate Covenants Again
+        HashMap<String, Object> mapValuesInactivateCovenatsAgain = new HashMap<>();
+        mapValuesInactivateCovenatsAgain.put("identificadorCovenant", idConvents);
+        // Create Request
+        EndpointConfig endpointConfigInactivateAgain = new EndpointConfig();
+        endpointConfigInactivateAgain.addHeadersJson(getAccessToken());
+        endpointConfigInactivateAgain.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_INACTIVATE_COVENANTS));
+        endpointConfigInactivateAgain.setBody(endpointConfigInactivateAgain.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_INACTIVATE_COVENANTS_RN010,mapValuesInactivateCovenatsAgain ));
+
+        // Call endpoint
+        Response responseInactivateAgain = MethodRest.callPost(endpointConfigInactivateAgain);
+
+        // Check Response
+        CheckResponse.checkTextInJson("112022",  responseInactivateAgain);
+        CheckResponse.checkTextInJson("COVENANT JA ESTA INATIVO", responseInactivateAgain);
 
     }
 }

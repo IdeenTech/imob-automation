@@ -84,6 +84,12 @@ public abstract  class ImobFileJson {
     public static final String PATH_JSON_AUTHORIZE_OPTIN_RN020 =  PATH_BASE.concat("/authorizeoptin/rn020.json");
 
 
+    public static final String PATH_JSON_AUTHORIZE_OPTIN_RN021 =  PATH_BASE.concat("/authorizeoptin/rn021.json");
+
+
+    public static final String PATH_JSON_AUTHORIZE_OPTIN_RN022 =  PATH_BASE.concat("/authorizeoptin/rn022.json");
+
+
     //grant Opt-in
     public static final String PATH_JSON_GRANT_OPTIN =  PATH_BASE.concat("/grantoptin/grant.json");
 

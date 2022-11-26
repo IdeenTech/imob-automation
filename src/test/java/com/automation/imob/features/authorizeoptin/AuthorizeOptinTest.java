@@ -318,4 +318,38 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("EMPREENDIMENTO INATIVO", response);
 
     }
+
+    @Test
+    public void rn021() throws IOException {
+        // Create Request
+        EndpointConfig endpointConfig = new EndpointConfig();
+        endpointConfig.addHeadersJson(getAccessToken());
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_AUTHORIZE_OPTIN));
+        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN021));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("105020",  response);
+        CheckResponse.checkTextInJson("REFERENCIA EXTERNA PROJETO NAO EXISTE", response);
+
+    }
+
+    @Test
+    public void rn022() throws IOException {
+        // Create Request
+        EndpointConfig endpointConfig = new EndpointConfig();
+        endpointConfig.addHeadersJson(getAccessToken());
+        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_AUTHORIZE_OPTIN));
+        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN022));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("105021",  response);
+        CheckResponse.checkTextInJson("NAO E POSSIVEL INSERIR QUADRA/TORRE PARA TIPO DE LIBERACAO TOTAL", response);
+
+    }
 }

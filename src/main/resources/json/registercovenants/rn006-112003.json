@@ -1,7 +1,7 @@
 [
   {
-   "tipoOperacao": "",
-    "identificadorCovenant": "Teste",
+   "tipoOperacao": "C",
+    "identificadorCovenant": "",
     "variacaoPerentualSaldoNegociado":"100.00",
     "variacaoFinanceiraSaldoNegociado":"1000.00",
     "descontoNominal":"10.00",
