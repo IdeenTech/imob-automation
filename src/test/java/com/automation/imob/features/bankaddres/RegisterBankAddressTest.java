@@ -15,15 +15,22 @@ import java.util.HashMap;
 
 public class RegisterBankAddressTest extends ImobApplicationTests {
 
-    @Test
-    public void save() throws IOException {
-        HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", getDataFaker().getExternalReference());
-
-        // Create Request
+    public EndpointConfig getEndpointConfig(String path) {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_BANK_ADDRESS));
+        endpointConfig.setUrl(ConfigParams.HOST.concat(path));
+        return endpointConfig;
+    }
+
+    @Test
+    public void save() throws IOException {
+
+        // Create dynamics variables
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExterna", getDataFaker().getExternalReference("domiciliobancario-"));
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
         endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_SAVE, mapValues));
 
         // Call endpoint
@@ -36,19 +43,19 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
     @Test
     public void rn004_111001() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_BANK_ADDRESS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
         endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111001));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
 
         // Check Response
-        CheckResponse.checkTextInJson("111001",  response);
+        CheckResponse.checkTextInJson("111001", response);
         CheckResponse.checkTextInJson("TIPO DE OPERACAO OBRIGATORIO", response);
 
     }
+
 
 }

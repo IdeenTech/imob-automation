@@ -15,16 +15,43 @@ import java.util.HashMap;
 
 public class InactivateCovenantsTest extends ImobApplicationTests {
 
-    @Test
-    public void inactivateCovenants() throws IOException {
-        //Register Covenants
-        HashMap<String, Object> mapValues = new HashMap<>();
-        String idConvents = getDataFaker().getIdCovenant();
-        mapValues.put("identificadorCovenant",idConvents);
-        // Create Request
+    public EndpointConfig getEndpointConfig(String path) {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        endpointConfig.setUrl(ConfigParams.HOST.concat(path));
+        return endpointConfig;
+    }
+
+    private void inactiveCovenant(String idConvents) throws IOException {
+        //*********************** INACTIVE COVENANT *******************************************
+
+        // Create dynamic variables
+        HashMap<String, Object> mapValuesInactivateCovenants = new HashMap<>();
+        mapValuesInactivateCovenants.put("identificadorCovenant", idConvents);
+
+        // Create Request
+        EndpointConfig endpointConfigInactiveCovenant = getEndpointConfig(ImobPath.PATH_INACTIVATE_COVENANTS);
+        endpointConfigInactiveCovenant.setBody(endpointConfigInactiveCovenant.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_INACTIVATE_COVENANTS_INACTIVATE,
+                mapValuesInactivateCovenants));
+
+        // Call endpoint
+        Response responseInactivate = MethodRest.callPost(endpointConfigInactiveCovenant);
+
+        // Check Response
+        CheckResponse.checkHttpCode(200, responseInactivate);
+        CheckResponse.checkTextInJson("OK", responseInactivate);
+    }
+
+    private String saveCovenant() throws IOException {
+        //*********************** CREATE COVENANT ********************************************
+
+        // Create dynamic variables
+        HashMap<String, Object> mapValues = new HashMap<>();
+        String idConvents = getDataFaker().getIdCovenant();
+        mapValues.put("identificadorCovenant", idConvents);
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_REGISTER_COVENANTS, mapValues));
 
         // Call endpoint
@@ -33,145 +60,96 @@ public class InactivateCovenantsTest extends ImobApplicationTests {
         // Check Response
         CheckResponse.checkHttpCode(201, response);
         CheckResponse.checkTextInJson("Created", response);
-
-        //*******************************************************************
-
-        //Inactivate Covenants
-        HashMap<String, Object> mapValuesInactivateCovenats = new HashMap<>();
-        mapValuesInactivateCovenats.put("identificadorCovenant", idConvents);
-        // Create Request
-        EndpointConfig endpointConfigInactivate = new EndpointConfig();
-        endpointConfigInactivate.addHeadersJson(getAccessToken());
-        endpointConfigInactivate.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_INACTIVATE_COVENANTS));
-        endpointConfigInactivate.setBody(endpointConfigInactivate.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_INACTIVATE_COVENANTS_INACTIVATE, mapValuesInactivateCovenats));
-
-        // Call endpoint
-        Response responseInactivate = MethodRest.callPost(endpointConfigInactivate);
-
-        // Check Response
-        CheckResponse.checkHttpCode(200, responseInactivate);
-        CheckResponse.checkTextInJson("OK", responseInactivate);
+        return idConvents;
     }
 
+    @Test
+    public void inactivateCovenants() throws IOException {
+        String idConvents = saveCovenant();
+        inactiveCovenant(idConvents);
+    }
 
     @Test
     public void rn004() throws IOException {
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_INACTIVATE_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_INACTIVATE_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_INACTIVATE_COVENANTS_RN004));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
 
         // Check Response
-        CheckResponse.checkTextInJson("112001",  response);
+        CheckResponse.checkTextInJson("112001", response);
         CheckResponse.checkTextInJson("TIPO DE OPERACAO OBRIGATORIO", response);
 
     }
+
     @Test
     public void rn005() throws IOException {
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_INACTIVATE_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_INACTIVATE_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_INACTIVATE_COVENANTS_RN005));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
 
         // Check Response
-        CheckResponse.checkTextInJson("112002",  response);
+        CheckResponse.checkTextInJson("112002", response);
         CheckResponse.checkTextInJson("TIPO DE OPERACAO INVALIDO", response);
 
     }
+
     @Test
     public void rn006() throws IOException {
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_INACTIVATE_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_INACTIVATE_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_INACTIVATE_COVENANTS_RN006));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
 
         // Check Response
-        CheckResponse.checkTextInJson("112003",  response);
+        CheckResponse.checkTextInJson("112003", response);
         CheckResponse.checkTextInJson("IDENTIFICADOR DO COVENANTS OBRIGATORIO", response);
 
     }
+
     @Test
     public void rn009() throws IOException {
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_INACTIVATE_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_INACTIVATE_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_INACTIVATE_COVENANTS_RN009));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
 
         // Check Response
-        CheckResponse.checkTextInJson("112021",  response);
+        CheckResponse.checkTextInJson("112021", response);
         CheckResponse.checkTextInJson("IDENTIFICADOR DO COVENANT NAO EXISTE", response);
 
     }
+
     @Test
     public void rn010() throws IOException {
-
-        //Register Covenants
-        HashMap<String, Object> mapValues = new HashMap<>();
-        String idConvents = getDataFaker().getIdCovenant();
-        mapValues.put("identificadorCovenant",idConvents);
-        // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_REGISTER_COVENANTS, mapValues));
-
-        // Call endpoint
-        Response response = MethodRest.callPost(endpointConfig);
-
-        // Check Response
-        CheckResponse.checkHttpCode(201, response);
-        CheckResponse.checkTextInJson("Created", response);
-
-        //*******************************************************************
-
-        //Inactivate Covenants
-        HashMap<String, Object> mapValuesInactivateCovenats = new HashMap<>();
-        mapValuesInactivateCovenats.put("identificadorCovenant", idConvents);
-        // Create Request
-        EndpointConfig endpointConfigInactivate = new EndpointConfig();
-        endpointConfigInactivate.addHeadersJson(getAccessToken());
-        endpointConfigInactivate.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_INACTIVATE_COVENANTS));
-        endpointConfigInactivate.setBody(endpointConfigInactivate.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_INACTIVATE_COVENANTS_INACTIVATE, mapValuesInactivateCovenats));
-
-        // Call endpoint
-        Response responseInactivate = MethodRest.callPost(endpointConfigInactivate);
-
-        // Check Response
-        CheckResponse.checkHttpCode(200, responseInactivate);
-        CheckResponse.checkTextInJson("OK", responseInactivate);
+        String idConvents = saveCovenant();
+        inactiveCovenant(idConvents);
 
         //*******************************************************************
 
         //Inactivate Covenants Again
-        HashMap<String, Object> mapValuesInactivateCovenatsAgain = new HashMap<>();
-        mapValuesInactivateCovenatsAgain.put("identificadorCovenant", idConvents);
+        HashMap<String, Object> mapValuesInactivateCovenants = new HashMap<>();
+        mapValuesInactivateCovenants.put("identificadorCovenant", idConvents);
+
         // Create Request
-        EndpointConfig endpointConfigInactivateAgain = new EndpointConfig();
-        endpointConfigInactivateAgain.addHeadersJson(getAccessToken());
-        endpointConfigInactivateAgain.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_INACTIVATE_COVENANTS));
-        endpointConfigInactivateAgain.setBody(endpointConfigInactivateAgain.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_INACTIVATE_COVENANTS_RN010,mapValuesInactivateCovenatsAgain ));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_INACTIVATE_COVENANTS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_INACTIVATE_COVENANTS_RN010,
+                mapValuesInactivateCovenants));
 
         // Call endpoint
-        Response responseInactivateAgain = MethodRest.callPost(endpointConfigInactivateAgain);
+        Response responseInactivateAgain = MethodRest.callPost(endpointConfig);
 
         // Check Response
-        CheckResponse.checkTextInJson("112022",  responseInactivateAgain);
+        CheckResponse.checkTextInJson("112022", responseInactivateAgain);
         CheckResponse.checkTextInJson("COVENANT JA ESTA INATIVO", responseInactivateAgain);
 
     }

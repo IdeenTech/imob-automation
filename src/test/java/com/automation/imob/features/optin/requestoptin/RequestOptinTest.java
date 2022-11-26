@@ -14,12 +14,18 @@ import java.io.IOException;
 
 public class RequestOptinTest extends ImobApplicationTests {
 
-    //@Test TODO
-    public void requestOptin() throws IOException {
-        // Create Request
+    public EndpointConfig getEndpointConfig(String path) {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REQUEST_OPTIN));
+        endpointConfig.setUrl(ConfigParams.HOST.concat(path));
+        return endpointConfig;
+    }
+
+    //@Test TODO
+    public void requestOptin() throws IOException {
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REQUEST_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_REQUEST_OPTIN));
 
         // Call endpoint
@@ -33,10 +39,9 @@ public class RequestOptinTest extends ImobApplicationTests {
 
     @Test
     public void rn004_105002() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REQUEST_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REQUEST_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REQUEST_OPTIN_RN004_105002));
 
         // Call endpoint
@@ -49,10 +54,9 @@ public class RequestOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn004_105004() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REQUEST_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REQUEST_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REQUEST_OPTIN_RN004_105004));
 
         // Call endpoint
@@ -65,10 +69,9 @@ public class RequestOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn004_105006() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REQUEST_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REQUEST_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REQUEST_OPTIN_RN004_105006));
 
         // Call endpoint
@@ -81,10 +84,9 @@ public class RequestOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn004_105008() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REQUEST_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REQUEST_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REQUEST_OPTIN_RN004_105008));
 
         // Call endpoint
@@ -97,10 +99,9 @@ public class RequestOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn005() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REQUEST_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REQUEST_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REQUEST_OPTIN_RN005));
 
         // Call endpoint
@@ -113,10 +114,9 @@ public class RequestOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn006_105005() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REQUEST_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REQUEST_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REQUEST_OPTIN_RN006_105005));
 
         // Call endpoint
@@ -129,10 +129,9 @@ public class RequestOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn006_105007() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REQUEST_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REQUEST_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REQUEST_OPTIN_RN006_105007));
 
         // Call endpoint
@@ -145,10 +144,9 @@ public class RequestOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn007() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REQUEST_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REQUEST_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REQUEST_OPTIN_RN007));
 
         // Call endpoint
@@ -161,10 +159,9 @@ public class RequestOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn008() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REQUEST_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REQUEST_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REQUEST_OPTIN_RN008));
 
         // Call endpoint
@@ -177,10 +174,9 @@ public class RequestOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn012() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REQUEST_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REQUEST_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REQUEST_OPTIN_RN012));
 
         // Call endpoint
@@ -194,10 +190,9 @@ public class RequestOptinTest extends ImobApplicationTests {
 
     @Test
     public void rn013() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REQUEST_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REQUEST_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REQUEST_OPTIN_RN013));
 
         // Call endpoint

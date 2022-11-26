@@ -13,12 +13,19 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
 public class GrantOptinTest extends ImobApplicationTests {
-    //@Test TODO
-    public void grantOptin() throws IOException {
-        // Create Request
+
+    public EndpointConfig getEndpointConfig(String path) {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        endpointConfig.setUrl(ConfigParams.HOST.concat(path));
+        return endpointConfig;
+    }
+
+    //@Test TODO
+    public void grantOptin() throws IOException {
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN));
 
         // Call endpoint
@@ -32,10 +39,9 @@ public class GrantOptinTest extends ImobApplicationTests {
 
     @Test
     public void rn004_105002() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN004_105002));
 
         // Call endpoint
@@ -48,10 +54,9 @@ public class GrantOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn004_105004() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN004_105004));
 
         // Call endpoint
@@ -64,10 +69,9 @@ public class GrantOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn004_105006() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN004_105006));
 
         // Call endpoint
@@ -80,10 +84,9 @@ public class GrantOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn004_105010() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN004_105010));
 
         // Call endpoint
@@ -96,10 +99,9 @@ public class GrantOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn004_105011() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN004_105011));
 
         // Call endpoint
@@ -112,10 +114,9 @@ public class GrantOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn004_105019() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN004_105019));
 
         // Call endpoint
@@ -128,10 +129,9 @@ public class GrantOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn005() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN005));
 
         // Call endpoint
@@ -144,10 +144,9 @@ public class GrantOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn006() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN006));
 
         // Call endpoint
@@ -160,10 +159,9 @@ public class GrantOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn007_105005() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN007_105005));
 
         // Call endpoint
@@ -176,10 +174,9 @@ public class GrantOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn007_105007() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN007_105007));
 
         // Call endpoint
@@ -192,10 +189,9 @@ public class GrantOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn008() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN008));
 
         // Call endpoint
@@ -208,10 +204,9 @@ public class GrantOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn009() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN009));
 
         // Call endpoint
@@ -224,10 +219,9 @@ public class GrantOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn010() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN010));
 
         // Call endpoint
@@ -240,10 +234,9 @@ public class GrantOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn011() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN011));
 
         // Call endpoint
@@ -256,10 +249,9 @@ public class GrantOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn012() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN012));
 
         // Call endpoint
@@ -272,10 +264,9 @@ public class GrantOptinTest extends ImobApplicationTests {
     }
     @Test
     public void rn015() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN015));
 
         // Call endpoint
@@ -289,10 +280,9 @@ public class GrantOptinTest extends ImobApplicationTests {
 
     @Test
     public void rn016() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_GRANT_OPTIN));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN015));
 
         // Call endpoint
