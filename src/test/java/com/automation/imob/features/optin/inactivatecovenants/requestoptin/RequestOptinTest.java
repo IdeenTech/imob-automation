@@ -1,4 +1,4 @@
-package com.automation.imob.features.requestoptin;
+package com.automation.imob.features.optin.inactivatecovenants.requestoptin;
 
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;
