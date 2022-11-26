@@ -11,13 +11,13 @@ public abstract class ImobPath {
     public static final String PATH_BUILDING = "/empreendimento";
 
     //request Opt-in
-    public static final String PATH_REQUEST_OPTIN = "/optin";
+    public static final String PATH_REQUEST_OPTIN = "/com/automation/imob/features/optin";
 
     //authorize Opt-in
-    public static final String PATH_AUTHORIZE_OPTIN = "/optin/autorizar";
+    public static final String PATH_AUTHORIZE_OPTIN = "/com/automation/imob/features/optin/autorizar";
 
     //grant Opt-in
-    public static final String PATH_GRANT_OPTIN = "/optin/conceder";
+    public static final String PATH_GRANT_OPTIN = "/com/automation/imob/features/optin/conceder";
 
     //register Covenants
     public static final String PATH_REGISTER_COVENANTS = "/covenants";
