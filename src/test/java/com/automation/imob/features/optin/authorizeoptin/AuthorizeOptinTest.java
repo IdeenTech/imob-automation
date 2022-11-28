@@ -302,7 +302,7 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
         Response response = MethodRest.callPost(endpointConfig);
 
         // Check Response
-        CheckResponse.checkTextInJson("1105018",  response);
+        CheckResponse.checkTextInJson("105018",  response);
         CheckResponse.checkTextInJson("EMPREENDIMENTO INATIVO", response);
 
     }

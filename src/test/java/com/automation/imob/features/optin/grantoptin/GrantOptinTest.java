@@ -283,7 +283,7 @@ public class GrantOptinTest extends ImobApplicationTests {
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_GRANT_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN015));
+        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_GRANT_OPTIN_RN016));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
