@@ -8,11 +8,14 @@ import com.automation.imob.config.ConfigParams;
 import com.automation.imob.config.ImobFileJson;
 import com.automation.imob.config.ImobPath;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.springframework.test.context.event.annotation.BeforeTestClass;
 
 import java.io.IOException;
 import java.util.HashMap;
-
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RegisterBankAddressTest extends ImobApplicationTests {
 
     public EndpointConfig getEndpointConfig(String path) {
@@ -22,15 +25,19 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
         return endpointConfig;
     }
 
-    String referenciaExterna;
+    private String externalReference;
+    @BeforeAll
+    public void init(){
+        // Create dynamics variables
+        externalReference = getDataFaker().getExternalReference("domiciliobancario-");
+    }
 
     @Test
     public void save() throws IOException {
 
         // Create dynamics variables
         HashMap<String, Object> mapValues = new HashMap<>();
-        referenciaExterna = getDataFaker().getExternalReference("domiciliobancario-");
-        mapValues.put("referenciaExterna", referenciaExterna);
+        mapValues.put("referenciaExterna", externalReference);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
@@ -50,11 +57,11 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
         //Dynamic variable created when saving bank address
 
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", referenciaExterna);
+        mapValues.put("referenciaExterna", externalReference);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111001));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111001, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -71,11 +78,11 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
         //Dynamic variable created when saving bank address
 
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", referenciaExterna);
+        mapValues.put("referenciaExterna", externalReference);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111006));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111006, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -92,11 +99,11 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
         //Dynamic variable created when saving bank address
 
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", referenciaExterna);
+        mapValues.put("referenciaExterna", externalReference);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111008));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111008, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -129,11 +136,11 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
         //Dynamic variable created when saving bank address
 
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", referenciaExterna);
+        mapValues.put("referenciaExterna", externalReference);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111013));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111013,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -150,11 +157,11 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
         //Dynamic variable created when saving bank address
 
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", referenciaExterna);
+        mapValues.put("referenciaExterna", externalReference);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111015));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111015,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -171,11 +178,11 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
         //Dynamic variable created when saving bank address
 
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", referenciaExterna);
+        mapValues.put("referenciaExterna", externalReference);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111017));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111017,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -192,11 +199,11 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
         //Dynamic variable created when saving bank address
 
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", referenciaExterna);
+        mapValues.put("referenciaExterna", externalReference);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111018));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111018,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -213,11 +220,11 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
         //Dynamic variable created when saving bank address
 
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", referenciaExterna);
+        mapValues.put("referenciaExterna", externalReference);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111019));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111019, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -234,11 +241,11 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
         //Dynamic variable created when saving bank address
 
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", referenciaExterna);
+        mapValues.put("referenciaExterna", externalReference);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN005));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN005,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -255,11 +262,11 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
         //Dynamic variable created when saving bank address
 
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", referenciaExterna);
+        mapValues.put("referenciaExterna", externalReference);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN006));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN006,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -276,11 +283,11 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
         //Dynamic variable created when saving bank address
 
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", referenciaExterna);
+        mapValues.put("referenciaExterna", externalReference);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN007));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN007, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -297,11 +304,11 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
         //Dynamic variable created when saving bank address
 
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", referenciaExterna);
+        mapValues.put("referenciaExterna", externalReference);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN008));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN008,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -318,11 +325,11 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
         //Dynamic variable created when saving bank address
 
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", referenciaExterna);
+        mapValues.put("referenciaExterna", externalReference);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN010));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN010,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);

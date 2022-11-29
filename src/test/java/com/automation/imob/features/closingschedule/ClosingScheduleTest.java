@@ -22,6 +22,8 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         return endpointConfig;
     }
 
+
+
     @Test
     public void closingSchedule() throws IOException {
         // Create Request
