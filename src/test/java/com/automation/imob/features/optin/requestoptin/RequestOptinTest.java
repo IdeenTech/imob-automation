@@ -8,11 +8,35 @@ import com.automation.imob.config.ConfigParams;
 import com.automation.imob.config.ImobFileJson;
 import com.automation.imob.config.ImobPath;
 import io.restassured.response.Response;
+import io.restassured.specification.Argument;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.stream.Stream;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RequestOptinTest extends ImobApplicationTests {
+
+    private String externalReferenceBankAddress;
+    private Integer cns;
+    private Integer registrationNumber;
+    private String externalReferenceProject;
+
+
+    @BeforeAll
+    public void init(){
+        externalReferenceBankAddress = getDataFaker().getExternalReference("domiciliobancario-");
+        cns = getDataFaker().getNumberCharacters(6);
+        registrationNumber = getDataFaker().getNumberCharacters(6);
+        externalReferenceProject = getDataFaker().getExternalReference("refereciaexternaprojeto-");
+    }
 
     public EndpointConfig getEndpointConfig(String path) {
         EndpointConfig endpointConfig = new EndpointConfig();
@@ -23,6 +47,50 @@ public class RequestOptinTest extends ImobApplicationTests {
 
     //@Test TODO
     public void requestOptin() throws IOException {
+
+        //**************************** BANK ADDRESS ************************************************************
+
+        // Create BankAddress
+
+        // Create dynamic variables
+        HashMap<String, Object> mapValuesBankAddress = new HashMap<>();
+        mapValuesBankAddress.put("referenciaExterna", externalReferenceBankAddress);
+
+        // Create Request
+        EndpointConfig endpointConfigBankAddress = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
+        endpointConfigBankAddress.setBody(endpointConfigBankAddress.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_SAVE, mapValuesBankAddress));
+
+        // Call endpoint
+        Response responseBankAddress = MethodRest.callPost(endpointConfigBankAddress);
+
+        // Check Response
+        CheckResponse.checkHttpCode(201, responseBankAddress);
+        CheckResponse.checkTextInJson("Created", responseBankAddress);
+
+        //**************************** BUILDING ************************************************************
+
+        // Create building
+
+        // Create dynamic variables
+        HashMap<String, Object> mapValuesBuilding = new HashMap<>();
+        mapValuesBuilding.put("cns", cns);
+        mapValuesBuilding.put("numeroMatricula", registrationNumber);
+        mapValuesBuilding.put("referenciaExternaProjeto", externalReferenceProject);
+        mapValuesBuilding.put("domicilioBancario", externalReferenceBankAddress);
+
+        // Create Request
+        EndpointConfig endpointConfigBuilding = getEndpointConfig(ImobPath.PATH_BUILDING);
+        endpointConfigBuilding.setBody(endpointConfigBuilding.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_BUILDING_SAVE, mapValuesBuilding));
+
+        // Call endpoint
+        Response responseBuilding = MethodRest.callPost(endpointConfigBuilding);
+
+        // Check Response
+        CheckResponse.checkHttpCode(201, responseBuilding);
+        CheckResponse.checkTextInJson("Created", responseBuilding);
+
+        //**************************** REQUEST OPT-IN ************************************************************
+
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REQUEST_OPTIN);
@@ -112,12 +180,19 @@ public class RequestOptinTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("CNPJ DO EMPREENDIMENTO INVALIDO", response);
 
     }
-    @Test
-    public void rn006_105005() throws IOException {
+
+
+   @DisplayName( "Testing invalid start dates")
+   @ParameterizedTest
+   @ValueSource(strings = {"20-10","2022-15","203-09","A"})
+    public void rn006_105005(String invalidStartDate) throws IOException {
+
+       HashMap<String, Object> mapValues = new HashMap<>();
+       mapValues.put("dataDeInicio", invalidStartDate);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REQUEST_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REQUEST_OPTIN_RN006_105005));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_REQUEST_OPTIN_RN006_105005,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -127,12 +202,17 @@ public class RequestOptinTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("DATA DE INICIO INVALIDA", response);
 
     }
-    @Test
-    public void rn006_105007() throws IOException {
+    @DisplayName( "Testing invalid end dates")
+    @ParameterizedTest
+    @ValueSource(strings = {"20-10","2022-15","203-09","A"})
+    public void rn006_105007(String invalidEndDates) throws IOException {
+
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("dataDeFim", invalidEndDates);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REQUEST_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REQUEST_OPTIN_RN006_105007));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_REQUEST_OPTIN_RN006_105007,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);

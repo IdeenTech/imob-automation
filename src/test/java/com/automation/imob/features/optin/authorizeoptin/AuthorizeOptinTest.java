@@ -8,11 +8,28 @@ import com.automation.imob.config.ConfigParams;
 import com.automation.imob.config.ImobFileJson;
 import com.automation.imob.config.ImobPath;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import java.io.IOException;
+import java.util.HashMap;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AuthorizeOptinTest extends ImobApplicationTests {
+
+    private String externalReferenceBankAddress;
+    private Integer cns;
+    private Integer registrationNumber;
+    private String externalReferenceProject;
+
+    @BeforeAll
+    public void init(){
+        externalReferenceBankAddress = getDataFaker().getExternalReference("domiciliobancario-");
+        cns = getDataFaker().getNumberCharacters(6);
+        registrationNumber = getDataFaker().getNumberCharacters(6);
+        externalReferenceProject = getDataFaker().getExternalReference("refereciaexternaprojeto-");
+    }
 
     public EndpointConfig getEndpointConfig(String path) {
         EndpointConfig endpointConfig = new EndpointConfig();
@@ -21,12 +38,80 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
         return endpointConfig;
     }
 
-    //@Test TODO
+
+   // @Test O AUTORIZAR COM SUCESSO ESTÁ COM ERRO, AGUARDAR CORREÇÃO PRA VALIDAR ESSE CENÁRIO TODO
     public void authorize() throws IOException {
+
+        //**************************** BANK ADDRESS ************************************************************
+
+        // Create BankAddress
+
+        // Create dynamic variables
+        HashMap<String, Object> mapValuesBankAddress = new HashMap<>();
+        mapValuesBankAddress.put("referenciaExterna", externalReferenceBankAddress);
+
+        // Create Request
+        EndpointConfig endpointConfigBankAddress = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
+        endpointConfigBankAddress.setBody(endpointConfigBankAddress.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_SAVE, mapValuesBankAddress));
+
+        // Call endpoint
+        Response responseBankAddress = MethodRest.callPost(endpointConfigBankAddress);
+
+        // Check Response
+        CheckResponse.checkHttpCode(201, responseBankAddress);
+        CheckResponse.checkTextInJson("Created", responseBankAddress);
+
+        //**************************** BUILDING ************************************************************
+
+        // Create building
+
+        // Create dynamic variables
+        HashMap<String, Object> mapValuesBuilding = new HashMap<>();
+        mapValuesBuilding.put("cns", cns);
+        mapValuesBuilding.put("numeroMatricula", registrationNumber);
+        mapValuesBuilding.put("referenciaExternaProjeto", externalReferenceProject);
+        mapValuesBuilding.put("domicilioBancario", externalReferenceBankAddress);
+
+        // Create Request
+        EndpointConfig endpointConfigBuilding = getEndpointConfig(ImobPath.PATH_BUILDING);
+        endpointConfigBuilding.setBody(endpointConfigBuilding.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_BUILDING_SAVE, mapValuesBuilding));
+
+        // Call endpoint
+        Response responseBuilding = MethodRest.callPost(endpointConfigBuilding);
+
+        // Check Response
+        CheckResponse.checkHttpCode(201, responseBuilding);
+        CheckResponse.checkTextInJson("Created", responseBuilding);
+
+        //**************************** BLOCK / TOWER ************************************************************
+
+        // Create block / tower
+
+        // Create dynamic variables
+        HashMap<String, Object> mapValuesBlockTower = new HashMap<>();
+        mapValuesBlockTower.put("referenciaExternaProjeto", externalReferenceProject);
+
+        // Create Request
+        EndpointConfig endpointConfigBlockTower = getEndpointConfig((ImobPath.PATH_BLOCK_TOWER));
+        endpointConfigBlockTower.setBody(endpointConfigBlockTower.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_BLOCK_TOWER_SAVE, mapValuesBlockTower));
+
+        // Call endpoint
+        Response responseBlockTower = MethodRest.callPost(endpointConfigBlockTower);
+
+        // Check Response
+        CheckResponse.checkHttpCode(201, responseBlockTower);
+        CheckResponse.checkTextInJson("Created", responseBlockTower);
+
+
+        //**************************** AUTHORIZE OPT-IN ************************************************************
+
+        // Create dynamic variables
+        HashMap<String, Object> mapValuesAuthorizeOptin = new HashMap<>();
+        mapValuesAuthorizeOptin.put("referenciaExternaProjeto", externalReferenceProject);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN,mapValuesAuthorizeOptin));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -39,9 +124,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn004_105002() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN004_105002));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN004_105002, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -54,9 +142,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn004_105004() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN004_105004));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN004_105004, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -69,9 +160,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn004_105006() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN004_105006));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN004_105006, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -84,9 +178,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn004_105010() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN004_105010));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN004_105010, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -99,9 +196,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn004_105016() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN004_105016));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN004_105016,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -114,9 +214,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn005() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN005));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN005,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -129,9 +232,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn006() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN006));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN006,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -144,9 +250,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn007_105005() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN007_105005));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN007_105005,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -159,9 +268,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn007_105007() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN007_105007));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN007_105007,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -174,9 +286,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn008() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN008));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN008,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -189,9 +304,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn009() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN009));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN009,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -204,9 +322,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn010() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN010));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN010,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -219,9 +340,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn011() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN011));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN011,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -234,9 +358,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn012() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN012));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN012,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -249,9 +376,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn013() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN013));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN013,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -261,8 +391,11 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("QUADRAS/TORRES OBRIGATORIO", response);
 
     }
-    @Test
+    //@Test AJUSTAR CENÁRIO ASSIM QUE O AUTORIZAR COM SUCESSO VOLTAR A FUNCIONAR TODO
     public void rn014() throws IOException {
+
+        //HashMap<String, Object> mapValues = new HashMap<>();
+        //mapValues.put("referenciaExternaProjeto", externalReferenceProject);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
@@ -279,9 +412,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn016() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN016));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN016,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -294,9 +430,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn020() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN020));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN020,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -310,9 +449,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn021() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN021));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN021,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -326,9 +468,12 @@ public class AuthorizeOptinTest extends ImobApplicationTests {
     @Test
     public void rn022() throws IOException {
 
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaProjeto", externalReferenceProject);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_AUTHORIZE_OPTIN);
-        endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN022));
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_AUTHORIZE_OPTIN_RN022,mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);

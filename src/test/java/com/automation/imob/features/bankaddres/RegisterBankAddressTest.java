@@ -18,18 +18,18 @@ import java.util.HashMap;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RegisterBankAddressTest extends ImobApplicationTests {
 
+    private String externalReference;
+
+    @BeforeAll
+    public void init(){
+        externalReference = getDataFaker().getExternalReference("domiciliobancario-");
+    }
+
     public EndpointConfig getEndpointConfig(String path) {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(path));
         return endpointConfig;
-    }
-
-    private String externalReference;
-    @BeforeAll
-    public void init(){
-        // Create dynamics variables
-        externalReference = getDataFaker().getExternalReference("domiciliobancario-");
     }
 
     @Test
