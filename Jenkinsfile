@@ -1,20 +1,16 @@
 pipeline {
     agent any
-    tools {
-        maven 'Maven 3.3.9'
-        jdk 'jdk8'
-    }
-    stages {
-        stage ('Initialize') {
-            steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                '''
-            }
-        }
 
-        stage ('Build') {
+    environment {
+        JAVA_HOME = '/usr/lib/jvm/java-11-openjdk-amd64'
+        CI = 'true'
+    }
+
+    stages {
+        stage('Test') {
+            when {
+                expression { BRANCH_NAME ==~ /(main|homolog|develop)/ }
+            }
             steps {
                 sh 'mvn test'
             }
