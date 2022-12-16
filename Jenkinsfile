@@ -8,9 +8,6 @@ pipeline {
 
     stages {
         stage('Test') {
-            when {
-                expression { BRANCH_NAME ==~ /(main|homolog|develop)/ }
-            }
             steps {
                 sh 'mvn test'
             }
