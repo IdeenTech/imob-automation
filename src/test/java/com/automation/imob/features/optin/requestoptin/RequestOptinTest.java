@@ -181,7 +181,6 @@ public class RequestOptinTest extends ImobApplicationTests {
 
     }
 
-
    @DisplayName( "Testing invalid start dates")
    @ParameterizedTest
    @ValueSource(strings = {"20-10","2022-15","203-09","A"})
