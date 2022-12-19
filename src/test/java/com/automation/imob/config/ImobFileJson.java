@@ -8,11 +8,42 @@ public abstract  class ImobFileJson {
     public static final String PATH_JSON_BANK_ADDRESS_SAVE =  PATH_BASE.concat("/bankaddress/save.json");
     public static final String PATH_JSON_BANK_ADDRESS_RN004_111001 = PATH_BASE.concat("/bankaddress/rn004-111001.json");
 
+    public static final String PATH_JSON_BANK_ADDRESS_RN004_111006 = PATH_BASE.concat("/bankaddress/rn004-111006.json");
+
+    public static final String PATH_JSON_BANK_ADDRESS_RN004_111008 = PATH_BASE.concat("/bankaddress/rn004-111008.json");
+
+    public static final String PATH_JSON_BANK_ADDRESS_RN004_111010 = PATH_BASE.concat("/bankaddress/rn004-111010.json");
+
+    public static final String PATH_JSON_BANK_ADDRESS_RN004_111013 = PATH_BASE.concat("/bankaddress/rn004-111013.json");
+
+    public static final String PATH_JSON_BANK_ADDRESS_RN004_111015 = PATH_BASE.concat("/bankaddress/rn004-111015.json");
+
+    public static final String PATH_JSON_BANK_ADDRESS_RN004_111017 = PATH_BASE.concat("/bankaddress/rn004-111017.json");
+
+    public static final String PATH_JSON_BANK_ADDRESS_RN004_111018 = PATH_BASE.concat("/bankaddress/rn004-111018.json");
+
+    public static final String PATH_JSON_BANK_ADDRESS_RN004_111019 = PATH_BASE.concat("/bankaddress/rn004-111019.json");
+
+    public static final String PATH_JSON_BANK_ADDRESS_RN005 = PATH_BASE.concat("/bankaddress/rn005.json");
+
+    public static final String PATH_JSON_BANK_ADDRESS_RN006 = PATH_BASE.concat("/bankaddress/rn006.json");
+
+    public static final String PATH_JSON_BANK_ADDRESS_RN007 = PATH_BASE.concat("/bankaddress/rn007.json");
+
+    public static final String PATH_JSON_BANK_ADDRESS_RN008 = PATH_BASE.concat("/bankaddress/rn008.json");
+
+    public static final String PATH_JSON_BANK_ADDRESS_RN010 = PATH_BASE.concat("/bankaddress/rn010.json");
+
     //building
 
     public static final String PATH_JSON_BUILDING_SAVE = PATH_BASE.concat("/building/savebuilding.json");
 
     public static final String PATH_JSON_BUILDING_INACTIVATE = PATH_BASE.concat("/building/inactivatebuilding.json");
+
+
+    //block - tower
+
+    public static final String PATH_JSON_BLOCK_TOWER_SAVE = PATH_BASE.concat("/blocktower/save.json");
 
 
 
@@ -82,6 +113,12 @@ public abstract  class ImobFileJson {
     public static final String PATH_JSON_AUTHORIZE_OPTIN_RN016 =  PATH_BASE.concat("/authorizeoptin/rn016.json");
 
     public static final String PATH_JSON_AUTHORIZE_OPTIN_RN020 =  PATH_BASE.concat("/authorizeoptin/rn020.json");
+
+
+    public static final String PATH_JSON_AUTHORIZE_OPTIN_RN021 =  PATH_BASE.concat("/authorizeoptin/rn021.json");
+
+
+    public static final String PATH_JSON_AUTHORIZE_OPTIN_RN022 =  PATH_BASE.concat("/authorizeoptin/rn022.json");
 
 
     //grant Opt-in

@@ -25,8 +25,8 @@ public class DataFaker {
         return this.faker.lorem().word();
     }
 
-    public String getExternalReference(){
-        return "domicilioBancario".concat(getWorld());
+    public String getExternalReference(String prefix){
+        return  prefix != null ? prefix.concat(getWorld()) : getWorld();
     }
 
     public String getWorldWithNumberCharacters(Integer numberCharacters) {

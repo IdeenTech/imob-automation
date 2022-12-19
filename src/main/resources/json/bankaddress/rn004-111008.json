@@ -1,14 +1,14 @@
 {
   "tipoOperacao": "C",
   "cnpj": "98401472000150",
-  "razaoSocial": "Santander",
-  "referenciaExterna": "bob5",
+  "razaoSocial": "",
+  "referenciaExterna": "domicGeovani6",
   "banco": "071",
-  "agencia": "5215",
+  "agencia": "5214",
   "dvAgencia": "5",
   "conta": "110025",
   "dvConta": "2",
   "convenioCobranca": "034",
   "codigoCedente": "043",
-  "justificativa": "justificativa teste"
+  "justificativa": ""
 }

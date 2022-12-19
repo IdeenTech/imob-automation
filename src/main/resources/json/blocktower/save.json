@@ -1,0 +1,19 @@
+[
+  {
+    "tipoOperacao": "C",
+    "referenciaExternaProjeto": "empreendimentoGeovani2.0",
+    "identificadorQuadraTorre": "QuadraB",
+    "uso": "1",
+    "unidadesTotalQuadraTorre": "50",
+    "numeroPavimentos": "1",
+    "dataHabiteSePrevista": "2022-12-31",
+    "dataHabiteSePrevistaPrazo": "2022-12-31",
+    "dataHabiteSeReal": "",
+    "dataLancamento": "",
+    "evolucaoObraTotal": "40.00",
+    "evolucaoObraDetalhada": "",
+    "dataBaseEvolucaoObra": "2022-12-31",
+    "domicilioBancario": "",
+    "avaliacao": ""
+  }
+]

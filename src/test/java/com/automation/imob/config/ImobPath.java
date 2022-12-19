@@ -6,9 +6,12 @@ public abstract class ImobPath {
     //bank - address
     public static final String PATH_BANK_ADDRESS = "/domiciliobancario";
 
-
     //building
     public static final String PATH_BUILDING = "/empreendimento";
+
+    //block/tower
+    public static final String PATH_BLOCK_TOWER = "/quadratorre";
+
 
     //request Opt-in
     public static final String PATH_REQUEST_OPTIN = "/optin";

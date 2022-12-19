@@ -1,4 +1,4 @@
-package com.automation.imob.features.registercovenants;
+package com.automation.imob.features.covenants.registercovenants;
 
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;
@@ -14,15 +14,23 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class RegisterCovenantsTest extends ImobApplicationTests {
+
+    public EndpointConfig getEndpointConfig(String path) {
+        EndpointConfig endpointConfig = new EndpointConfig();
+        endpointConfig.addHeadersJson(getAccessToken());
+        endpointConfig.setUrl(ConfigParams.HOST.concat(path));
+        return endpointConfig;
+    }
     @Test
     public void registerCovenants() throws IOException {
+
+        // Create dynamic variables
         HashMap<String, Object> mapValues = new HashMap<>();
         String idConvents = getDataFaker().getIdCovenant();
         mapValues.put("identificadorCovenant",idConvents);
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_REGISTER_COVENANTS, mapValues));
 
         // Call endpoint
@@ -35,10 +43,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
 
     @Test
     public void rn006_112003() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN006_112003));
 
         // Call endpoint
@@ -50,10 +57,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
     }
     @Test
     public void rn006_112005() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN006_112005));
 
         // Call endpoint
@@ -65,10 +71,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
     }
     @Test
     public void rn006_112007() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN006_112007));
 
         // Call endpoint
@@ -80,10 +85,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
     }
     @Test
     public void rn006_112009() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN006_112009));
 
         // Call endpoint
@@ -96,10 +100,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
 
     @Test
     public void rn006_112011() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN006_112011));
 
         // Call endpoint
@@ -111,10 +114,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
     }
     @Test
     public void rn006_112014() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN006_112014));
 
         // Call endpoint
@@ -126,10 +128,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
     }
     @Test
     public void rn006_112017() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN006_112017));
 
         // Call endpoint
@@ -141,10 +142,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
     }
     @Test
     public void rn006_112019() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN006_112019));
 
         // Call endpoint
@@ -156,10 +156,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
     }
     @Test
     public void rn007() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN007));
 
         // Call endpoint
@@ -171,10 +170,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
     }
     @Test
     public void rn008() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN008));
 
         // Call endpoint
@@ -186,10 +184,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
     }
     @Test
     public void rn009() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN009));
 
         // Call endpoint
@@ -201,10 +198,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
     }
     @Test
     public void rn010() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN010));
 
         // Call endpoint
@@ -216,10 +212,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
     }
     @Test
     public void rn011() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN011));
 
         // Call endpoint
@@ -231,10 +226,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
     }
     @Test
     public void rn012() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN012));
 
         // Call endpoint
@@ -246,10 +240,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
     }
     @Test
     public void rn013() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN013));
 
         // Call endpoint
@@ -261,10 +254,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
     }
     @Test
     public void rn014() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN014));
 
         // Call endpoint
@@ -277,10 +269,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
 
     @Test
     public void rn015() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN015));
 
         // Call endpoint
@@ -293,10 +284,9 @@ public class RegisterCovenantsTest extends ImobApplicationTests {
 
     //@Test implementar após fluxo basico for ajustado TODO
     public void rn016() throws IOException {
+
         // Create Request
-        EndpointConfig endpointConfig = new EndpointConfig();
-        endpointConfig.addHeadersJson(getAccessToken());
-        endpointConfig.setUrl(ConfigParams.HOST.concat(ImobPath.PATH_REGISTER_COVENANTS));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_REGISTER_COVENANTS);
         endpointConfig.setBody(endpointConfig.setJsonFileBodyArray(ImobFileJson.PATH_JSON_REGISTER_COVENANTS_RN016));
 
         // Call endpoint
