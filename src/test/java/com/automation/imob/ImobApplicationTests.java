@@ -47,17 +47,18 @@ public class ImobApplicationTests {
         endpointConfig.setUrl(ConfigParams.HOST.concat(path));
         return endpointConfig;
     }
-    protected Response createBankAddres(String DomicRefExterna) throws IOException {
-        Integer banco = getDataFaker().getNumberCharacters(3);
-        Integer agencia = getDataFaker().getNumberCharacters(4);
-        Integer conta = getDataFaker().getNumberCharacters(6);
-
+    protected Response createBankAddres(String BankAddresExternalRef) throws IOException {
         //Create dynamics variables
+        Integer bank = getDataFaker().getNumberCharacters(3);
+        Integer agency = getDataFaker().getNumberCharacters(4);
+        Integer account = getDataFaker().getNumberCharacters(6);
+
+        //Apply dynamics variables
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", DomicRefExterna);
-        mapValues.put("banco", banco);
-        mapValues.put("agencia", agencia);
-        mapValues.put("conta", conta);
+        mapValues.put("referenciaExterna", BankAddresExternalRef);
+        mapValues.put("banco", bank);
+        mapValues.put("agencia", agency);
+        mapValues.put("conta", account);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
@@ -69,15 +70,19 @@ public class ImobApplicationTests {
 
 
     @Test
-    protected Response CreateBuilding(String DomicRefExterna, String EmpreeRefExternaProjeto) throws IOException {
-       Integer cns = getDataFaker().getNumberCharacters(6);
+    protected Response CreateBuilding(String BankAddresExternalRef, String ExternalRefProject) throws IOException {
+
+        //Create dynamics variables
+        Integer cns = getDataFaker().getNumberCharacters(6);
        Integer registrationNumber = getDataFaker().getNumberCharacters(7);
 
-       createBankAddres(DomicRefExterna);
+       //using the creation of the Bank Adress creation
+       createBankAddres(BankAddresExternalRef);
 
+        //Apply dynamics variables
         HashMap<String, Object> mapValuesBuilding = new HashMap<>();
-        mapValuesBuilding.put("referenciaExternaProjeto", EmpreeRefExternaProjeto);
-        mapValuesBuilding.put("domicilioBancario", DomicRefExterna);
+        mapValuesBuilding.put("referenciaExternaProjeto", ExternalRefProject);
+        mapValuesBuilding.put("domicilioBancario", BankAddresExternalRef);
         mapValuesBuilding.put("cns", cns);
         mapValuesBuilding.put("numeroMatricula", registrationNumber);
 

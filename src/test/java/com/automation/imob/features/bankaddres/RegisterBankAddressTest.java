@@ -16,16 +16,16 @@ import java.util.HashMap;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RegisterBankAddressTest extends ImobApplicationTests {
 
-    private String DomicRefExterna;
+    private String BankAddresExternalRef;
 
     @BeforeAll
     public void init() {
-        DomicRefExterna = getDataFaker().getExternalReference("domiciliobancario-");
+        BankAddresExternalRef = getDataFaker().getExternalReference("domiciliobancario-");
     }
 
     @Test
     public void save() throws IOException {
-        Response response = createBankAddres(DomicRefExterna);
+        Response response = createBankAddres(BankAddresExternalRef);
 
         // Check Response
         CheckResponse.checkHttpCode(201, response);
@@ -37,7 +37,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", DomicRefExterna);
+        mapValues.put("referenciaExterna", BankAddresExternalRef);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
@@ -56,7 +56,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", DomicRefExterna);
+        mapValues.put("referenciaExterna", BankAddresExternalRef);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
@@ -75,7 +75,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", DomicRefExterna);
+        mapValues.put("referenciaExterna", BankAddresExternalRef);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
@@ -109,7 +109,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", DomicRefExterna);
+        mapValues.put("referenciaExterna", BankAddresExternalRef);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
@@ -128,7 +128,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", DomicRefExterna);
+        mapValues.put("referenciaExterna", BankAddresExternalRef);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
@@ -147,7 +147,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", DomicRefExterna);
+        mapValues.put("referenciaExterna", BankAddresExternalRef);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
@@ -166,7 +166,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", DomicRefExterna);
+        mapValues.put("referenciaExterna", BankAddresExternalRef);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
@@ -185,7 +185,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", DomicRefExterna);
+        mapValues.put("referenciaExterna", BankAddresExternalRef);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
@@ -204,7 +204,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", DomicRefExterna);
+        mapValues.put("referenciaExterna", BankAddresExternalRef);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
@@ -223,7 +223,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", DomicRefExterna);
+        mapValues.put("referenciaExterna", BankAddresExternalRef);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
@@ -242,7 +242,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", DomicRefExterna);
+        mapValues.put("referenciaExterna", BankAddresExternalRef);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
@@ -261,7 +261,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", DomicRefExterna);
+        mapValues.put("referenciaExterna", BankAddresExternalRef);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
@@ -280,7 +280,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", DomicRefExterna);
+        mapValues.put("referenciaExterna", BankAddresExternalRef);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
