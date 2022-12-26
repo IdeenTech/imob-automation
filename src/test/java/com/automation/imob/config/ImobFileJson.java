@@ -37,7 +37,6 @@ public abstract  class ImobFileJson {
     //building
 
     public static final String PATH_JSON_BUILDING_SAVE = PATH_BASE.concat("/building/savebuilding.json");
-
     public static final String PATH_JSON_BUILDING_INACTIVATE = PATH_BASE.concat("/building/inactivatebuilding.json");
 
 

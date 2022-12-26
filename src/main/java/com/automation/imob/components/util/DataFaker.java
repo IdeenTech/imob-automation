@@ -22,7 +22,7 @@ public class DataFaker {
     }
 
     public String getWorld() {
-        return this.faker.lorem().word();
+        return this.faker.lorem().words().toString();
     }
 
     public String getExternalReference(String prefix){
