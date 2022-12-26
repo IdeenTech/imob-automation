@@ -38,15 +38,17 @@ public class ImobApplicationTests {
         return accessToken;
     }
 
-    protected DataFaker getDataFaker(){
+    protected DataFaker getDataFaker() {
         return DataFaker.getInstance();
     }
-    public EndpointConfig getEndpointConfig(String path) {
+
+    protected EndpointConfig getEndpointConfig(String path) {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
         endpointConfig.setUrl(ConfigParams.HOST.concat(path));
         return endpointConfig;
     }
+
     protected Response createBankAddres(String bankAddresExternalRef) throws IOException {
         //Create dynamics variables
         Integer bank = getDataFaker().getNumberCharacters(3);
@@ -72,10 +74,10 @@ public class ImobApplicationTests {
 
         //Create dynamics variables
         Integer cns = getDataFaker().getNumberCharacters(6);
-       Integer registrationNumber = getDataFaker().getNumberCharacters(7);
+        Integer registrationNumber = getDataFaker().getNumberCharacters(7);
 
-       //using the creation of the Bank Adress creation
-       createBankAddres(bankAddresExternalRef);
+        //using the creation of the Bank Adress creation
+        createBankAddres(bankAddresExternalRef);
 
         //Apply dynamics variables
         HashMap<String, Object> mapValuesBuilding = new HashMap<>();
@@ -90,6 +92,5 @@ public class ImobApplicationTests {
 
         // Call endpoint
         return MethodRest.callPost(endpointConfig);
-        }
-
+    }
 }
