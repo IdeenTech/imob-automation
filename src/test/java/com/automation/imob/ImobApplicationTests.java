@@ -47,7 +47,7 @@ public class ImobApplicationTests {
         endpointConfig.setUrl(ConfigParams.HOST.concat(path));
         return endpointConfig;
     }
-    protected Response createBankAddres(String BankAddresExternalRef) throws IOException {
+    protected Response createBankAddres(String bankAddresExternalRef) throws IOException {
         //Create dynamics variables
         Integer bank = getDataFaker().getNumberCharacters(3);
         Integer agency = getDataFaker().getNumberCharacters(4);
@@ -55,7 +55,7 @@ public class ImobApplicationTests {
 
         //Apply dynamics variables
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", BankAddresExternalRef);
+        mapValues.put("referenciaExterna", bankAddresExternalRef);
         mapValues.put("banco", bank);
         mapValues.put("agencia", agency);
         mapValues.put("conta", account);
@@ -68,21 +68,19 @@ public class ImobApplicationTests {
         return MethodRest.callPost(endpointConfig);
     }
 
-
-    @Test
-    protected Response CreateBuilding(String BankAddresExternalRef, String ExternalRefProject) throws IOException {
+    protected Response createBuilding(String bankAddresExternalRef, String externalRefProject) throws IOException {
 
         //Create dynamics variables
         Integer cns = getDataFaker().getNumberCharacters(6);
        Integer registrationNumber = getDataFaker().getNumberCharacters(7);
 
        //using the creation of the Bank Adress creation
-       createBankAddres(BankAddresExternalRef);
+       createBankAddres(bankAddresExternalRef);
 
         //Apply dynamics variables
         HashMap<String, Object> mapValuesBuilding = new HashMap<>();
-        mapValuesBuilding.put("referenciaExternaProjeto", ExternalRefProject);
-        mapValuesBuilding.put("domicilioBancario", BankAddresExternalRef);
+        mapValuesBuilding.put("referenciaExternaProjeto", externalRefProject);
+        mapValuesBuilding.put("domicilioBancario", bankAddresExternalRef);
         mapValuesBuilding.put("cns", cns);
         mapValuesBuilding.put("numeroMatricula", registrationNumber);
 
