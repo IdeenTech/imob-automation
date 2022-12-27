@@ -31,7 +31,7 @@ pipeline {
 
                  publishHTML target: [
                      reportName: 'Imob Automation Report',
-                     reportDir: '/target/site',
+                     reportDir: '/var/lib/jenkins/workspace/imob-automation/target/site',
                      reportFiles: 'index.html',
                      keepAll: true,
                      alwaysLinkToLastBuild: true,
