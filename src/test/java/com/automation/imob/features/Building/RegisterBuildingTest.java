@@ -1,5 +1,6 @@
 package com.automation.imob.features.Building;
 
+
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;
 import com.automation.imob.components.config.EndpointConfig;
@@ -9,10 +10,13 @@ import com.automation.imob.config.ImobPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.stream.Stream;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RegisterBuildingTest extends ImobApplicationTests {
@@ -60,11 +64,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("TIPO DE OPERACAO OBRIGATORIO", response);
     }
 
-    @Test
-    public void rn012_101003() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101003(final String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
         mapValues.put("domicilioBancario", bankAddresExternalRef);
+        mapValues.put("tipoOperacao", operationType);
         mapValues.put("referenciaExternaProjeto", "");
 
         // Create Request
@@ -79,11 +85,14 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("REFERENCIA EXTERNA PROJETO OBRIGATORIA", response);
     }
 
-    @Test
-    public void rn012_101005() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101005(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("idSpe", "");
+        mapValues.put("tipoOperacao", operationType);
+
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -97,11 +106,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("IDENTIFICADOR DA SPE/DESENVOLVEDOR IMOBILIARIO OBRIGATORIO", response);
     }
 
-    @Test
-    public void rn012_101007() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101007(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("cns", "");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -115,11 +126,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("CNS DO CARTORIO OBRIGATORIO", response);
     }
 
-    @Test
-    public void rn012_101009() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101009(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("numeroMatricula", "");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -133,11 +146,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("NUMERO DA MATRICULA OBRIGATORIO", response);
     }
 
-    @Test
-    public void rn012_101013() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101013(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("razaoSocial", "");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -151,11 +166,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("RAZAO SOCIAL OBRIGATORIA", response);
     }
 
-    @Test
-    public void rn012_101014() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101014(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("nomeComercial", "");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -169,11 +186,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("NOME COMERCIAL OBRIGATORIO", response);
     }
 
-    @Test
-    public void rn012_101048() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101048(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("cpfResponsavel", "");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -187,11 +206,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("CPF RESPONSAVEL OBRIGATORIO", response);
     }
 
-    @Test
-    public void rn012_101017() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101017(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("nomeContato", "");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -205,11 +226,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("NOME CONTATO OBRIGATORIO", response);
     }
 
-    @Test
-    public void rn012_101018() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101018(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("email", "");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -223,11 +246,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("EMAIL OBRIGATORIO", response);
     }
 
-    @Test
-    public void rn012_101019() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101019(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("celular", "");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -241,11 +266,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("CELULAR OBRIGATORIO", response);
     }
 
-    @Test
-    public void rn012_101022() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101022(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("cep", "");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -259,11 +286,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("CEP OBRIGATORIO", response);
     }
 
-    @Test
-    public void rn012_101024() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101024(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("logradouro", "");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -277,11 +306,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("LOGRADOURO OBRIGATORIO", response);
     }
 
-    @Test
-    public void rn012_101025() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101025(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("numero", "");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -295,11 +326,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("NUMERO OBRIGATORIO", response);
     }
 
-    @Test
-    public void rn012_101027() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101027(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("uso", "");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -313,11 +346,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("USO OBRIGATORIO", response);
     }
 
-    @Test
-    public void rn012_101029() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101029(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoImplantacao", "");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -331,11 +366,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("TIPO DE IMPLANTACAO OBRIGATORIO", response);
     }
 
-    @Test
-    public void rn012_101031() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101031(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("registroIncorporacao", "");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -349,11 +386,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("REGISTRO DE INCORPORACAO OBRIGATORIO", response);
     }
 
-    @Test
-    public void rn012_101036() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101036(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("patrimonio", "");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -367,11 +406,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("PATRIMONIO DE AFETACAO OBRIGATORIO", response);
     }
 
-    @Test
-    public void rn012_101041() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101041(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("quantidadeQuadrasTorres", "");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -385,11 +426,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("IDENTIFICACAO QUANTIDADE QUADRAS TORRES OBRIGATORIO", response);
     }
 
-    @Test
-    public void rn012_101042() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn012_101042(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("domicilioBancario", "");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -421,11 +464,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("TIPO DE OPERACAO INVALIDO", response);
     }
 
-    @Test
-    public void rn014() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn014(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("idSpe", "Teste_Invalido");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -439,11 +484,13 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("IDENTIFICADOR DA SPE/DESENVOLVEDOR IMOBILIARIO INVALIDO", response);
     }
 
-    @Test
-    public void rn015() throws IOException {
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn015(String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("desenvolvedorImobiliario", "Teste_Invalido");
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -457,13 +504,15 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("DESENVOLVEDOR IMOBILIARIO INVALIDO", response);
     }
 
-    @DisplayName("rn016_101016 Testing invalid dates")
     @ParameterizedTest
-    @ValueSource(strings = {"20-10", "2022-15", "203-09", "A"})
-    public void rn016_101016(String invalidDate) throws IOException {
+    @DisplayName("rn016_101016 Testing invalid dates")
+    @MethodSource({"operationType","20-10", "2022-15", "203-09", "A"})
+    //@ValueSource(strings = {"20-10", "2022-15", "203-09", "A"})
+    public void rn016_101016(String invalidDate, String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("dataAtualizacao", invalidDate);
+        mapValues.put("tipoOperacao", operationType);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);

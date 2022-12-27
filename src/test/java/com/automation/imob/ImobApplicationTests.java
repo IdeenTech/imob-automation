@@ -10,10 +10,12 @@ import io.restassured.response.Response;
 import lombok.Getter;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.Arguments;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.stream.Stream;
 
 @SpringBootTest
 @Getter
@@ -41,7 +43,11 @@ public class ImobApplicationTests {
     protected DataFaker getDataFaker() {
         return DataFaker.getInstance();
     }
-
+    public static Stream<Arguments> operationType(){
+        return Stream.of(
+                Arguments.of("A" ),
+                Arguments.of("C"));
+    }
     protected EndpointConfig getEndpointConfig(String path) {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
