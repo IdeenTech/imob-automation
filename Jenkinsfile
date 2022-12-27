@@ -20,17 +20,20 @@ pipeline {
                 dir("/var/lib/jenkins/workspace/imob-automation") {
                         sh 'mvn site'
                 }
-
-                 // publish html
-                publishHTML target: [
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: false,
-                    keepAll: true,
-                    reportDir: 'site',
-                    reportFiles: 'index.html',
-                    reportName: 'Imob Automation Report'
-                  ]
             }
          }
+
+         post {
+                 always {
+                     publishHTML target: [
+                         reportName: 'Imob Automation Report',
+                         reportDir: 'site',
+                         reportFiles: 'index.html',
+                         keepAll: true,
+                         alwaysLinkToLastBuild: true,
+                         allowMissing: false
+                     ]
+                 }
+             }
     }
 }
