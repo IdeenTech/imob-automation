@@ -17,10 +17,19 @@ pipeline {
 
          stage('Test') {
             steps {
-                sh 'mvn test'
                 dir("/var/lib/jenkins/workspace/imob-automation") {
-                        sh 'mvn test'
+                        sh 'mvn site'
                 }
+
+                 // publish html
+                publishHTML target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: 'site',
+                    reportFiles: 'index.html',
+                    reportName: 'Imob Automation Report'
+                  ]
             }
          }
     }

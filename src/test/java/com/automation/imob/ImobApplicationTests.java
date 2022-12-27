@@ -9,13 +9,10 @@ import com.automation.imob.config.ImobPath;
 import io.restassured.response.Response;
 import lombok.Getter;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.util.HashMap;
 
-@SpringBootTest
 @Getter
 public class ImobApplicationTests {
 
