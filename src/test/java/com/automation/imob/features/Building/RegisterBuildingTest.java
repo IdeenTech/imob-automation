@@ -7,7 +7,6 @@ import com.automation.imob.components.result.CheckResponse;
 import com.automation.imob.config.ImobFileJson;
 import com.automation.imob.config.ImobPath;
 import io.restassured.response.Response;
-import org.junit.Before;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;

@@ -41,8 +41,12 @@ public class DataFaker {
         return "identificadorCovenant".concat(getWorldWithNumberCharacters(10));
     }
 
+    public String getCnpj(boolean formatted) {
+        return CnpjUtil.generateCnpj(formatted);
+    }
 
-
-
+    public String getCpf(boolean formatted) {
+        return CpfUtil.generateCpf(formatted);
+    }
 
 }
