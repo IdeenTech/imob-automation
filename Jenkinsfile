@@ -15,6 +15,14 @@ pipeline {
             }
          }
 
+         stage('Clean') {
+             steps {
+                 dir("/var/lib/jenkins/workspace/imob-automation") {
+                         sh 'mvn clean'
+                 }
+             }
+          }
+
          stage('Test') {
             steps {
                 dir("/var/lib/jenkins/workspace/imob-automation") {
