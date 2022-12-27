@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class UpdateBankAddresTest extends ImobApplicationTests {
+public class UpdateBankAddressTest extends ImobApplicationTests {
 
     private String bankAdressExternalRef;
 
@@ -292,6 +292,8 @@ public class UpdateBankAddresTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("111028", response);
         CheckResponse.checkTextInJson("COD CEDENTE INVALIDO", response);
     }
+
+
 }
 
 
