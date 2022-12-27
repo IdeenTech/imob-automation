@@ -29,18 +29,14 @@ pipeline {
                         sh 'mvn site'
                 }
 
-                 post {
-                     always {
-                         publishHTML target: [
-                             reportName: 'Imob Automation Report',
-                             reportDir: 'site',
-                             reportFiles: 'index.html',
-                             keepAll: true,
-                             alwaysLinkToLastBuild: true,
-                             allowMissing: false
-                         ]
-                     }
-                 }
+                 publishHTML target: [
+                     reportName: 'Imob Automation Report',
+                     reportDir: '/target/site',
+                     reportFiles: 'index.html',
+                     keepAll: true,
+                     alwaysLinkToLastBuild: true,
+                     allowMissing: false
+                 ]
             }
          }
     }
