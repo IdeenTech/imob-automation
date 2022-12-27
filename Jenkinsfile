@@ -15,12 +15,28 @@ pipeline {
             }
          }
 
+         stage('Clean') {
+             steps {
+                 dir("/var/lib/jenkins/workspace/imob-automation") {
+                         sh 'mvn clean'
+                 }
+             }
+          }
+
          stage('Test') {
             steps {
-                sh 'mvn test'
                 dir("/var/lib/jenkins/workspace/imob-automation") {
-                        sh 'mvn test'
+                        sh 'mvn site'
                 }
+
+                 publishHTML target: [
+                     reportName: 'Imob Automation Report',
+                     reportDir: '/var/lib/jenkins/workspace/imob-automation/target/site',
+                     reportFiles: 'index.html',
+                     keepAll: true,
+                     alwaysLinkToLastBuild: true,
+                     allowMissing: false
+                 ]
             }
          }
     }
