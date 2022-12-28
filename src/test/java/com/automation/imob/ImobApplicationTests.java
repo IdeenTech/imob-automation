@@ -39,6 +39,8 @@ public class ImobApplicationTests {
     protected DataFaker getDataFaker() {
         return DataFaker.getInstance();
     }
+
+    //method to change the type of operation in endpoint tests
     public static Stream<Arguments> operationType(){
         return Stream.of(
                 Arguments.of("A" ),
