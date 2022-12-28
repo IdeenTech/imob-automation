@@ -9,9 +9,10 @@ import com.automation.imob.config.ImobPath;
 import io.restassured.response.Response;
 import lombok.Getter;
 import org.junit.jupiter.api.BeforeAll;
-
+import org.junit.jupiter.params.provider.Arguments;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.stream.Stream;
 
 @Getter
 public class ImobApplicationTests {
@@ -39,6 +40,12 @@ public class ImobApplicationTests {
         return DataFaker.getInstance();
     }
 
+    //method to change the type of operation in endpoint tests
+    public static Stream<Arguments> operationType(){
+        return Stream.of(
+                Arguments.of("A" ),
+                Arguments.of("C"));
+    }
     protected EndpointConfig getEndpointConfig(String path) {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
