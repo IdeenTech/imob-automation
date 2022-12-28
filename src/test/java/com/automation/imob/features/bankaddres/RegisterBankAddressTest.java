@@ -15,7 +15,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -285,10 +284,12 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn008(String operationType) throws IOException {
 
+        String cnpj = getDataFaker().getCnpj(false);
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
         mapValues.put("referenciaExterna", bankAddresExternalRef);
         mapValues.put("tipoOperacao", operationType);
+        mapValues.put("cnpj", cnpj);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
