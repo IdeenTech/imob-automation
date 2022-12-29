@@ -11,11 +11,12 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
 import java.io.IOException;
 import java.util.HashMap;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class RegisterBuildingTest extends ImobApplicationTests {
+public class RegisterAndUpdateBuildingTest extends ImobApplicationTests {
     //store set value
     private String bankAddresExternalRef;
     private String externalRefProject;
@@ -88,7 +89,6 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("idSpe", "");
         mapValues.put("tipoOperacao", operationType);
-
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -1134,6 +1134,7 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("101016", response);
         CheckResponse.checkTextInJson("DATA DE ATUALIZACAO INVALIDA", response);
     }
+
     @DisplayName("rn016_101040(edit) Testing invalid dates")
     @ParameterizedTest
     @ValueSource(strings = {"20-10", "2022-15", "203-09", "A"})
@@ -1154,6 +1155,7 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("101040", response);
         CheckResponse.checkTextInJson("DATA CONSTITUICAO DO PATRIMONIO DE AFETACAO INVALIDA", response);
     }
+
     @DisplayName("rn016_101035(edit) Testing invalid dates")
     @ParameterizedTest
     @ValueSource(strings = {"20-10", "2022-15", "203-09", "A"})
@@ -1174,6 +1176,7 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("101035", response);
         CheckResponse.checkTextInJson("DATA REGISTRO DE INCORPORACAO INVALIDA", response);
     }
+
     @DisplayName("rn017(edit) Testing invalid cellphone ")
     @ParameterizedTest
     @ValueSource(strings = {"+55011949494949494", "A", "+55011949494949", "asdfghjklqwert", "123"})
@@ -1194,6 +1197,7 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("101020", response);
         CheckResponse.checkTextInJson("CELULAR INVALIDO", response);
     }
+
     @DisplayName("rn018(edit) Testing invalid postal code")
     @ParameterizedTest
     @ValueSource(strings = {"999999999", "aaaaaaaa", "aaaaaaaaa", "99999999", "15995-042"})
@@ -1214,6 +1218,7 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("101023", response);
         CheckResponse.checkTextInJson("CEP INVALIDO", response);
     }
+
     @DisplayName("rn019(edit) Testing invalid USO")
     @ParameterizedTest
     @ValueSource(strings = {"4", "01", "a"})
@@ -1254,6 +1259,7 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("101030", response);
         CheckResponse.checkTextInJson("TIPO DE IMPLANTACAO INVALIDO", response);
     }
+
     @DisplayName("rn021(edit) Testing invalid type")
     @ParameterizedTest
     @ValueSource(strings = {"4", "01", "a"})
@@ -1274,6 +1280,7 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("101032", response);
         CheckResponse.checkTextInJson("REGISTRO DE INCORPORACAO INVALIDO", response);
     }
+
     @DisplayName("rn022(edit) Testing invalid type")
     @ParameterizedTest
     @ValueSource(strings = {"4", "01", "a"})
@@ -1294,6 +1301,7 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("101037", response);
         CheckResponse.checkTextInJson("PATRIMONIO DE AFETACAO INVALIDO", response);
     }
+
     @DisplayName("rn025(edit) Testing invalid DevBuild")
     @ParameterizedTest
     @ValueSource(strings = {"9999999999999999", "aaa"})
@@ -1316,6 +1324,7 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("101026", response);
         CheckResponse.checkTextInJson("DESENVOLVEDOR IMOBILIARIO INVALIDO", response);
     }
+
     @DisplayName("rn034(edit) Testing invalid CNPJ")
     @ParameterizedTest
     @ValueSource(strings = {"9999999999999999", "aaa", "0000000"})
@@ -1462,6 +1471,7 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("100006", response);
         CheckResponse.checkTextInJson("AVALIACAO DEVE CONTER TAMANHO 2 POSICOES", response);
     }
+
     @DisplayName("rn046(edit) Testing invalid dd")
     @ParameterizedTest
     @ValueSource(strings = {"AAA", "A", "333333333333"})
@@ -1483,4 +1493,25 @@ public class RegisterBuildingTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("DIGITO VERIFICADOR DA MATRICULA INVALIDO", response);
     }
 
+    @Test
+    public void rn027() throws IOException {
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("domicilioBancario", bankAddresExternalRef);
+        mapValues.put("tipoOperacao", "I");
+        mapValues.put("referenciaExternaProjeto", externalRefProject);
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_BUILDING_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+        response = MethodRest.callPost(endpointConfig);
+        mapValues.put("tipoOperacao", "A");
+
+        // Check Response
+        CheckResponse.checkTextInJson("101054", response);
+        CheckResponse.checkTextInJson("EMPREENDIMENTO INATIVO", response);
+    }
 }
