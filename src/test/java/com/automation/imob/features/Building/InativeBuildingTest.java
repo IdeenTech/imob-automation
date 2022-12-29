@@ -15,7 +15,6 @@ import java.util.HashMap;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class InativeBuildingTest extends ImobApplicationTests {
-
     private String bankAddresExternalRef;
     private String externalRefProject;
 
