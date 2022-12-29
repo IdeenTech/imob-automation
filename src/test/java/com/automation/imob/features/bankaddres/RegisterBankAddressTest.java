@@ -327,6 +327,28 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
     //================================================================================ Edit Methods ========================================================================================================
 
+    @Test
+    public void update_rn007_111027() throws IOException {
+
+        String teste = getDataFaker().getWorld();
+
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("tipoOperacao", "A");
+        mapValues.put("referenciaExterna", teste);
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN007, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("111027", response);
+        CheckResponse.checkTextInJson("REFERENCIA EXTERNA NAO EXISTE", response);
+    }
+
     @DisplayName("rn006(edit) testing invalid CNPJ")
     @ParameterizedTest
     @ValueSource(strings = {"999999999999999", "a", "A", "0000000"})
