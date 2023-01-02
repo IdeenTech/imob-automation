@@ -10,6 +10,7 @@ import io.restassured.response.Response;
 import lombok.Getter;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.provider.Arguments;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.stream.Stream;
@@ -41,11 +42,13 @@ public class ImobApplicationTests {
     }
 
     //method to change the type of operation in endpoint tests
-    public static Stream<Arguments> operationType(){
+    public static Stream<Arguments> operationType() {
         return Stream.of(
-                Arguments.of("A" ),
-                Arguments.of("C"));
+                Arguments.of("A"),
+                Arguments.of("C")
+        );
     }
+
     protected EndpointConfig getEndpointConfig(String path) {
         EndpointConfig endpointConfig = new EndpointConfig();
         endpointConfig.addHeadersJson(getAccessToken());
@@ -93,6 +96,32 @@ public class ImobApplicationTests {
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BUILDING);
         endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_BUILDING_SAVE, mapValuesBuilding));
+
+        // Call endpoint
+        return MethodRest.callPost(endpointConfig);
+    }
+
+    protected Response createBlockTower(String bankAddresExternalRef, String externalRefProject, String identifierBlockTower) throws IOException {
+
+        //Create dynamics variables
+        Integer cns = getDataFaker().getNumberCharacters(6);
+        Integer registrationNumber = getDataFaker().getNumberCharacters(7);
+
+        //using the creation of the Bank Adress creation
+        createBuilding(bankAddresExternalRef, externalRefProject);
+
+        //Apply dynamics variables
+        HashMap<String, Object> mapValuesBlockTower = new HashMap<>();
+        mapValuesBlockTower.put("referenciaExternaProjeto", externalRefProject);
+        mapValuesBlockTower.put("domicilioBancario", bankAddresExternalRef);
+        mapValuesBlockTower.put("cns", cns);
+        mapValuesBlockTower.put("numeroMatricula", registrationNumber);
+        mapValuesBlockTower.put("identificadorQuadraTorre", identifierBlockTower);
+
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BLOCK_TOWER);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_BLOCK_TOWER_SAVE, mapValuesBlockTower));
 
         // Call endpoint
         return MethodRest.callPost(endpointConfig);
