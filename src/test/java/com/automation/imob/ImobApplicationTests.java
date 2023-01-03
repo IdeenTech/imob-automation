@@ -126,4 +126,24 @@ public class ImobApplicationTests {
         // Call endpoint
         return MethodRest.callPost(endpointConfig);
     }
+
+    protected Response createUnity(String bankAddresExternalRef, String externalRefProject, String identifierBlockTower, String identifierUnity) throws IOException {
+
+        //using the creation of the Block/Tower creation
+        createBlockTower(bankAddresExternalRef, externalRefProject,identifierBlockTower);
+
+        //Apply dynamics variables
+        HashMap<String, Object> mapValuesUnity = new HashMap<>();
+        mapValuesUnity.put("referenciaExternaProjeto", externalRefProject);
+        mapValuesUnity.put("domicilioBancario", bankAddresExternalRef);
+        mapValuesUnity.put("identificadorQuadraTorre", identifierBlockTower);
+        mapValuesUnity.put("identificadorUnidade", identifierUnity);
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_UNITY);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_UNITY_SAVE, mapValuesUnity));
+
+        // Call endpoint
+        return MethodRest.callPost(endpointConfig);
+    }
 }

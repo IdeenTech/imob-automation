@@ -1,0 +1,27 @@
+[
+  {
+    "tipoOperacao": "C",
+    "referenciaExternaProjeto": "",
+    "identificadorQuadraTorre": "",
+    "identificadorUnidade": "",
+    "tipoImovel": "1",
+    "matriculaCartorio": "",
+    "dataHabiteSeReal": "",
+    "endereco": "",
+    "fracaoIdealTipo": "1",
+    "fracaoIdeal": "0.99",
+    "metragemTotal": "810",
+    "metragemUtil": "89",
+    "pavimento": "000",
+    "quantidadeDormitorios": "02",
+    "quantidadeGaragensPrivativas": "01",
+    "precoM2": "7000.00",
+    "dataTabela": "2022-10-05",
+    "identificacaoOnus": "001",
+    "numeroAverbacaoRegistro": "",
+    "statusUnidade": "005",
+    "classificacaoDirecionamentoUnidade": "006",
+    "dataQuitacaoAntesRegistro": "",
+    "domicilioBancario": ""
+  }
+]

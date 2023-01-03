@@ -12,6 +12,8 @@ public abstract class ImobPath {
     //block/tower
     public static final String PATH_BLOCK_TOWER = "/quadratorre";
 
+    //unity
+    public static final String PATH_UNITY= "/unidade";
 
     //request Opt-in
     public static final String PATH_REQUEST_OPTIN = "/optin";
