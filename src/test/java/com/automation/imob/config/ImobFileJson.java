@@ -44,7 +44,8 @@ public abstract  class ImobFileJson {
 
     public static final String PATH_JSON_BLOCK_TOWER_SAVE = PATH_BASE.concat("/blocktower/save.json");
 
-
+    //block - tower
+    public static final String PATH_JSON_UNITY_SAVE = PATH_BASE.concat("/unity/saveunity.json");
 
 
     //request Opt-in
