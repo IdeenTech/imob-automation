@@ -3,10 +3,8 @@ package com.automation.imob.features.unity;
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.result.CheckResponse;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-
 import java.io.IOException;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
