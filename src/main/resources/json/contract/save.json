@@ -1,0 +1,31 @@
+[
+  {
+    "tipoOperacao": "C",
+    "referenciaExternaProjeto": "{{EmpreeRefExternaProjeto}}",
+    "referenciaExternaContrato": "{{referenciaExternaContrato}}",
+    "quadraTorre": "{{identificadorQuadraTorre}}",
+    "unidade": "{{identificadorUnidade}}",
+    "porcentagemMoraMes": "77.77",
+    "porcentagemMulta": "77.77",
+    "dataAssinatura": "2022-06-08",
+    "tipoContrato": "001",
+    "valor": "6160000.00",
+    "metodoAmortizacao": "003",
+    "indicePrecoPreObra": "006",
+    "indicePrecoPosObra": "006",
+    "jurosAA": "7.70",
+    "aplicacaoJuros": "002",
+    "idCercContratoSubAt": "",
+    "justificativa": "teste",
+    "dataDistrato": "",
+    "valorDevolver": "",
+    "statusContrato": "001",
+    "jaRenegociado": "NA",
+    "gravameOnus": "N",
+    "domicilioBancario": "",
+    "bloqueioFaturamentoContrato": "000",
+    "informacaoBloqueioFaturamentoContrato": "ativo",
+    "dataBloqueioFaturamentoContrato": "2022-09-09",
+    "avaliacao": "77"
+  }
+]

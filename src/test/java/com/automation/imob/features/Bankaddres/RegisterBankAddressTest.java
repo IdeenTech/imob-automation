@@ -1,4 +1,4 @@
-package com.automation.imob.features.bankaddres;
+package com.automation.imob.features.Bankaddres;
 
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;
