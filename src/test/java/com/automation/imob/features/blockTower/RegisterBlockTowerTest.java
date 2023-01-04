@@ -52,7 +52,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
 
     @Test
     public void rn008_102001() throws IOException {
-        //Dynamic variable created when saving bank address
+        // Assigning value to common references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", "");
 
@@ -71,7 +71,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn008_101003(final String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = new HashMap<>();
         mapValues.put("domicilioBancario", bankAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
@@ -92,6 +92,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn008_102005(final String operationType) throws IOException {
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificadorQuadraTorre", "");
@@ -111,6 +112,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn008_102007(final String operationType) throws IOException {
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("uso", "");
@@ -127,10 +129,10 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("USO OBRIGATORIO", response);
     }
 
-
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn008_102009(final String operationType) throws IOException {
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("dataHabiteSePrevista", "");
@@ -150,6 +152,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn008_102011(final String operationType) throws IOException {
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("dataHabiteSePrevistaPrazo", "");
@@ -169,6 +172,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn008_102015(final String operationType) throws IOException {
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("evolucaoObraTotal", "");
@@ -189,6 +193,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn008_102017(final String operationType) throws IOException {
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("dataBaseEvolucaoObra", "");
@@ -208,7 +213,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn008_102061(final String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("unidadesTotalQuadraTorre", "");
@@ -228,7 +233,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn011_102061() throws IOException {
-        //Dynamic variable created when saving bank address
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("unidadesTotalQuadraTorre", "");
 
@@ -244,12 +249,12 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("UNIDADES TOTAL DA QUADRA TORRE OBRIGATORIO", response);
     }
 
-    /*----------------------------------------- INVALID ---------------------------------------*/
+    /*----------------------------------------- INVALID ERROR MESSAGES---------------------------------------*/
     @DisplayName("rn009 testing invalid operation Type")
     @ParameterizedTest
     @ValueSource(strings = {"b", "B", "1", "AA"})
     public void rn009(String invalidOperationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", invalidOperationType);
 
@@ -269,7 +274,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @ValueSource(strings = {"4", "01", "a"})
     public void rn010(String invalidUSO) throws IOException {
-        //Dynamic variable created when saving bank address
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("uso", invalidUSO);
 
@@ -289,7 +294,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @ValueSource(strings = {"20-10", "2022-15", "203-09", "A"})
     public void rn011_102010(String invalidDateHabit) throws IOException {
-        //Dynamic variable created when saving bank address
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("dataHabiteSePrevista", invalidDateHabit);
 
@@ -309,7 +314,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @ValueSource(strings = {"20-10", "2022-15", "203-09", "A"})
     public void rn011_102012(String invalidDataHabitexpc) throws IOException {
-        //Dynamic variable created when saving bank address
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("dataHabiteSePrevistaPrazo", invalidDataHabitexpc);
 
@@ -329,7 +334,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @ValueSource(strings = {"20-10", "2022-15", "203-09", "A"})
     public void rn011_102013(String invalidDatahabIfReal) throws IOException {
-        //Dynamic variable created when saving bank address
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("dataHabiteSeReal", invalidDatahabIfReal);
 
@@ -349,7 +354,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @ValueSource(strings = {"20-10", "2022-15", "203-09", "A"})
     public void rn011_102014(String invalidRealeseDate) throws IOException {
-        //Dynamic variable created when saving bank address
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("dataLancamento", invalidRealeseDate);
 
@@ -369,7 +374,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @ValueSource(strings = {"20-10", "2022-15", "203-09", "A"})
     public void rn011_102018(String invalidBaseDateEvol) throws IOException {
-        //Dynamic variable created when saving bank address
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("dataBaseEvolucaoObra", invalidBaseDateEvol);
 
@@ -409,13 +414,13 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("DOMICILIO BANCARIO INVALIDO", response);
     }
 
-    /* ------------------------------------ OTHERS -------------------------------------------------------*/
+    /* ------------------------------------ OTHERS ERRORS MESSAGES-------------------------------------------------------*/
 
 
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn012_102004(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = new HashMap<>();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("domicilioBancario", bankAddressExternalRef);
@@ -438,6 +443,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn016() throws IOException {
         HashMap<String, Object> mapValues = new HashMap<>();
+        // Assigning value to commons references in rn's
         mapValues.put("domicilioBancario", bankAddressExternalRef);
         mapValues.put("identificadorQuadraTorre", identifierBlockTower);
         mapValues.put("referenciaExternaProjeto", externalRefProject);
@@ -458,6 +464,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @ValueSource(strings = "9999")
     public void rn020(String invalidUnitsTotalBlockTower) throws IOException {
+        // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("unidadesTotalQuadraTorre", invalidUnitsTotalBlockTower);
 
@@ -476,6 +483,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @ValueSource(strings = "9999")
     public void rn021(String invalidNumbOfFloors) throws IOException {
+        //Assigning value to common references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("numeroPavimentos", invalidNumbOfFloors);
 
