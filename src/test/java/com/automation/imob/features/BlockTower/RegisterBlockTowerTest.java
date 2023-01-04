@@ -410,18 +410,19 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     /* --------------------------------------------EDIT ----------------------------------------*/
 
 
-    /* ------------------------------------ OTHERS -------------------------------------------------------*/
+    /* ------------------------------------ OTHERS  -------------------------------------------------------*/
 
 
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn012_102004(String operationType) throws IOException {
+        String externalRef = getDataFaker().getExternalReference("e");
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("domicilioBancario", bankAddressExternalRef);
         mapValues.put("identificadorQuadraTorre", identifierBlockTower);
-        mapValues.put("referenciaExternaProjeto", "teste");
+        mapValues.put("referenciaExternaProjeto", "");
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BLOCK_TOWER);
