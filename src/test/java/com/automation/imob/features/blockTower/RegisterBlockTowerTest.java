@@ -389,12 +389,13 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn015(final String operationType) throws IOException {
+        String domicilioFakeBankAddres = getDataFaker().getExternalReference("random-");
+
         HashMap<String, Object> mapValues = new HashMap<>();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("referenciaExternaProjeto", externalRefProject);
         mapValues.put("identificadorQuadraTorre", identifierBlockTower);
-        mapValues.put("domicilioBancario", "teste");
-
+        mapValues.put("domicilioBancario", domicilioFakeBankAddres);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BLOCK_TOWER);
@@ -471,6 +472,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("100005", response);
         CheckResponse.checkTextInJson("UNIDADES TOTAL DA QUADRA TORRE DEVE CONTER NO MAXIMO 3 POSICOES", response);
     }
+
     @ParameterizedTest
     @ValueSource(strings = "9999")
     public void rn021(String invalidNumbOfFloors) throws IOException {
