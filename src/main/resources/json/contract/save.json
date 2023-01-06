@@ -1,10 +1,10 @@
 [
   {
     "tipoOperacao": "C",
-    "referenciaExternaProjeto": "{{EmpreeRefExternaProjeto}}",
-    "referenciaExternaContrato": "{{referenciaExternaContrato}}",
-    "quadraTorre": "{{identificadorQuadraTorre}}",
-    "unidade": "{{identificadorUnidade}}",
+    "referenciaExternaProjeto": "",
+    "referenciaExternaContrato": "",
+    "quadraTorre": "",
+    "unidade": "",
     "porcentagemMoraMes": "77.77",
     "porcentagemMulta": "77.77",
     "dataAssinatura": "2022-06-08",

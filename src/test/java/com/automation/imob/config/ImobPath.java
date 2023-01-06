@@ -13,7 +13,7 @@ public abstract class ImobPath {
     public static final String PATH_BLOCK_TOWER = "/quadratorre";
 
     //contract
-    public static final String PATH_CONTRACT = "/contract";
+    public static final String PATH_CONTRACT = "/contrato";
 
     //unity
     public static final String PATH_UNITY= "/unidade";

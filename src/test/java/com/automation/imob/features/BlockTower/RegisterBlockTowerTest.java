@@ -85,6 +85,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         Response response = MethodRest.callPost(endpointConfig);
 
         // Check Response
+        // Check Response
         CheckResponse.checkTextInJson("102003", response);
         CheckResponse.checkTextInJson("REFERENCIA EXTERNA PROJETO OBRIGATORIA", response);
     }
