@@ -1,4 +1,4 @@
-package com.automation.imob.features.blockTower;
+package com.automation.imob.features.blocktower;
 
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;
@@ -399,9 +399,6 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         String idBankAddress = getDataFaker().getExternalReference("idBankAddress-");
 
         Response response = createBlockTower(externalRef2, idBlockTower, idBankAddress);
-
-        HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("domicilioBancario", "");
 
         // Check Response
         CheckResponse.checkHttpCode(201, response);

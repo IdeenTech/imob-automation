@@ -8,18 +8,15 @@ import com.automation.imob.config.ConfigParams;
 import com.automation.imob.config.ImobFileJson;
 import com.automation.imob.config.ImobPath;
 import io.restassured.response.Response;
-import io.restassured.specification.Argument;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.stream.Stream;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RequestOptinTest extends ImobApplicationTests {
