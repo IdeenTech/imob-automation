@@ -466,7 +466,7 @@ public class RegisterContractTest extends ImobApplicationTests{
     }
 
 
-    @DisplayName("rn013(create) Testing invalid amortization method")
+    @DisplayName("rn014(create) Testing invalid amortization method")
     @ParameterizedTest
     @ValueSource(strings = {"123", "9999", "a", "A", "99", "9", "004",})
     public void rn014_create(String invalidContract) throws IOException {
@@ -607,6 +607,53 @@ public class RegisterContractTest extends ImobApplicationTests{
         CheckResponse.checkTextInJson("BLOQUEIO DE FATURAMENTO DO CONTRATO INVALIDO", response);
     }
 
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn021(final String operationType) throws IOException {
+        String fakeExternalRef = getDataFaker().getExternalReference("externalref--");
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaContrato", externalRefContract);
+        mapValues.put("quadraTorre", identifierBlockTower);
+        mapValues.put("unidade", identifierUnity);
+        mapValues.put("domicilioBancario", bankAddresExternalRef);
+        mapValues.put("tipoOperacao", operationType);
+        mapValues.put("referenciaExternaProjeto", externalRefProject);
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("103004", response);
+        CheckResponse.checkTextInJson("REFERENCIA EXTERNA PROJETO NAO EXISTE", response);
+    }
+
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn022(final String operationType) throws IOException {
+
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = getCommonsValues();
+        mapValues.put("tipoOperacao", operationType);
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+        response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("103006", response);
+        CheckResponse.checkTextInJson("REFERENCIA EXTERNA CONTRATO JA EXISTE", response);
+    }
+
+
+
     /*---------------------------------------------------- EDIT METHODS --------------------------------------------*/
 
     @DisplayName("rn010_103037(Edit) Testing invalid dates ")
@@ -630,7 +677,7 @@ public class RegisterContractTest extends ImobApplicationTests{
         CheckResponse.checkTextInJson("DATA DO BLOQUEIO OU DESBLOQUEIO DE FATURAMENTO DO CONTRATO INVALIDA", response);
     }
 
-    @DisplayName("rn013(edit) Testing invalid amortization method")
+    @DisplayName("rn014(edit) Testing invalid amortization method")
     @ParameterizedTest
     @ValueSource(strings = {"20-10", "2022-14", "203-09", "A"})
     public void rn014_edit(String invalidContract) throws IOException {
