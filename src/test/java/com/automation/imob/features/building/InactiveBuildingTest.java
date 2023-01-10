@@ -1,4 +1,4 @@
-package com.automation.imob.features.Building;
+package com.automation.imob.features.building;
 
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;
@@ -14,31 +14,30 @@ import java.io.IOException;
 import java.util.HashMap;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class InativeBuildingTest extends ImobApplicationTests {
-    private String bankAddresExternalRef;
+public class InactiveBuildingTest extends ImobApplicationTests {
+
+    private String bankAddressExternalRef;
     private String externalRefProject;
 
     @BeforeAll
     public void createBuilding() throws IOException {
         //Declare value identifiers: Building and BankAddress
-        bankAddresExternalRef = getDataFaker().getExternalReference("DomRefExterna-");
+        bankAddressExternalRef = getDataFaker().getExternalReference("DomRefExterna-");
         externalRefProject = getDataFaker().getExternalReference("refExternaProject-");
 
         //create Building
-        createBuilding(bankAddresExternalRef, externalRefProject);
+        createBuilding(bankAddressExternalRef, externalRefProject);
     }
 
     @Test
-    public void inativeBuilding() throws IOException {
+    public void inactiveBuilding() throws IOException {
         //Declare value identifiers: Building and BankAddress
-        bankAddresExternalRef = getDataFaker().getExternalReference("InativDomRefExterna-");
+        bankAddressExternalRef = getDataFaker().getExternalReference("InativDomRefExterna-");
         externalRefProject = getDataFaker().getExternalReference("InativrefExternaProject-");
-        createBuilding(bankAddresExternalRef, externalRefProject);
+        createBuilding(bankAddressExternalRef, externalRefProject);
 
         //create Building
-        Response response = createBuilding(bankAddresExternalRef, externalRefProject);
-        HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("tipoOperacao", "I");
+        Response response = createBuilding(bankAddressExternalRef, externalRefProject);
 
         // Check Response
         CheckResponse.checkTextInJson("200", response);
@@ -49,7 +48,7 @@ public class InativeBuildingTest extends ImobApplicationTests {
     public void rn006() throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("domicilioBancario", bankAddresExternalRef);
+        mapValues.put("domicilioBancario", bankAddressExternalRef);
         mapValues.put("tipoOperacao", "I");
         mapValues.put("referenciaExternaProjeto", "");
 
@@ -71,7 +70,7 @@ public class InativeBuildingTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("domicilioBancario", bankAddresExternalRef);
+        mapValues.put("domicilioBancario", bankAddressExternalRef);
         mapValues.put("tipoOperacao", "I");
         mapValues.put("referenciaExternaProjeto", externalReference);
 
@@ -92,7 +91,7 @@ public class InativeBuildingTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("domicilioBancario", bankAddresExternalRef);
+        mapValues.put("domicilioBancario", bankAddressExternalRef);
         mapValues.put("tipoOperacao", "I");
         mapValues.put("referenciaExternaProjeto", externalRefProject);
 

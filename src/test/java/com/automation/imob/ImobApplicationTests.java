@@ -107,7 +107,7 @@ public class ImobApplicationTests {
         Integer cns = getDataFaker().getNumberCharacters(6);
         Integer registrationNumber = getDataFaker().getNumberCharacters(7);
 
-        //using the creation of the Bank Adress creation
+        //using the creation of the Building creation
         createBuilding(bankAddresExternalRef, externalRefProject);
 
         //Apply dynamics variables

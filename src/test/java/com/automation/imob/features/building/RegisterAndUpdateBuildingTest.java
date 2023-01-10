@@ -1,4 +1,4 @@
-package com.automation.imob.features.Building;
+package com.automation.imob.features.building;
 
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;
@@ -18,17 +18,17 @@ import java.util.HashMap;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RegisterAndUpdateBuildingTest extends ImobApplicationTests {
     //store set value
-    private String bankAddresExternalRef;
+    private String bankAddressExternalRef;
     private String externalRefProject;
 
     @BeforeAll
     public void save() throws IOException {
         //Declare value identifiers: Building and BankAddress
-        bankAddresExternalRef = getDataFaker().getExternalReference("DomRefExterna-");
+        bankAddressExternalRef = getDataFaker().getExternalReference("DomRefExterna-");
         externalRefProject = getDataFaker().getExternalReference("refExternaProject-");
 
         //Response Create Building
-        Response response = createBuilding(bankAddresExternalRef, externalRefProject);
+        Response response = createBuilding(bankAddressExternalRef, externalRefProject);
 
         // Check Response
         CheckResponse.checkHttpCode(201, response);
@@ -37,7 +37,7 @@ public class RegisterAndUpdateBuildingTest extends ImobApplicationTests {
 
     public HashMap<String, Object> getCommonsValues() {
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("domicilioBancario", bankAddresExternalRef);
+        mapValues.put("domicilioBancario", bankAddressExternalRef);
         mapValues.put("referenciaExternaProjeto", externalRefProject);
 
         return mapValues;
@@ -66,7 +66,7 @@ public class RegisterAndUpdateBuildingTest extends ImobApplicationTests {
     public void rn012_101003(final String operationType) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("domicilioBancario", bankAddresExternalRef);
+        mapValues.put("domicilioBancario", bankAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("referenciaExternaProjeto", "");
 
@@ -713,7 +713,7 @@ public class RegisterAndUpdateBuildingTest extends ImobApplicationTests {
     public void rn025_create(String invalidtype) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("domicilioBancario", bankAddresExternalRef);
+        mapValues.put("domicilioBancario", bankAddressExternalRef);
         mapValues.put("referenciaExternaProjeto", externalRefProject);
         mapValues.put("desenvolvedorImobiliario", invalidtype);
 
@@ -1308,7 +1308,7 @@ public class RegisterAndUpdateBuildingTest extends ImobApplicationTests {
     public void rn025_edit(String invalidtype) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("domicilioBancario", bankAddresExternalRef);
+        mapValues.put("domicilioBancario", bankAddressExternalRef);
         mapValues.put("referenciaExternaProjeto", externalRefProject);
         mapValues.put("desenvolvedorImobiliario", invalidtype);
         mapValues.put("tipoOperacao", "A");
@@ -1497,7 +1497,7 @@ public class RegisterAndUpdateBuildingTest extends ImobApplicationTests {
     public void rn027() throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("domicilioBancario", bankAddresExternalRef);
+        mapValues.put("domicilioBancario", bankAddressExternalRef);
         mapValues.put("tipoOperacao", "I");
         mapValues.put("referenciaExternaProjeto", externalRefProject);
 
