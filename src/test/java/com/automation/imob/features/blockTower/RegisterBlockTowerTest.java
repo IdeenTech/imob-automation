@@ -388,13 +388,14 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
 
     @ParameterizedTest
     @MethodSource("operationType")
-    public void rn015(final String operationType) throws IOException {
+    public void rn015(String operationType) throws IOException {
+        String InvaliodPayAdrress = getDataFaker().getExternalReference("InvaliodPayAdrress ");
+
         HashMap<String, Object> mapValues = new HashMap<>();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("referenciaExternaProjeto", externalRefProject);
         mapValues.put("identificadorQuadraTorre", identifierBlockTower);
-        mapValues.put("domicilioBancario", "teste");
-
+        mapValues.put("domicilioBancario", InvaliodPayAdrress);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BLOCK_TOWER);
@@ -407,6 +408,8 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("102019", response);
         CheckResponse.checkTextInJson("DOMICILIO BANCARIO INVALIDO", response);
     }
+    /* --------------------------------------------EDIT ----------------------------------------*/
+
 
     /* ------------------------------------ OTHERS -------------------------------------------------------*/
 
@@ -433,8 +436,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("REFERENCIA EXTERNA PROJETO NAO EXISTE", response);
     }
 
-    @ParameterizedTest
-    @MethodSource("operationType")
+   @Test
     public void rn016() throws IOException {
         HashMap<String, Object> mapValues = new HashMap<>();
         mapValues.put("domicilioBancario", bankAddressExternalRef);
@@ -487,6 +489,24 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         // Check Response
         CheckResponse.checkTextInJson("100005", response);
         CheckResponse.checkTextInJson("NUMERO DE PAVIMENTOS DEVE CONTER NO MAXIMO 3 POSICOES", response);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"9999", "a", "99,999"})
+    public void rn022(String invalidEvolTotalWork) throws IOException {
+        HashMap<String, Object> mapValues = getCommonsValues();
+        mapValues.put("evolucaoObraTotal", invalidEvolTotalWork);
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BLOCK_TOWER);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_BLOCK_TOWER_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("100008", response);
+        CheckResponse.checkTextInJson("EVOLUCAO OBRA TOTAL DEVE SER NO MAXIMO DECIMAL (3,2)", response);
     }
 
 }
