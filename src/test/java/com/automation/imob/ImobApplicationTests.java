@@ -146,7 +146,6 @@ public class ImobApplicationTests {
         createBankAddres(bankAddresExternalRef);
          bankAddresExternalRef = getDataFaker().getWorld() ;
 
-
         //using the creation of the createUnity creation
         createUnity(bankAddresExternalRef, externalRefProject, identifierBlockTower, identifierUnity);
 

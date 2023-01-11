@@ -40,10 +40,9 @@ public class RegisterContractTest extends ImobApplicationTests{
         Response response = createContract(bankAddresExternalRef, externalRefProject, identifierBlockTower, identifierUnity, externalRefContract);
 
         // Check response
-       // CheckResponse.checkHttpCode(201, response);
-       // CheckResponse.checkTextInJson("Created", response);
-        ResponseBody body = response.getBody();
-        System.out.println(body.asString());
+        CheckResponse.checkHttpCode(201, response);
+        CheckResponse.checkTextInJson("Created", response);
+
     }
 
     public HashMap<String, Object> getCommonsValues() {
@@ -434,8 +433,8 @@ public class RegisterContractTest extends ImobApplicationTests{
         mapValues.put("tipoOperacao", invalidOperationType);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BLOCK_TOWER);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_BLOCK_TOWER_SAVE, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -611,6 +610,7 @@ public class RegisterContractTest extends ImobApplicationTests{
     @MethodSource("operationType")
     public void rn021(final String operationType) throws IOException {
         String fakeExternalRef = getDataFaker().getExternalReference("externalref--");
+
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
         mapValues.put("referenciaExternaContrato", externalRefContract);
@@ -618,7 +618,7 @@ public class RegisterContractTest extends ImobApplicationTests{
         mapValues.put("unidade", identifierUnity);
         mapValues.put("domicilioBancario", bankAddresExternalRef);
         mapValues.put("tipoOperacao", operationType);
-        mapValues.put("referenciaExternaProjeto", externalRefProject);
+        mapValues.put("referenciaExternaProjeto", fakeExternalRef);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
@@ -637,8 +637,14 @@ public class RegisterContractTest extends ImobApplicationTests{
     public void rn022(final String operationType) throws IOException {
 
         //Dynamic variable created when saving bank address
-        HashMap<String, Object> mapValues = getCommonsValues();
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaContrato", externalRefContract);
+        mapValues.put("quadraTorre", identifierBlockTower);
+        mapValues.put("unidade", identifierUnity);
+        mapValues.put("domicilioBancario", bankAddresExternalRef);
+        mapValues.put("referenciaExternaProjeto", externalRefProject);
         mapValues.put("tipoOperacao", operationType);
+
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
         endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
@@ -651,6 +657,228 @@ public class RegisterContractTest extends ImobApplicationTests{
         CheckResponse.checkTextInJson("103006", response);
         CheckResponse.checkTextInJson("REFERENCIA EXTERNA CONTRATO JA EXISTE", response);
     }
+
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn023(final String operationType) throws IOException {
+        String fakeBlockTower = getDataFaker().getExternalReference("blockTowerExternal-");
+
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaContrato", externalRefContract);
+        mapValues.put("unidade", identifierUnity);
+        mapValues.put("domicilioBancario", bankAddresExternalRef);
+        mapValues.put("referenciaExternaProjeto", externalRefProject);
+        mapValues.put("tipoOperacao", operationType);
+        mapValues.put("quadraTorre", fakeBlockTower);
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("103008", response);
+        CheckResponse.checkTextInJson("IDENTIFICADOR DA QUADRA TORRE INVALIDO", response);
+    }
+
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn024(final String operationType) throws IOException {
+        String fakeUnity = getDataFaker().getExternalReference("unityExternal-");
+
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaContrato", externalRefContract);
+        mapValues.put("domicilioBancario", bankAddresExternalRef);
+        mapValues.put("quadraTorre", identifierBlockTower);
+        mapValues.put("referenciaExternaProjeto", externalRefProject);
+        mapValues.put("tipoOperacao", operationType);
+        mapValues.put("unidade", fakeUnity);
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("103010", response);
+        CheckResponse.checkTextInJson("IDENTIFICADOR DA UNIDADE INVALIDO", response);
+    }
+
+    @ParameterizedTest
+    @MethodSource("operationType")
+    public void rn025(final String operationType) throws IOException {
+        String fakeBankAddress = getDataFaker().getExternalReference("unityExternal-");
+
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = new HashMap<>();
+        mapValues.put("referenciaExternaContrato", externalRefContract);
+        mapValues.put("unidade", identifierUnity);
+        mapValues.put("quadraTorre", identifierBlockTower);
+        mapValues.put("referenciaExternaProjeto", externalRefProject);
+        mapValues.put("tipoOperacao", operationType);
+        mapValues.put("domicilioBancario", fakeBankAddress);
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("103035", response);
+        CheckResponse.checkTextInJson("DOMICILIO BANCARIO INVALIDO", response);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"A","a","1","NN", "s"})
+    public void rn029(String invalidlien) throws IOException {
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = getCommonsValues();
+        mapValues.put("gravameOnus", invalidlien);
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("103087", response);
+        CheckResponse.checkTextInJson("GRAVAME/ONUS INVALIDO", response);
+    }
+
+    @DisplayName("rn036(create) testing invalid percentages")
+    @ParameterizedTest
+    @ValueSource(strings = {"9,99", "99,99", "a"})
+    public void rn036_create(String invalidPercentage) throws IOException {
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = getCommonsValues();
+        mapValues.put("porcentagemMoraMes", invalidPercentage);
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("100008", response);
+        CheckResponse.checkTextInJson("PORCENTAGEM MORA MES DEVE SER NO MAXIMO DECIMAL(3,2)", response);
+    }
+
+    @DisplayName("rn037(create) testing invalid percentages")
+    @ParameterizedTest
+    @ValueSource(strings = {"9,99", "99,99", "a"})
+    public void rn037_create(String invalidPercentage) throws IOException {
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = getCommonsValues();
+        mapValues.put("porcentagemMulta", invalidPercentage);
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("100008", response);
+        CheckResponse.checkTextInJson("PORCENTAGEM MULTA DEVE SER NO MAXIMO DECIMAL(3,2)", response);
+    }
+
+    @DisplayName("rn038(create) testing invalid percentages")
+    @ParameterizedTest
+    @ValueSource(strings = {"99,99", "9,99", "a"})
+    public void rn038_create(String invalidPercentage) throws IOException {
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = getCommonsValues();
+        mapValues.put("valor", invalidPercentage);
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("100008", response);
+        CheckResponse.checkTextInJson("VALOR DEVE SER NO MAXIMO DECIMAL (10,2)", response);
+    }
+
+    @DisplayName("rn039(create) testing invalid percentages")
+    @ParameterizedTest
+    @ValueSource(strings = {"9,99", "99,99", "a"})
+    public void rn039_create(String invalidPercentage) throws IOException {
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = getCommonsValues();
+        mapValues.put("jurosAA", invalidPercentage);
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("100008", response);
+        CheckResponse.checkTextInJson("JUROS AA DEVE SER NO MAXIMO DECIMAL (3,2)", response);
+    }
+
+    @DisplayName("rn040(create) testing invalid assessments")
+    @ParameterizedTest
+    @ValueSource(strings = {"99,99", "aaa"})
+    public void rn040_create(String invalidAssessment) throws IOException {
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = getCommonsValues();
+        mapValues.put("avaliacao", invalidAssessment);
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("100005", response);
+        CheckResponse.checkTextInJson("AVALIACAO DEVE CONTER NO MAXIMO 2 POSICOES", response);
+    }
+
+    @DisplayName("rn044 testing invalid percentages")
+    @ParameterizedTest
+    @ValueSource(strings = {"99,99", "9,99", "a"})
+    public void rn044(String invalidValueToReturn) throws IOException {
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = getCommonsValues();
+        mapValues.put("valorDevolver", invalidValueToReturn);
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("100008", response);
+        CheckResponse.checkTextInJson("VALOR A DEVOLVER DEVE SER NO MAXIMO DECIMAL (10,2)", response);
+    }
+
+
+
+
+
 
 
 
@@ -740,5 +968,107 @@ public class RegisterContractTest extends ImobApplicationTests{
         CheckResponse.checkTextInJson("BLOQUEIO DE FATURAMENTO DO CONTRATO INVALIDO", response);
     }
 
+    @DisplayName("rn036_edit testing invalid percentages")
+    @ParameterizedTest
+    @ValueSource(strings = {"9,99", "99,99", "a"})
+    public void rn036_edit(String invalidPercentage) throws IOException {
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = getCommonsValues();
+        mapValues.put("porcentagemMoraMes", invalidPercentage);
+        mapValues.put("tipoOperacao", "A");
 
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("100008", response);
+        CheckResponse.checkTextInJson("PORCENTAGEM MORA MES DEVE SER NO MAXIMO DECIMAL(3,2)", response);
+    }
+
+    @DisplayName("rn037(edit) testing invalid percentages")
+    @ParameterizedTest
+    @ValueSource(strings = {"9,99", "99,99", "a"})
+    public void rn037_edit(String invalidPercentage) throws IOException {
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = getCommonsValues();
+        mapValues.put("porcentagemMulta", invalidPercentage);
+        mapValues.put("tipoOperacao", "A");
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("100008", response);
+        CheckResponse.checkTextInJson("PORCENTAGEM MULTA DEVE SER NO MAXIMO DECIMAL(3,2)", response);
+    }
+
+    @DisplayName("rn038(edit) testing invalid percentages")
+    @ParameterizedTest
+    @ValueSource(strings = {"99,99", "9,99", "a"})
+    public void rn038_edit(String invalidPercentage) throws IOException {
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = getCommonsValues();
+        mapValues.put("valor", invalidPercentage);
+        mapValues.put("tipoOperacao", "A");
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("100008", response);
+        CheckResponse.checkTextInJson("VALOR DEVE SER NO MAXIMO DECIMAL (10,2)", response);
+    }
+
+    @DisplayName("rn039(edit) testing invalid percentages")
+    @ParameterizedTest
+    @ValueSource(strings = {"9,99", "99,99", "a"})
+    public void rn039_edit(String invalidPercentage) throws IOException {
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = getCommonsValues();
+        mapValues.put("jurosAA", invalidPercentage);
+        mapValues.put("tipoOperacao","A");
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("100008", response);
+        CheckResponse.checkTextInJson("JUROS AA DEVE SER NO MAXIMO DECIMAL (3,2)", response);
+    }
+    @DisplayName("rn040(edit) testing invalid assessments")
+    @ParameterizedTest
+    @ValueSource(strings = {"99,99", "a", "aaa","999"})
+    public void rn040_edit(String invalidAssessment) throws IOException {
+        //Dynamic variable created when saving bank address
+        HashMap<String, Object> mapValues = getCommonsValues();
+        mapValues.put("avaliacao", invalidAssessment);
+        mapValues.put("tipoOperacao", "A");
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        // Check Response
+        CheckResponse.checkTextInJson("100005", response);
+        CheckResponse.checkTextInJson("AVALIACAO DEVE CONTER NO MAXIMO 2 POSICOES", response);
+    }
 }
