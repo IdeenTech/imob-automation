@@ -672,7 +672,6 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         // Check Response
         CheckResponse.checkTextInJson("100008", response);
         CheckResponse.checkTextInJson("EVOLUCAO OBRA TOTAL DEVE SER NO MAXIMO DECIMAL (3,2)", response);
-
     }
 
 }
