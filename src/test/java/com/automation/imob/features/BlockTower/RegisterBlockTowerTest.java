@@ -1,4 +1,4 @@
-package com.automation.imob.features.blocktower;
+package com.automation.imob.features.BlockTower;
 
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;
@@ -14,6 +14,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -366,7 +367,6 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("102018", response);
         CheckResponse.checkTextInJson("DATA BASE DA EVOLUCAO DA OBRA INVALIDA", response);
     }
-
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn015(String operationType) throws IOException {
@@ -390,7 +390,6 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("DOMICILIO BANCARIO INVALIDO", response);
     }
     /* --------------------------------------------EDIT ----------------------------------------*/
-
 
     @Test
     public void rn018() throws IOException {
@@ -638,27 +637,9 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("NUMERO DE PAVIMENTOS DEVE CONTER NO MAXIMO 3 POSICOES", response);
     }
 
-    @Test
-    public void rn013() throws IOException {
-
-        //Assigning value to common references in rn's
-        HashMap<String, Object> mapValues = getCommonsValues();
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BLOCK_TOWER);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_BLOCK_TOWER_SAVE, mapValues));
-
-        // Call endpoint
-        Response response = MethodRest.callPost(endpointConfig);
-
-        CheckResponse.checkTextInJson("102006", response);
-        CheckResponse.checkTextInJson("QUANTIDADE DE QUADRAS TORRES INFORMADA DIFERENTE DO EMPREENDIMENTO", response);
-
-    }
-
     @ParameterizedTest
     @ValueSource(strings = {"9999", "a", "99,999"})
     public void rn022(String invalidEvolTotalWork) throws IOException {
-
-        //Assigning value to common references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("evolucaoObraTotal", invalidEvolTotalWork);
 
@@ -672,6 +653,22 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         // Check Response
         CheckResponse.checkTextInJson("100008", response);
         CheckResponse.checkTextInJson("EVOLUCAO OBRA TOTAL DEVE SER NO MAXIMO DECIMAL (3,2)", response);
+    }
+
+    @Test
+    public void rn013() throws IOException {
+        //Assigning value to common references in rn's
+        HashMap<String, Object> mapValues = getCommonsValues();
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BLOCK_TOWER);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_BLOCK_TOWER_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        CheckResponse.checkTextInJson("102006", response);
+        CheckResponse.checkTextInJson("QUANTIDADE DE QUADRAS TORRES INFORMADA DIFERENTE DO EMPREENDIMENTO", response);
     }
 
 }

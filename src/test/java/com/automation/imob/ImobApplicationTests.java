@@ -73,7 +73,6 @@ public class ImobApplicationTests {
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
         endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_SAVE, mapValues));
 
-
         return MethodRest.callPost(endpointConfig);
     }
 
@@ -103,10 +102,6 @@ public class ImobApplicationTests {
 
     protected Response createBlockTower(String payAddressExternalRef, String externalRefProject, String identifierBlockTower) throws IOException {
 
-        //Create dynamics variables
-        Integer cns = getDataFaker().getNumberCharacters(6);
-        Integer registrationNumber = getDataFaker().getNumberCharacters(7);
-
         //using the creation of the Building creation
         createBuilding(payAddressExternalRef, externalRefProject);
 
@@ -114,10 +109,7 @@ public class ImobApplicationTests {
         HashMap<String, Object> mapValuesBlockTower = new HashMap<>();
         mapValuesBlockTower.put("referenciaExternaProjeto", externalRefProject);
         mapValuesBlockTower.put("domicilioBancario", payAddressExternalRef);
-        mapValuesBlockTower.put("cns", cns);
-        mapValuesBlockTower.put("numeroMatricula", registrationNumber);
         mapValuesBlockTower.put("identificadorQuadraTorre", identifierBlockTower);
-
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BLOCK_TOWER);
@@ -143,6 +135,30 @@ public class ImobApplicationTests {
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_UNITY);
         endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_UNITY_SAVE, mapValuesUnity));
+
+        // Call endpoint
+        return MethodRest.callPost(endpointConfig);
+    }
+
+    protected Response createContract(String payAddressExternalFakeReference, String externalRefProject, String identifierBlockTower, String identifierUnity, String identifierContract) throws IOException {
+
+        payAddressExternalFakeReference = getDataFaker().getWorld();
+        createPayAddress(payAddressExternalFakeReference);
+
+        //using the creation of the createUnity creation
+        createUnity(payAddressExternalFakeReference, externalRefProject, identifierBlockTower, identifierUnity);
+
+        //Apply dynamics variables
+        HashMap<String, Object> mapValuesContract = new HashMap<>();
+        mapValuesContract.put("referenciaExternaProjeto", externalRefProject);
+        mapValuesContract.put("referenciaExternaContrato", identifierContract);
+        mapValuesContract.put("quadraTorre", identifierBlockTower);
+        mapValuesContract.put("unidade", identifierUnity);
+
+
+        // Create Request
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CONTRACT_SAVE, mapValuesContract));
 
         // Call endpoint
         return MethodRest.callPost(endpointConfig);
