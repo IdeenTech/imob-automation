@@ -27,7 +27,6 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
         identifierBlockTower = getDataFaker().getExternalReference("blockToweridentifier-");
         identifierUnity = getDataFaker().getExternalReference("UnityIdentifier-");
 
-
         //Response create Unity
         Response response = createUnity(bankAddressExternalRef, externalRefProject, identifierBlockTower, identifierUnity);
 
