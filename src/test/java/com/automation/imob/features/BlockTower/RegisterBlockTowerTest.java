@@ -367,17 +367,16 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("102018", response);
         CheckResponse.checkTextInJson("DATA BASE DA EVOLUCAO DA OBRA INVALIDA", response);
     }
-
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn015(String operationType) throws IOException {
-        String InvaliodPayAdrress = getDataFaker().getExternalReference("InvaliodPayAdrress ");
+        String InvalidPayAdrress = getDataFaker().getExternalReference("InvalidPayAdrress ");
 
         HashMap<String, Object> mapValues = new HashMap<>();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("referenciaExternaProjeto", externalRefProject);
         mapValues.put("identificadorQuadraTorre", identifierBlockTower);
-        mapValues.put("domicilioBancario", InvaliodPayAdrress);
+        mapValues.put("domicilioBancario", InvalidPayAdrress);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BLOCK_TOWER);
@@ -391,7 +390,6 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("DOMICILIO BANCARIO INVALIDO", response);
     }
     /* --------------------------------------------EDIT ----------------------------------------*/
-
 
     @Test
     public void rn018() throws IOException {
@@ -662,7 +660,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         //Assigning value to common references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
 
-          // Create Request
+        // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BLOCK_TOWER);
         endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_BLOCK_TOWER_SAVE, mapValues));
 

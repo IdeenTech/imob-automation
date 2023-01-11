@@ -1,4 +1,4 @@
-package com.automation.imob.features.Contract;
+package com.automation.imob.features.contract;
 
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;
@@ -7,7 +7,6 @@ import com.automation.imob.components.result.CheckResponse;
 import com.automation.imob.config.ImobFileJson;
 import com.automation.imob.config.ImobPath;
 import io.restassured.response.Response;
-import io.restassured.response.ResponseBody;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,7 +27,7 @@ public class RegisterContractTest extends ImobApplicationTests{
     private String identifierUnity;
     private String externalRefContract;
 
-    @Test
+    @BeforeAll
     public void save() throws IOException {
         //Declare value identifiers: BlockTower and BankAddress
         externalRefProject = getDataFaker().getExternalReference("refExternaProject-");
@@ -797,7 +796,7 @@ public class RegisterContractTest extends ImobApplicationTests{
 
     @DisplayName("rn038(create) testing invalid percentages")
     @ParameterizedTest
-    @ValueSource(strings = {"a"})
+    @ValueSource(strings = {"10,0"})
     public void rn038_create(String invalidPercentage) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
