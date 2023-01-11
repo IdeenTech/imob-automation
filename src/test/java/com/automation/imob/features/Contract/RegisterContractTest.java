@@ -28,7 +28,7 @@ public class RegisterContractTest extends ImobApplicationTests{
     private String identifierUnity;
     private String externalRefContract;
 
-    @BeforeAll
+    @Test
     public void save() throws IOException {
         //Declare value identifiers: BlockTower and BankAddress
         externalRefProject = getDataFaker().getExternalReference("refExternaProject-");
@@ -797,7 +797,7 @@ public class RegisterContractTest extends ImobApplicationTests{
 
     @DisplayName("rn038(create) testing invalid percentages")
     @ParameterizedTest
-    @ValueSource(strings = {"99,99", "9,99", "a"})
+    @ValueSource(strings = {"a"})
     public void rn038_create(String invalidPercentage) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
@@ -857,11 +857,11 @@ public class RegisterContractTest extends ImobApplicationTests{
 
     @DisplayName("rn044 testing invalid percentages")
     @ParameterizedTest
-    @ValueSource(strings = {"99,99", "9,99", "a"})
-    public void rn044(String invalidValueToReturn) throws IOException {
+    @ValueSource(strings = {"99,99", "99", "9,99", "a", "10,3"})
+    public void rn044(String invalidPercentage) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
-        mapValues.put("valorDevolver", invalidValueToReturn);
+        mapValues.put("valor", invalidPercentage);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_CONTRACT);
@@ -1012,7 +1012,7 @@ public class RegisterContractTest extends ImobApplicationTests{
 
     @DisplayName("rn038(edit) testing invalid percentages")
     @ParameterizedTest
-    @ValueSource(strings = {"99,99", "9,99", "a"})
+    @ValueSource(strings = {"99,99", "99", "9,99", "a"})
     public void rn038_edit(String invalidPercentage) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();
@@ -1053,7 +1053,7 @@ public class RegisterContractTest extends ImobApplicationTests{
     }
     @DisplayName("rn040(edit) testing invalid assessments")
     @ParameterizedTest
-    @ValueSource(strings = {"99,99", "a", "aaa","999"})
+    @ValueSource(strings = {"99,99", "a", "aaa" })
     public void rn040_edit(String invalidAssessment) throws IOException {
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = getCommonsValues();

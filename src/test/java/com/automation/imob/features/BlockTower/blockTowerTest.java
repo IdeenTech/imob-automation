@@ -402,9 +402,6 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
 
         Response response = createBlockTower(externalRef2, idBlockTower, idBankAddress);
 
-        HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("domicilioBancario", "");
-
         // Check Response
         CheckResponse.checkHttpCode(201, response);
         CheckResponse.checkTextInJson("Created", response);

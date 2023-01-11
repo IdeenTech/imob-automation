@@ -22,16 +22,16 @@ import java.util.HashMap;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RegisterBankAddressTest extends ImobApplicationTests {
 
-    private String bankAddresExternalRef;
+    private String bankAddressExternalRef;
 
     @BeforeAll
     public void init() {
-        bankAddresExternalRef = getDataFaker().getExternalReference("domiciliobancario-");
+        bankAddressExternalRef = getDataFaker().getExternalReference("domiciliobancario-");
     }
 
     @Test
     public void save() throws IOException {
-        Response response = createBankAddres(bankAddresExternalRef);
+        Response response = createBankAddres(bankAddressExternalRef);
 
         // Check Response
         CheckResponse.checkHttpCode(201, response);
@@ -43,7 +43,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddresExternalRef);
+        mapValues.put("referenciaExterna", bankAddressExternalRef);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
@@ -63,7 +63,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddresExternalRef);
+        mapValues.put("referenciaExterna", bankAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
 
         // Create Request
@@ -84,7 +84,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddresExternalRef);
+        mapValues.put("referenciaExterna", bankAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
 
         // Create Request
@@ -120,7 +120,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddresExternalRef);
+        mapValues.put("referenciaExterna", bankAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
 
         // Create Request
@@ -141,7 +141,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddresExternalRef);
+        mapValues.put("referenciaExterna", bankAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
 
         // Create Request
@@ -162,7 +162,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddresExternalRef);
+        mapValues.put("referenciaExterna", bankAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
 
         // Create Request
@@ -183,7 +183,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddresExternalRef);
+        mapValues.put("referenciaExterna", bankAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
 
         // Create Request
@@ -204,7 +204,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddresExternalRef);
+        mapValues.put("referenciaExterna", bankAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
 
         // Create Request
@@ -225,7 +225,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddresExternalRef);
+        mapValues.put("referenciaExterna", bankAddressExternalRef);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
@@ -246,7 +246,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddresExternalRef);
+        mapValues.put("referenciaExterna", bankAddressExternalRef);
         mapValues.put("cnpj", invalidCNPJ);
 
         // Create Request
@@ -267,7 +267,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddresExternalRef);
+        mapValues.put("referenciaExterna", bankAddressExternalRef);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
@@ -288,7 +288,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
         String cnpj = getDataFaker().getCnpj(false);
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddresExternalRef);
+        mapValues.put("referenciaExterna", bankAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("cnpj", cnpj);
 
@@ -311,7 +311,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddresExternalRef);
+        mapValues.put("referenciaExterna", bankAddressExternalRef);
         mapValues.put("codigoCedente", invalidAssigCode);
 
         // Create Request
@@ -357,7 +357,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddresExternalRef);
+        mapValues.put("referenciaExterna", bankAddressExternalRef);
         mapValues.put("tipoOperacao", "A");
         mapValues.put("cnpj", invalidCNPJ);
 
@@ -380,7 +380,7 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         //Dynamic variable created when saving bank address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddresExternalRef);
+        mapValues.put("referenciaExterna", bankAddressExternalRef);
         mapValues.put("tipoOperacao", "A");
         mapValues.put("codigoCedente", invalidassigcode);
 

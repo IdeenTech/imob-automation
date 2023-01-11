@@ -73,7 +73,6 @@ public class ImobApplicationTests {
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
         endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_SAVE, mapValues));
 
-
         return MethodRest.callPost(endpointConfig);
     }
 
@@ -143,8 +142,8 @@ public class ImobApplicationTests {
 
     protected Response createContract(String bankAddresExternalRef, String externalRefProject, String identifierBlockTower, String identifierUnity, String identifierContract) throws IOException {
 
+        bankAddresExternalRef = getDataFaker().getWorld();
         createBankAddres(bankAddresExternalRef);
-         bankAddresExternalRef = getDataFaker().getWorld() ;
 
         //using the creation of the createUnity creation
         createUnity(bankAddresExternalRef, externalRefProject, identifierBlockTower, identifierUnity);
@@ -152,7 +151,6 @@ public class ImobApplicationTests {
         //Apply dynamics variables
         HashMap<String, Object> mapValuesContract = new HashMap<>();
         mapValuesContract.put("referenciaExternaProjeto", externalRefProject);
-        mapValuesContract.put("domicilioBancario", bankAddresExternalRef);
         mapValuesContract.put("referenciaExternaContrato", identifierContract);
         mapValuesContract.put("quadraTorre", identifierBlockTower);
         mapValuesContract.put("unidade", identifierUnity);
@@ -165,5 +163,4 @@ public class ImobApplicationTests {
         // Call endpoint
         return MethodRest.callPost(endpointConfig);
     }
-
 }
