@@ -21,7 +21,7 @@ import java.util.HashMap;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RequestOptinTest extends ImobApplicationTests {
 
-    private String externalReferenceBankAddress;
+    private String externalReferencePayAddress;
     private Integer cns;
     private Integer registrationNumber;
     private String externalReferenceProject;
@@ -29,7 +29,7 @@ public class RequestOptinTest extends ImobApplicationTests {
 
     @BeforeAll
     public void init(){
-        externalReferenceBankAddress = getDataFaker().getExternalReference("domiciliobancario-");
+        externalReferencePayAddress = getDataFaker().getExternalReference("domiciliobancario-");
         cns = getDataFaker().getNumberCharacters(6);
         registrationNumber = getDataFaker().getNumberCharacters(6);
         externalReferenceProject = getDataFaker().getExternalReference("refereciaexternaprojeto-");
@@ -45,24 +45,24 @@ public class RequestOptinTest extends ImobApplicationTests {
     //@Test TODO
     public void requestOptin() throws IOException {
 
-        //**************************** BANK ADDRESS ************************************************************
+        //**************************** PAY ADDRESS ************************************************************
 
-        // Create BankAddress
+        // Create PayAddress
 
         // Create dynamic variables
-        HashMap<String, Object> mapValuesBankAddress = new HashMap<>();
-        mapValuesBankAddress.put("referenciaExterna", externalReferenceBankAddress);
+        HashMap<String, Object> mapValuesPayAddress = new HashMap<>();
+        mapValuesPayAddress.put("referenciaExterna", externalReferencePayAddress);
 
         // Create Request
-        EndpointConfig endpointConfigBankAddress = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfigBankAddress.setBody(endpointConfigBankAddress.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_SAVE, mapValuesBankAddress));
+        EndpointConfig endpointConfigPayAddress = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfigPayAddress.setBody(endpointConfigPayAddress.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_SAVE, mapValuesPayAddress));
 
         // Call endpoint
-        Response responseBankAddress = MethodRest.callPost(endpointConfigBankAddress);
+        Response responsePayAddress = MethodRest.callPost(endpointConfigPayAddress);
 
         // Check Response
-        CheckResponse.checkHttpCode(201, responseBankAddress);
-        CheckResponse.checkTextInJson("Created", responseBankAddress);
+        CheckResponse.checkHttpCode(201, responsePayAddress);
+        CheckResponse.checkTextInJson("Created", responsePayAddress);
 
         //**************************** BUILDING ************************************************************
 
@@ -73,7 +73,7 @@ public class RequestOptinTest extends ImobApplicationTests {
         mapValuesBuilding.put("cns", cns);
         mapValuesBuilding.put("numeroMatricula", registrationNumber);
         mapValuesBuilding.put("referenciaExternaProjeto", externalReferenceProject);
-        mapValuesBuilding.put("domicilioBancario", externalReferenceBankAddress);
+        mapValuesBuilding.put("domicilioBancario", externalReferencePayAddress);
 
         // Create Request
         EndpointConfig endpointConfigBuilding = getEndpointConfig(ImobPath.PATH_BUILDING);

@@ -1,4 +1,4 @@
-package com.automation.imob.features.bankaddress;
+package com.automation.imob.features.payAddress;
 
 import com.automation.imob.ImobApplicationTests;
 import com.automation.imob.components.MethodRest;
@@ -19,18 +19,18 @@ import java.io.IOException;
 import java.util.HashMap;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class RegisterBankAddressTest extends ImobApplicationTests {
+public class RegisterAndUpdatePayAddressTest extends ImobApplicationTests {
 
-    private String bankAddressExternalRef;
+    private String payAddressExternalRef;
 
     @BeforeAll
     public void init() {
-        bankAddressExternalRef = getDataFaker().getExternalReference("domiciliobancario-");
+        payAddressExternalRef = getDataFaker().getExternalReference("domiciliobancario-");
     }
 
     @Test
     public void save() throws IOException {
-        Response response = createBankAddres(bankAddressExternalRef);
+        Response response = createPayAddress(payAddressExternalRef);
 
         // Check Response
         CheckResponse.checkHttpCode(201, response);
@@ -40,13 +40,13 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     @Test
     public void rn004_111001() throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving Pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddressExternalRef);
+        mapValues.put("referenciaExterna", payAddressExternalRef);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111001, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_RN004_111001, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -60,14 +60,14 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn004_111006(String operationType) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddressExternalRef);
+        mapValues.put("referenciaExterna", payAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111006, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_RN004_111006, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -81,14 +81,14 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn004_111008(String operationType) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddressExternalRef);
+        mapValues.put("referenciaExterna", payAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111008, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_RN004_111008, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -102,8 +102,8 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     public void rn004_111010() throws IOException {
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111010));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.setJsonFileBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_RN004_111010));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -117,14 +117,14 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn004_111013(String operationType) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddressExternalRef);
+        mapValues.put("referenciaExterna", payAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111013, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_RN004_111013, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -138,14 +138,14 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn004_111015(String operationType) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddressExternalRef);
+        mapValues.put("referenciaExterna", payAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111015, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_RN004_111015, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -159,14 +159,14 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn004_111017(String operationType) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddressExternalRef);
+        mapValues.put("referenciaExterna", payAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111017, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_RN004_111017, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -180,14 +180,14 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn004_111018(String operationType) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddressExternalRef);
+        mapValues.put("referenciaExterna", payAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111018, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_RN004_111018, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -201,14 +201,14 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn004_111019(String operationType) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddressExternalRef);
+        mapValues.put("referenciaExterna", payAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN004_111019, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_RN004_111019, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -222,13 +222,13 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     @ValueSource(strings = {"a", "B", "1", "99"})
     public void rn005() throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddressExternalRef);
+        mapValues.put("referenciaExterna", payAddressExternalRef);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN005, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_RN005, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -243,14 +243,14 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     @ValueSource(strings = {"999999999999999", "a", "A", "0000000"})
     public void rn006_create(String invalidCNPJ) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddressExternalRef);
+        mapValues.put("referenciaExterna", payAddressExternalRef);
         mapValues.put("cnpj", invalidCNPJ);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN006, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_RN006, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -264,13 +264,13 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     @Test
     public void rn007() throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddressExternalRef);
+        mapValues.put("referenciaExterna", payAddressExternalRef);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN007, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_RN007, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -285,15 +285,15 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     public void rn008(String operationType) throws IOException {
 
         String cnpj = getDataFaker().getCnpj(false);
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddressExternalRef);
+        mapValues.put("referenciaExterna", payAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("cnpj", cnpj);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN008, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_RN008, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -308,14 +308,14 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     @ValueSource(strings = {"99999999", "a", "00000000"})
     public void rn010_create(String invalidAssigCode) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddressExternalRef);
+        mapValues.put("referenciaExterna", payAddressExternalRef);
         mapValues.put("codigoCedente", invalidAssigCode);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN010, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_RN010, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -332,14 +332,14 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
 
         String teste = getDataFaker().getWorld();
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
         mapValues.put("tipoOperacao", "A");
         mapValues.put("referenciaExterna", teste);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN007, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_RN007, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -354,15 +354,15 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     @ValueSource(strings = {"999999999999999", "a", "A", "0000000"})
     public void rn006_edit(String invalidCNPJ) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddressExternalRef);
+        mapValues.put("referenciaExterna", payAddressExternalRef);
         mapValues.put("tipoOperacao", "A");
         mapValues.put("cnpj", invalidCNPJ);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN006, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_RN006, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);
@@ -377,15 +377,15 @@ public class RegisterBankAddressTest extends ImobApplicationTests {
     @ValueSource(strings = {"99999999", "a", "00000000"})
     public void rn010_edit(String invalidassigcode) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddressExternalRef);
+        mapValues.put("referenciaExterna", payAddressExternalRef);
         mapValues.put("tipoOperacao", "A");
         mapValues.put("codigoCedente", invalidassigcode);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_RN010, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_RN010, mapValues));
 
         // Call endpoint
         Response response = MethodRest.callPost(endpointConfig);

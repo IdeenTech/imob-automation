@@ -4,35 +4,35 @@ public abstract  class ImobFileJson {
 
     private static final String PATH_BASE = "json";
 
-    // bank address
-    public static final String PATH_JSON_BANK_ADDRESS_SAVE =  PATH_BASE.concat("/bankaddress/save.json");
-    public static final String PATH_JSON_BANK_ADDRESS_RN004_111001 = PATH_BASE.concat("/bankaddress/rn004-111001.json");
+    // pay address
+    public static final String PATH_JSON_PAY_ADDRESS_SAVE =  PATH_BASE.concat("/payAddress/save.json");
+    public static final String PATH_JSON_PAY_ADDRESS_RN004_111001 = PATH_BASE.concat("/payAddress/rn004-111001.json");
 
-    public static final String PATH_JSON_BANK_ADDRESS_RN004_111006 = PATH_BASE.concat("/bankaddress/rn004-111006.json");
+    public static final String PATH_JSON_PAY_ADDRESS_RN004_111006 = PATH_BASE.concat("/payAddress/rn004-111006.json");
 
-    public static final String PATH_JSON_BANK_ADDRESS_RN004_111008 = PATH_BASE.concat("/bankaddress/rn004-111008.json");
+    public static final String PATH_JSON_PAY_ADDRESS_RN004_111008 = PATH_BASE.concat("/payAddress/rn004-111008.json");
 
-    public static final String PATH_JSON_BANK_ADDRESS_RN004_111010 = PATH_BASE.concat("/bankaddress/rn004-111010.json");
+    public static final String PATH_JSON_PAY_ADDRESS_RN004_111010 = PATH_BASE.concat("/payAddress/rn004-111010.json");
 
-    public static final String PATH_JSON_BANK_ADDRESS_RN004_111013 = PATH_BASE.concat("/bankaddress/rn004-111013.json");
+    public static final String PATH_JSON_PAY_ADDRESS_RN004_111013 = PATH_BASE.concat("/payAddress/rn004-111013.json");
 
-    public static final String PATH_JSON_BANK_ADDRESS_RN004_111015 = PATH_BASE.concat("/bankaddress/rn004-111015.json");
+    public static final String PATH_JSON_PAY_ADDRESS_RN004_111015 = PATH_BASE.concat("/payAddress/rn004-111015.json");
 
-    public static final String PATH_JSON_BANK_ADDRESS_RN004_111017 = PATH_BASE.concat("/bankaddress/rn004-111017.json");
+    public static final String PATH_JSON_PAY_ADDRESS_RN004_111017 = PATH_BASE.concat("/payAddress/rn004-111017.json");
 
-    public static final String PATH_JSON_BANK_ADDRESS_RN004_111018 = PATH_BASE.concat("/bankaddress/rn004-111018.json");
+    public static final String PATH_JSON_PAY_ADDRESS_RN004_111018 = PATH_BASE.concat("/payAddress/rn004-111018.json");
 
-    public static final String PATH_JSON_BANK_ADDRESS_RN004_111019 = PATH_BASE.concat("/bankaddress/rn004-111019.json");
+    public static final String PATH_JSON_PAY_ADDRESS_RN004_111019 = PATH_BASE.concat("/payAddress/rn004-111019.json");
 
-    public static final String PATH_JSON_BANK_ADDRESS_RN005 = PATH_BASE.concat("/bankaddress/rn005.json");
+    public static final String PATH_JSON_PAY_ADDRESS_RN005 = PATH_BASE.concat("/payAddress/rn005.json");
 
-    public static final String PATH_JSON_BANK_ADDRESS_RN006 = PATH_BASE.concat("/bankaddress/rn006.json");
+    public static final String PATH_JSON_PAY_ADDRESS_RN006 = PATH_BASE.concat("/payAddress/rn006.json");
 
-    public static final String PATH_JSON_BANK_ADDRESS_RN007 = PATH_BASE.concat("/bankaddress/rn007.json");
+    public static final String PATH_JSON_PAY_ADDRESS_RN007 = PATH_BASE.concat("/payAddress/rn007.json");
 
-    public static final String PATH_JSON_BANK_ADDRESS_RN008 = PATH_BASE.concat("/bankaddress/rn008.json");
+    public static final String PATH_JSON_PAY_ADDRESS_RN008 = PATH_BASE.concat("/payAddress/rn008.json");
 
-    public static final String PATH_JSON_BANK_ADDRESS_RN010 = PATH_BASE.concat("/bankaddress/rn010.json");
+    public static final String PATH_JSON_PAY_ADDRESS_RN010 = PATH_BASE.concat("/payAddress/rn010.json");
 
     //building
 

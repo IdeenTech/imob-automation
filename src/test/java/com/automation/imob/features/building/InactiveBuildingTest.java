@@ -16,28 +16,28 @@ import java.util.HashMap;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class InactiveBuildingTest extends ImobApplicationTests {
 
-    private String bankAddressExternalRef;
+    private String payAddressExternalRef;
     private String externalRefProject;
 
     @BeforeAll
     public void createBuilding() throws IOException {
-        //Declare value identifiers: Building and BankAddress
-        bankAddressExternalRef = getDataFaker().getExternalReference("DomRefExterna-");
+        //Declare value identifiers: Building and PayAddress
+        payAddressExternalRef = getDataFaker().getExternalReference("DomRefExterna-");
         externalRefProject = getDataFaker().getExternalReference("refExternaProject-");
 
         //create Building
-        createBuilding(bankAddressExternalRef, externalRefProject);
+        createBuilding(payAddressExternalRef, externalRefProject);
     }
 
     @Test
     public void inactiveBuilding() throws IOException {
-        //Declare value identifiers: Building and BankAddress
-        bankAddressExternalRef = getDataFaker().getExternalReference("InativDomRefExterna-");
+        //Declare value identifiers: Building and PayAddress
+        payAddressExternalRef = getDataFaker().getExternalReference("InativDomRefExterna-");
         externalRefProject = getDataFaker().getExternalReference("InativrefExternaProject-");
-        createBuilding(bankAddressExternalRef, externalRefProject);
+        createBuilding(payAddressExternalRef, externalRefProject);
 
         //create Building
-        Response response = createBuilding(bankAddressExternalRef, externalRefProject);
+        Response response = createBuilding(payAddressExternalRef, externalRefProject);
 
         // Check Response
         CheckResponse.checkTextInJson("200", response);
@@ -46,9 +46,9 @@ public class InactiveBuildingTest extends ImobApplicationTests {
 
     @Test
     public void rn006() throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("domicilioBancario", bankAddressExternalRef);
+        mapValues.put("domicilioBancario", payAddressExternalRef);
         mapValues.put("tipoOperacao", "I");
         mapValues.put("referenciaExternaProjeto", "");
 
@@ -68,9 +68,9 @@ public class InactiveBuildingTest extends ImobApplicationTests {
     public void rn009() throws IOException {
         String externalReference = getDataFaker().getWorld();
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("domicilioBancario", bankAddressExternalRef);
+        mapValues.put("domicilioBancario", payAddressExternalRef);
         mapValues.put("tipoOperacao", "I");
         mapValues.put("referenciaExternaProjeto", externalReference);
 
@@ -89,9 +89,9 @@ public class InactiveBuildingTest extends ImobApplicationTests {
     @Test
     public void rn010() throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("domicilioBancario", bankAddressExternalRef);
+        mapValues.put("domicilioBancario", payAddressExternalRef);
         mapValues.put("tipoOperacao", "I");
         mapValues.put("referenciaExternaProjeto", externalRefProject);
 

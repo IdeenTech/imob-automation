@@ -17,14 +17,14 @@ import java.util.HashMap;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ClosingScheduleTest extends ImobApplicationTests {
 
-    private String externalReferenceBankAddress;
+    private String externalReferencePayAddress;
     private Integer cns;
     private Integer registrationNumber;
     private String externalReferenceProject;
 
     @BeforeAll
     public void init(){
-        externalReferenceBankAddress = getDataFaker().getExternalReference("domiciliobancario-");
+        externalReferencePayAddress = getDataFaker().getExternalReference("domiciliobancario-");
         cns = getDataFaker().getNumberCharacters(6);
         registrationNumber = getDataFaker().getNumberCharacters(6);
         externalReferenceProject = getDataFaker().getExternalReference("refereciaexternaprojeto-");
@@ -42,24 +42,24 @@ public class ClosingScheduleTest extends ImobApplicationTests {
     @Test
     public void closingSchedule() throws IOException {
 
-        //**************************** BANK ADDRESS ************************************************************
+        //**************************** PAY ADDRESS ************************************************************
 
-        // Create BankAddress
+        // Create PayAddress
 
         // Create dynamic variables
-        HashMap<String, Object> mapValuesBankAddress = new HashMap<>();
-        mapValuesBankAddress.put("referenciaExterna", externalReferenceBankAddress);
+        HashMap<String, Object> mapValuesPayAddress = new HashMap<>();
+        mapValuesPayAddress.put("referenciaExterna", externalReferencePayAddress);
 
         // Create Request
-        EndpointConfig endpointConfigBankAddress = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfigBankAddress.setBody(endpointConfigBankAddress.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_SAVE, mapValuesBankAddress));
+        EndpointConfig endpointConfigPayAddress = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfigPayAddress.setBody(endpointConfigPayAddress.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_SAVE, mapValuesPayAddress));
 
         // Call endpoint
-        Response responseBankAddress = MethodRest.callPost(endpointConfigBankAddress);
+        Response responsePayAddress = MethodRest.callPost(endpointConfigPayAddress);
 
         // Check Response
-        CheckResponse.checkHttpCode(201, responseBankAddress);
-        CheckResponse.checkTextInJson("Created", responseBankAddress);
+        CheckResponse.checkHttpCode(201, responsePayAddress);
+        CheckResponse.checkTextInJson("Created", responsePayAddress);
 
         //**************************** BUILDING ************************************************************
 
@@ -70,7 +70,7 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         mapValuesBuilding.put("cns", cns);
         mapValuesBuilding.put("numeroMatricula", registrationNumber);
         mapValuesBuilding.put("referenciaExternaProjeto", externalReferenceProject);
-        mapValuesBuilding.put("domicilioBancario", externalReferenceBankAddress);
+        mapValuesBuilding.put("domicilioBancario", externalReferencePayAddress);
 
         // Create Request
         EndpointConfig endpointConfigBuilding = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -241,21 +241,21 @@ public class ClosingScheduleTest extends ImobApplicationTests {
     @Test
     public void rn011() throws IOException {
 
-        //**************************** BANK ADDRESS ************************************************************
+        //**************************** Pay ADDRESS ************************************************************
 
-        // Create BankAddress
+        // Create PayAddress
 
         // Create dynamic variables
-        HashMap<String, Object> mapValuesBankAddress = new HashMap<>();
-        String externalReferenceBankAddress = getDataFaker().getExternalReference("domiciliobancario-");
-        mapValuesBankAddress.put("referenciaExterna", externalReferenceBankAddress);
+        HashMap<String, Object> mapValuesPayAddress = new HashMap<>();
+        String externalReferencePayAddress = getDataFaker().getExternalReference("domiciliobancario-");
+        mapValuesPayAddress.put("referenciaExterna", externalReferencePayAddress);
 
         // Create Request
-        EndpointConfig endpointConfigBankAddress = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfigBankAddress.setBody(endpointConfigBankAddress.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_SAVE, mapValuesBankAddress));
+        EndpointConfig endpointConfigPayAddress = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfigPayAddress.setBody(endpointConfigPayAddress.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_SAVE, mapValuesPayAddress));
 
         // Call endpoint
-        Response response = MethodRest.callPost(endpointConfigBankAddress);
+        Response response = MethodRest.callPost(endpointConfigPayAddress);
 
         // Check Response
         CheckResponse.checkHttpCode(201, response);
@@ -273,7 +273,7 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         mapValuesBuilding.put("cns", cns);
         mapValuesBuilding.put("numeroMatricula", registrationNumber);
         mapValuesBuilding.put("referenciaExternaProjeto", externalReferenceProject);
-        mapValuesBuilding.put("domicilioBancario", externalReferenceBankAddress);
+        mapValuesBuilding.put("domicilioBancario", externalReferencePayAddress);
 
         // Create Request
         EndpointConfig endpointConfigBuilding = getEndpointConfig(ImobPath.PATH_BUILDING);
@@ -293,7 +293,7 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         mapValuesInactivateBuilding.put("cns", cns);
         mapValuesInactivateBuilding.put("numeroMatricula", registrationNumber);
         mapValuesInactivateBuilding.put("referenciaExternaProjeto", externalReferenceProject);
-        mapValuesInactivateBuilding.put("domicilioBancario", externalReferenceBankAddress);
+        mapValuesInactivateBuilding.put("domicilioBancario", externalReferencePayAddress);
 
         // Create Request
         endpointConfigBuilding.setBody(endpointConfigBuilding.alterValuesInJsonArrayBody((ImobFileJson.PATH_JSON_BUILDING_INACTIVATE), mapValuesInactivateBuilding));
@@ -312,7 +312,7 @@ public class ClosingScheduleTest extends ImobApplicationTests {
         mapValuesClosingSchedule.put("cns", cns);
         mapValuesClosingSchedule.put("numeroMatricula", registrationNumber);
         mapValuesClosingSchedule.put("referenciaExternaProjeto", externalReferenceProject);
-        mapValuesClosingSchedule.put("domicilioBancario", externalReferenceBankAddress);
+        mapValuesClosingSchedule.put("domicilioBancario", externalReferencePayAddress);
 
         // Create Request
         endpointConfigBuilding.setBody(endpointConfigBuilding.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_CLOSING_SCHEDULE_RN011, mapValuesClosingSchedule));
