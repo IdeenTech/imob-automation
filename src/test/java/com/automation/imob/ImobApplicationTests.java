@@ -83,7 +83,7 @@ public class ImobApplicationTests {
         Integer cns = getDataFaker().getNumberCharacters(6);
         Integer registrationNumber = getDataFaker().getNumberCharacters(7);
 
-        //using the creation of the Pay Adress creation
+        //using the creation of the Pay Address creation
         createPayAddress(payAddressExternalRef);
 
         //Apply dynamics variables
