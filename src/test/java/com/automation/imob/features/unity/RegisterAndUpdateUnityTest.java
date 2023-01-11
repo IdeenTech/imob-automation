@@ -22,7 +22,7 @@ import java.util.HashMap;
 public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
 
     // Store set value
-    private String bankAddressExternalRef;
+    private String payAddressExternalRef;
     private String externalRefProject;
     private String identifierBlockTower;
     private String identifierUnity;
@@ -30,14 +30,14 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @BeforeAll
     public void save() throws IOException {
 
-        //Declare value identifiers: BlockTower and BankAddress
-        bankAddressExternalRef = getDataFaker().getExternalReference("DomRefExterna-");
+        //Declare value identifiers: BlockTower and PayAddress
+        payAddressExternalRef = getDataFaker().getExternalReference("DomRefExterna-");
         externalRefProject = getDataFaker().getExternalReference("refExternaProject-");
         identifierBlockTower = getDataFaker().getExternalReference("blockToweridentifier-");
         identifierUnity = getDataFaker().getExternalReference("UnityIdentifier-");
 
         //Response create Unity
-        Response response = createUnity(bankAddressExternalRef, externalRefProject, identifierBlockTower, identifierUnity);
+        Response response = createUnity(payAddressExternalRef, externalRefProject, identifierBlockTower, identifierUnity);
 
         CheckResponse.checkHttpCode(201, response);
         CheckResponse.checkTextInJson("Created", response);
@@ -46,7 +46,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
 
     public HashMap<String, Object> getCommonsValues() {
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("domicilioBancario", bankAddressExternalRef);
+        mapValues.put("domicilioBancario", payAddressExternalRef);
         mapValues.put("referenciaExternaProjeto", externalRefProject);
         mapValues.put("identificadorQuadraTorre", identifierBlockTower);
 
@@ -55,7 +55,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
 
     @Test
     public void rn013() throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", "3");
 
@@ -73,7 +73,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
 
     @Test
     public void rn014_102001() throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", "");
 
@@ -92,7 +92,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn014_102003(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("referenciaExternaProjeto", "");
@@ -113,7 +113,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn014_102005(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificadorQuadraTorre", "");
@@ -133,7 +133,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn014_102021(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificadorUnidade", "");
@@ -153,7 +153,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn014_102022(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("tipoImovel", "");
@@ -173,7 +173,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn014_102025(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("fracaoIdealTipo", "");
@@ -193,7 +193,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn014_102027(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("fracaoIdeal", "");
@@ -213,7 +213,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn014_102029(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("metragemTotal", "");
@@ -233,7 +233,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn014_102030(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("metragemUtil", "");
@@ -253,7 +253,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn014_102031(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("pavimento", "");
@@ -273,7 +273,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn014_102032(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("pavimento", "");
@@ -293,7 +293,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn014_102033(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("precoM2", "");
@@ -313,7 +313,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn014_102034(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("dataTabela", "");
@@ -333,7 +333,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn014_102036(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificacaoOnus", "");
@@ -353,7 +353,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn014_102038(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("statusUnidade", "");
@@ -373,7 +373,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn014_102040(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("classificacaoDirecionamentoUnidade", "");
@@ -394,7 +394,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @DisplayName("rn015 Testing invalid immob")
     @ValueSource(strings = {"21", "A"})
     public void rn015(String invalidImmob) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoImovel", invalidImmob);
 
@@ -414,7 +414,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @DisplayName("rn016 Testing invalid date")
     @ValueSource(strings = {"20-10", "2022-15", "203-09", "A"})
     public void rn016_102013_create(String invalidDate) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("dataHabiteSeReal", invalidDate);
 
@@ -434,7 +434,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @DisplayName("rn016 Testing invalid date")
     @ValueSource(strings = {"20-10", "2022-15", "203-09", "A"})
     public void rn016_102035_create(String invalidDate) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("dataTabela", invalidDate);
 
@@ -454,7 +454,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @DisplayName("rn016 Testing invalid date")
     @ValueSource(strings = {"20-10", "2022-15", "203-09", "A"})
     public void rn016_102042_create(String invalidDate) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("dataQuitacaoAntesRegistro", invalidDate);
 
@@ -473,7 +473,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn017(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("statusUnidade", "1");
@@ -493,7 +493,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn018(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("classificacaoDirecionamentoUnidade", "6");
@@ -513,7 +513,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn019(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificacaoOnus", "6");
@@ -533,7 +533,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn020(String operationType) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("fracaoIdealTipo", "2");
@@ -556,7 +556,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
         //generate random external reference project
         String invalidRefProject = getDataFaker().getExternalReference("invalidRefProject-");
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificadorUnidade", identifierUnity);
@@ -578,15 +578,15 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn022(String operationType) throws IOException {
 
-        //Declare value identifiers: BlockTower and BankAddress
-        bankAddressExternalRef = getDataFaker().getExternalReference("DomRefExterna-");
+        //Declare value identifiers: BlockTower and PayAddress
+        payAddressExternalRef = getDataFaker().getExternalReference("DomRefExterna-");
         externalRefProject = getDataFaker().getExternalReference("refExternaProject-");
         identifierBlockTower = getDataFaker().getExternalReference("blockToweridentifier-");
         identifierUnity = getDataFaker().getExternalReference("UnityIdentifier-");
         //Response create Unity
-        Response response = createUnity(bankAddressExternalRef, externalRefProject, identifierBlockTower, identifierUnity);
+        Response response = createUnity(payAddressExternalRef, externalRefProject, identifierBlockTower, identifierUnity);
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = new HashMap<>();
         mapValues.put("tipoOperacao", operationType);
 
@@ -601,7 +601,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
         //generate random Block Tower value
         String invalidBlockTower = getDataFaker().getExternalReference("invalidBlockTower-");
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificadorQuadraTorre", invalidBlockTower);
@@ -623,7 +623,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn025(String operationType) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificadorUnidade", identifierUnity);
@@ -646,7 +646,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
         //generate random PayAddress value
         String invalidPayAddress = getDataFaker().getExternalReference("invalidPayAddress-");
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificadorUnidade", identifierUnity);
@@ -668,7 +668,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
         //generate value for unity identifier
         String teste = getDataFaker().getExternalReference("UnityIdentifier-");
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("identificadorUnidade", teste);
         mapValues.put("dataHabiteSeReal", "2023-01-01");
@@ -689,7 +689,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn029_100008(String operationType) throws IOException {
         identifierUnity = getDataFaker().getExternalReference("tst - ");
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificadorUnidade", identifierUnity);
@@ -712,7 +712,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn030(String operationType) throws IOException {
         identifierUnity = getDataFaker().getExternalReference("tst - ");
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificadorUnidade", identifierUnity);
@@ -734,9 +734,9 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @Test
     public void rn031() throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
-        mapValues.put("domicilioBancario", bankAddressExternalRef);
+        mapValues.put("domicilioBancario", payAddressExternalRef);
         mapValues.put("referenciaExternaProjeto", externalRefProject);
         mapValues.put("identificadorQuadraTorre", identifierBlockTower);
         mapValues.put("identificadorUnidade", identifierUnity);
@@ -758,7 +758,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn034(String operationType) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificadorUnidade", identifierUnity);
@@ -780,7 +780,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn035(String operationType) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificadorUnidade", identifierUnity);
@@ -802,7 +802,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn036(String operationType) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificadorUnidade", identifierUnity);
@@ -824,7 +824,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn037_100005(String operationType) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificadorUnidade", identifierUnity);
@@ -846,7 +846,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn037_102066(String operationType) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificadorUnidade", identifierUnity);
@@ -868,7 +868,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn038(String operationType) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificadorUnidade", identifierUnity);
@@ -890,7 +890,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn039(String operationType) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificadorUnidade", identifierUnity);
@@ -912,7 +912,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @MethodSource("operationType")
     public void rn040(String operationType) throws IOException {
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("identificadorUnidade", identifierUnity);
@@ -935,7 +935,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @DisplayName("rn016 Testing invalid date")
     @ValueSource(strings = {"20-10", "2022-15", "203-09", "A"})
     public void rn016_102013_update(String invalidDate) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("dataHabiteSeReal", invalidDate);
         mapValues.put("tipoOperacao", "A");
@@ -956,7 +956,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @DisplayName("rn016 Testing invalid date")
     @ValueSource(strings = {"20-10", "2022-15", "203-09", "A"})
     public void rn016_102035_update(String invalidDate) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("dataTabela", invalidDate);
         mapValues.put("tipoOperacao", "A");
@@ -977,7 +977,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @DisplayName("rn016 Testing invalid date")
     @ValueSource(strings = {"20-10", "2022-15", "203-09", "A"})
     public void rn016_102042_update(String invalidDate) throws IOException {
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("dataQuitacaoAntesRegistro", invalidDate);
         mapValues.put("tipoOperacao", "A");
@@ -997,9 +997,9 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     @Test
     public void rn028_update() throws IOException {
         identifierUnity = getDataFaker().getExternalReference("RN026 - ");
-        createUnity(bankAddressExternalRef, externalRefProject, identifierBlockTower, identifierUnity);
+        createUnity(payAddressExternalRef, externalRefProject, identifierBlockTower, identifierUnity);
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", "A");
         mapValues.put("identificadorUnidade", identifierUnity);
@@ -1022,7 +1022,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     public void rn012_edit() throws IOException {
         identifierBlockTower = getDataFaker().getExternalReference("tst - ");
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", "A");
         mapValues.put("identificadorUnidade", identifierUnity);
@@ -1044,7 +1044,7 @@ public class RegisterAndUpdateUnityTest extends ImobApplicationTests {
     public void rn013_edit() throws IOException {
         identifierUnity = getDataFaker().getExternalReference("tst - ");
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", "A");
         mapValues.put("identificadorUnidade", identifierUnity);

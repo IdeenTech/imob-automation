@@ -56,7 +56,7 @@ public class ImobApplicationTests {
         return endpointConfig;
     }
 
-    protected Response createBankAddres(String bankAddresExternalRef) throws IOException {
+    protected Response createPayAddress(String payAddressExternalRef) throws IOException {
         //Create dynamics variables
         Integer bank = getDataFaker().getNumberCharacters(3);
         Integer agency = getDataFaker().getNumberCharacters(4);
@@ -64,32 +64,32 @@ public class ImobApplicationTests {
 
         //Apply dynamics variables
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("referenciaExterna", bankAddresExternalRef);
+        mapValues.put("referenciaExterna", payAddressExternalRef);
         mapValues.put("banco", bank);
         mapValues.put("agencia", agency);
         mapValues.put("conta", account);
 
         // Create Request
-        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BANK_ADDRESS);
-        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_BANK_ADDRESS_SAVE, mapValues));
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_PAY_ADDRESS);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonBody(ImobFileJson.PATH_JSON_PAY_ADDRESS_SAVE, mapValues));
 
 
         return MethodRest.callPost(endpointConfig);
     }
 
-    protected Response createBuilding(String bankAddresExternalRef, String externalRefProject) throws IOException {
+    protected Response createBuilding(String payAddressExternalRef, String externalRefProject) throws IOException {
 
         //Create dynamics variables
         Integer cns = getDataFaker().getNumberCharacters(6);
         Integer registrationNumber = getDataFaker().getNumberCharacters(7);
 
-        //using the creation of the Bank Adress creation
-        createBankAddres(bankAddresExternalRef);
+        //using the creation of the Pay Address creation
+        createPayAddress(payAddressExternalRef);
 
         //Apply dynamics variables
         HashMap<String, Object> mapValuesBuilding = new HashMap<>();
         mapValuesBuilding.put("referenciaExternaProjeto", externalRefProject);
-        mapValuesBuilding.put("domicilioBancario", bankAddresExternalRef);
+        mapValuesBuilding.put("domicilioBancario", payAddressExternalRef);
         mapValuesBuilding.put("cns", cns);
         mapValuesBuilding.put("numeroMatricula", registrationNumber);
 
@@ -101,19 +101,19 @@ public class ImobApplicationTests {
         return MethodRest.callPost(endpointConfig);
     }
 
-    protected Response createBlockTower(String bankAddresExternalRef, String externalRefProject, String identifierBlockTower) throws IOException {
+    protected Response createBlockTower(String payAddressExternalRef, String externalRefProject, String identifierBlockTower) throws IOException {
 
         //Create dynamics variables
         Integer cns = getDataFaker().getNumberCharacters(6);
         Integer registrationNumber = getDataFaker().getNumberCharacters(7);
 
         //using the creation of the Building creation
-        createBuilding(bankAddresExternalRef, externalRefProject);
+        createBuilding(payAddressExternalRef, externalRefProject);
 
         //Apply dynamics variables
         HashMap<String, Object> mapValuesBlockTower = new HashMap<>();
         mapValuesBlockTower.put("referenciaExternaProjeto", externalRefProject);
-        mapValuesBlockTower.put("domicilioBancario", bankAddresExternalRef);
+        mapValuesBlockTower.put("domicilioBancario", payAddressExternalRef);
         mapValuesBlockTower.put("cns", cns);
         mapValuesBlockTower.put("numeroMatricula", registrationNumber);
         mapValuesBlockTower.put("identificadorQuadraTorre", identifierBlockTower);
@@ -127,16 +127,16 @@ public class ImobApplicationTests {
         return MethodRest.callPost(endpointConfig);
     }
 
-    protected Response createUnity(String bankAddresExternalRef, String externalRefProject, String identifierBlockTower,
+    protected Response createUnity(String payAddressExternalRef, String externalRefProject, String identifierBlockTower,
                                    String identifierUnity) throws IOException {
 
         //using the creation of the Block/Tower creation
-        createBlockTower(bankAddresExternalRef, externalRefProject,identifierBlockTower);
+        createBlockTower(payAddressExternalRef, externalRefProject,identifierBlockTower);
 
         //Apply dynamics variables
         HashMap<String, Object> mapValuesUnity = new HashMap<>();
         mapValuesUnity.put("referenciaExternaProjeto", externalRefProject);
-        mapValuesUnity.put("domicilioBancario", bankAddresExternalRef);
+        mapValuesUnity.put("domicilioBancario", payAddressExternalRef);
         mapValuesUnity.put("identificadorQuadraTorre", identifierBlockTower);
         mapValuesUnity.put("identificadorUnidade", identifierUnity);
 

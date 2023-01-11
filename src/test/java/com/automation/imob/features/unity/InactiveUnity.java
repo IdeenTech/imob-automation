@@ -19,7 +19,7 @@ import java.util.HashMap;
 public class InactiveUnity extends ImobApplicationTests {
 
     // Store set value
-    private String bankAddressExternalRef;
+    private String payAddressExternalRef;
     private String externalRefProject;
     private String identifierBlockTower;
     private String identifierUnity;
@@ -27,14 +27,14 @@ public class InactiveUnity extends ImobApplicationTests {
     @BeforeAll
     public void createUnity() throws IOException {
 
-        //Declare value identifiers: BlockTower and BankAddress
-        bankAddressExternalRef = getDataFaker().getExternalReference("DomRefExterna-");
+        //Declare value identifiers: BlockTower and PayAddress
+        payAddressExternalRef = getDataFaker().getExternalReference("DomRefExterna-");
         externalRefProject = getDataFaker().getExternalReference("refExternaProject-");
         identifierBlockTower = getDataFaker().getExternalReference("blockToweridentifier-");
         identifierUnity = getDataFaker().getExternalReference("UnityIdentifier-");
 
         //Response create Unity
-        Response response = createUnity(bankAddressExternalRef, externalRefProject, identifierBlockTower, identifierUnity);
+        Response response = createUnity(payAddressExternalRef, externalRefProject, identifierBlockTower, identifierUnity);
 
         CheckResponse.checkHttpCode(201, response);
         CheckResponse.checkTextInJson("Created", response);
@@ -43,7 +43,7 @@ public class InactiveUnity extends ImobApplicationTests {
 
     public HashMap<String, Object> getCommonsValues() {
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("domicilioBancario", bankAddressExternalRef);
+        mapValues.put("domicilioBancario", payAddressExternalRef);
         mapValues.put("referenciaExternaProjeto", externalRefProject);
         mapValues.put("identificadorQuadraTorre", identifierBlockTower);
 
@@ -52,7 +52,7 @@ public class InactiveUnity extends ImobApplicationTests {
 
     @Test
     public void rn005_102003( )throws IOException{
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", "I");
         mapValues.put("referenciaExternaProjeto", "");
@@ -72,7 +72,7 @@ public class InactiveUnity extends ImobApplicationTests {
 
     @Test
     public void rn005_102005( )throws IOException{
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", "I");
         mapValues.put("identificadorQuadraTorre", "");
@@ -92,7 +92,7 @@ public class InactiveUnity extends ImobApplicationTests {
 
     @Test
     public void rn005_102021( )throws IOException{
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", "I");
         mapValues.put("identificadorQuadraTorre", "");
@@ -114,7 +114,7 @@ public class InactiveUnity extends ImobApplicationTests {
     public void rn007( )throws IOException{
         String invalidExtRef = getDataFaker().getExternalReference("invalid -");
 
-        //Dynamic variable created when saving bank address
+        //Dynamic variable created when saving pay address
         HashMap<String, Object> mapValues = getCommonsValues();
         mapValues.put("tipoOperacao", "I");
         mapValues.put("referenciaExternaProjeto", invalidExtRef);

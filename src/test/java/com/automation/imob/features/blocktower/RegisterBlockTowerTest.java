@@ -21,19 +21,19 @@ import java.util.HashMap;
 public class RegisterBlockTowerTest extends ImobApplicationTests {
 
     // Store set value
-    private String bankAddressExternalRef;
+    private String payAddressExternalRef;
     private String externalRefProject;
     private String identifierBlockTower;
 
     @BeforeAll
     public void save() throws IOException {
-        //Declare value identifiers: BlockTower and BankAddress
-        bankAddressExternalRef = getDataFaker().getExternalReference("DomRefExterna-");
+        //Declare value identifiers: BlockTower and PayAddress
+        payAddressExternalRef = getDataFaker().getExternalReference("DomRefExterna-");
         externalRefProject = getDataFaker().getExternalReference("refExternaProject-");
         identifierBlockTower = getDataFaker().getExternalReference("blockToweridentifier-");
 
         //Response Create BlockTower
-        Response response = createBlockTower(bankAddressExternalRef, externalRefProject, identifierBlockTower);
+        Response response = createBlockTower(payAddressExternalRef, externalRefProject, identifierBlockTower);
 
         // Check response
         CheckResponse.checkHttpCode(201, response);
@@ -42,7 +42,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
 
     public HashMap<String, Object> getCommonsValues() {
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("domicilioBancario", bankAddressExternalRef);
+        mapValues.put("domicilioBancario", payAddressExternalRef);
         mapValues.put("referenciaExternaProjeto", externalRefProject);
         mapValues.put("identificadorQuadraTorre", identifierBlockTower);
 
@@ -72,7 +72,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     public void rn008_101003(final String operationType) throws IOException {
         // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = new HashMap<>();
-        mapValues.put("domicilioBancario", bankAddressExternalRef);
+        mapValues.put("domicilioBancario", payAddressExternalRef);
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("referenciaExternaProjeto", "");
 
@@ -370,13 +370,13 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     @ParameterizedTest
     @MethodSource("operationType")
     public void rn015(String operationType) throws IOException {
-        String InvaliodPayAdrress = getDataFaker().getExternalReference("InvaliodPayAdrress ");
+        String InvalidPayAdrress = getDataFaker().getExternalReference("InvalidPayAdrress ");
 
         HashMap<String, Object> mapValues = new HashMap<>();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("referenciaExternaProjeto", externalRefProject);
         mapValues.put("identificadorQuadraTorre", identifierBlockTower);
-        mapValues.put("domicilioBancario", InvaliodPayAdrress);
+        mapValues.put("domicilioBancario", InvalidPayAdrress);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BLOCK_TOWER);
@@ -397,9 +397,9 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         // Creating new block tower
         String externalRef2 = getDataFaker().getExternalReference("externalreff-");
         String idBlockTower = getDataFaker().getExternalReference("idBlockTower-");
-        String idBankAddress = getDataFaker().getExternalReference("idBankAddress-");
+        String idPayAddress = getDataFaker().getExternalReference("idPayAddress-");
 
-        Response response = createBlockTower(externalRef2, idBlockTower, idBankAddress);
+        Response response = createBlockTower(externalRef2, idBlockTower, idPayAddress);
 
         // Check Response
         CheckResponse.checkHttpCode(201, response);
@@ -563,7 +563,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         // Assigning value to commons references in rn's
         HashMap<String, Object> mapValues = new HashMap<>();
         mapValues.put("tipoOperacao", operationType);
-        mapValues.put("domicilioBancario", bankAddressExternalRef);
+        mapValues.put("domicilioBancario", payAddressExternalRef);
         mapValues.put("identificadorQuadraTorre", identifierBlockTower);
         mapValues.put("referenciaExternaProjeto", fakeExternalRefProj);
 
@@ -583,7 +583,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
     public void rn016() throws IOException {
         HashMap<String, Object> mapValues = new HashMap<>();
         // Assigning value to commons references in rn's
-        mapValues.put("domicilioBancario", bankAddressExternalRef);
+        mapValues.put("domicilioBancario", payAddressExternalRef);
         mapValues.put("identificadorQuadraTorre", identifierBlockTower);
         mapValues.put("referenciaExternaProjeto", externalRefProject);
 
