@@ -14,7 +14,6 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -370,23 +369,14 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
 
     @ParameterizedTest
     @MethodSource("operationType")
-<<<<<<< HEAD:src/test/java/com/automation/imob/features/blockTower/RegisterBlockTowerTest.java
     public void rn015(String operationType) throws IOException {
         String InvaliodPayAdrress = getDataFaker().getExternalReference("InvaliodPayAdrress ");
-=======
-    public void rn015(final String operationType) throws IOException {
-        String domicilioFakeBankAddres = getDataFaker().getExternalReference("random-");
->>>>>>> 81d4545f22b840bc9afa5e91221db471f8133248:src/test/java/com/automation/imob/features/blocktower/RegisterBlockTowerTest.java
 
         HashMap<String, Object> mapValues = new HashMap<>();
         mapValues.put("tipoOperacao", operationType);
         mapValues.put("referenciaExternaProjeto", externalRefProject);
         mapValues.put("identificadorQuadraTorre", identifierBlockTower);
-<<<<<<< HEAD:src/test/java/com/automation/imob/features/blockTower/RegisterBlockTowerTest.java
         mapValues.put("domicilioBancario", InvaliodPayAdrress);
-=======
-        mapValues.put("domicilioBancario", domicilioFakeBankAddres);
->>>>>>> 81d4545f22b840bc9afa5e91221db471f8133248:src/test/java/com/automation/imob/features/blocktower/RegisterBlockTowerTest.java
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BLOCK_TOWER);
@@ -589,11 +579,7 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("REFERENCIA EXTERNA PROJETO NAO EXISTE", response);
     }
 
-<<<<<<< HEAD:src/test/java/com/automation/imob/features/blockTower/RegisterBlockTowerTest.java
-   @Test
-=======
     @Test
->>>>>>> 81d4545f22b840bc9afa5e91221db471f8133248:src/test/java/com/automation/imob/features/blocktower/RegisterBlockTowerTest.java
     public void rn016() throws IOException {
         HashMap<String, Object> mapValues = new HashMap<>();
         // Assigning value to commons references in rn's
@@ -652,18 +638,29 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         CheckResponse.checkTextInJson("NUMERO DE PAVIMENTOS DEVE CONTER NO MAXIMO 3 POSICOES", response);
     }
 
-<<<<<<< HEAD:src/test/java/com/automation/imob/features/blockTower/RegisterBlockTowerTest.java
+    @Test
+    public void rn013() throws IOException {
+
+        //Assigning value to common references in rn's
+        HashMap<String, Object> mapValues = getCommonsValues();
+        EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BLOCK_TOWER);
+        endpointConfig.setBody(endpointConfig.alterValuesInJsonArrayBody(ImobFileJson.PATH_JSON_BLOCK_TOWER_SAVE, mapValues));
+
+        // Call endpoint
+        Response response = MethodRest.callPost(endpointConfig);
+
+        CheckResponse.checkTextInJson("102006", response);
+        CheckResponse.checkTextInJson("QUANTIDADE DE QUADRAS TORRES INFORMADA DIFERENTE DO EMPREENDIMENTO", response);
+
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"9999", "a", "99,999"})
     public void rn022(String invalidEvolTotalWork) throws IOException {
-        HashMap<String, Object> mapValues = getCommonsValues();
-        mapValues.put("evolucaoObraTotal", invalidEvolTotalWork);
-=======
-    @Test
-    public void rn013() throws IOException {
+
         //Assigning value to common references in rn's
         HashMap<String, Object> mapValues = getCommonsValues();
->>>>>>> 81d4545f22b840bc9afa5e91221db471f8133248:src/test/java/com/automation/imob/features/blocktower/RegisterBlockTowerTest.java
+        mapValues.put("evolucaoObraTotal", invalidEvolTotalWork);
 
         // Create Request
         EndpointConfig endpointConfig = getEndpointConfig(ImobPath.PATH_BLOCK_TOWER);
@@ -673,13 +670,9 @@ public class RegisterBlockTowerTest extends ImobApplicationTests {
         Response response = MethodRest.callPost(endpointConfig);
 
         // Check Response
-<<<<<<< HEAD:src/test/java/com/automation/imob/features/blockTower/RegisterBlockTowerTest.java
         CheckResponse.checkTextInJson("100008", response);
         CheckResponse.checkTextInJson("EVOLUCAO OBRA TOTAL DEVE SER NO MAXIMO DECIMAL (3,2)", response);
-=======
-        CheckResponse.checkTextInJson("102006", response);
-        CheckResponse.checkTextInJson("QUANTIDADE DE QUADRAS TORRES INFORMADA DIFERENTE DO EMPREENDIMENTO", response);
->>>>>>> 81d4545f22b840bc9afa5e91221db471f8133248:src/test/java/com/automation/imob/features/blocktower/RegisterBlockTowerTest.java
+
     }
 
 }
